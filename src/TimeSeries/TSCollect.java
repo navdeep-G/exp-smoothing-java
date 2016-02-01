@@ -157,6 +157,8 @@ public class TSCollect {
      * @return ACF values
      */
     public double[] acf(int n) {
+        //TODO: Add case when no input is given. Can simply default to n-1.
+
         if (n <= 0) {
             n = 10;
         }
@@ -177,8 +179,10 @@ public class TSCollect {
      * @return PACF values
      */
     public double[] pacf(int n) {
+        //TODO: Add case when no input is given. Can simply default to n-1.
+
         if (n <= 0) {
-            n = 10;
+            n = 10; //Add exception
         }
         double[] pacfValues = new double[n + 1];
         double[][] phi = new double[n + 1][n + 1];

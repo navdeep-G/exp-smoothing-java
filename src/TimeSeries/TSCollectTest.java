@@ -17,7 +17,7 @@ public class TSCollectTest {
 
         //Get some parameters to print out
         double pacf [] = ts.pacf(2); //lag 2
-        double acf[] = ts.acf(2); //lag 2
+        double acf[] = ts.acf(9); //lag 2
 
         System.out.println("PACF values at lag 2 for a time series with 10 data points (0,1,2,...,9):");
         for (int j = 0; j < pacf.length; j++){
