@@ -1,2 +1,7 @@
 # Time Series in Java
-## A simple implemenation of time series calculations (mean, variance, autocovariance, autocorrelation, partial autocorrelation) in Java
+## An implemenation of some time series calculations in Java. These include the following:
+- mean
+- variance
+- autocovariance 
+- autocorrelation
+- partial autocorrelation
