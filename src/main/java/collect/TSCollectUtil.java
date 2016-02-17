@@ -1,4 +1,4 @@
-package TimeSeries;
+package main.java.collect;
 
 
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @author navdeepgill
  */
 
-public class TSCollect {
+public class TSCollectUtil {
 
     /**
      * Cache results of computation.
@@ -32,7 +32,8 @@ public class TSCollect {
      * @param _number
      *            Number of points
      */
-    public TSCollect(int _number) {
+
+    public TSCollectUtil(int _number) {
         if (_number <= 0) {
             this.number = 128;
 
@@ -157,8 +158,6 @@ public class TSCollect {
      * @return ACF values
      */
     public double[] acf(int n) {
-        //TODO: Add case when no input is given. Can simply default to n-1.
-
         if (n <= 0) {
             n = 10;
         }
@@ -179,10 +178,8 @@ public class TSCollect {
      * @return PACF values
      */
     public double[] pacf(int n) {
-        //TODO: Add case when no input is given. Can simply default to n-1.
-
         if (n <= 0) {
-            n = 10; //Add exception
+            n = 10;
         }
         double[] pacfValues = new double[n + 1];
         double[][] phi = new double[n + 1][n + 1];
