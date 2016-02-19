@@ -3,7 +3,7 @@ package main.java.collect;
 import java.io.*;
 import java.util.ArrayList;
 
-/**First attempt at capturing relevant metrics from a time series dataset. These metrics can guide algorithm
+/**Capture elevant metrics from a time series dataset. These metrics can guide algorithm
  * implementation in the future.
  *
  * @author navdeepgill
@@ -26,23 +26,12 @@ public class TSCollect {
     /**
      * Read in time series dataset
      *
-     * @return An array list of data that is read in from the file path
+     * @return time series array list
      */
-
     public ArrayList<Double> ReadFile() throws IOException{
-        FileReader fileReader = new FileReader(_filepath);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        ArrayList<Double> data = new ArrayList<>();
-        String line;
-
-        while ((line = bufferedReader.readLine()) != null)
-        {
-            data.add(Double.parseDouble(line));
-        }
-
-        bufferedReader.close();
-        return data;
+        return TSUtil.ReadFile(_filepath);
     }
+
 
     /**
      * Get average
