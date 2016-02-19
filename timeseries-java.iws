@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e7243fd-aaeb-4f8b-9da9-9f6667406f5d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/collect/TSCollect.java" afterPath="$PROJECT_DIR$/src/main/java/collect/TSCollect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/timeseries-java.ipr" afterPath="$PROJECT_DIR$/timeseries-java.ipr" />
-    </list>
+    <list default="true" id="8e7243fd-aaeb-4f8b-9da9-9f6667406f5d" name="Default" comment="" />
     <ignored path="timeseries-java.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -50,8 +47,8 @@
       <file leaf-file-name="TSUtil.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/collect/TSUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84126985">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.26455027">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -647,8 +644,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/collect/TSUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84126985">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.26455027">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
