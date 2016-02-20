@@ -1,7 +1,6 @@
 # Time Series in Java
-## An implemenation of some time series calculations in Java. 
-
-##Currently the following calculations are being computed:
+## Time Series Calculations in Java
+### These include the following:
 - mean
 - variance
 - autocovariance 
