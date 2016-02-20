@@ -1,6 +1,6 @@
 # Time Series in Java
-## Time Series Calculations in Java
-### These include the following:
+
+### Current calculations include the following[Time Series Calculations!](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/collect/TSCollect.java): 
 - mean
 - variance
 - autocovariance 
