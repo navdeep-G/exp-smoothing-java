@@ -5,13 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
+/**Utility functions for time series.
+ *  Handles reading in data. Currently only taking in csv files.
  * @author navdeepgill
  */
 public class TSUtil {
 
     /**
-     * Read in time series dataset
+     * Read in time series dataset and sent to ArrayList<double>
      *
      * @return An array list of data that is read in from the file path
      */
