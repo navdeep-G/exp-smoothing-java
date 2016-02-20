@@ -2,9 +2,11 @@ package main.java.collect;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.lang.*;
+import java.util.Collections;
 
-/**Capture elevant metrics from a time series dataset. These metrics can guide algorithm
- * implementation in the future.
+/**Capture relevant metrics from a time series dataset.
+ * These metrics can guide algorithm implementation in the future.
  *
  * @author navdeepgill
  */
@@ -69,6 +71,57 @@ public class TSCollect {
             double variance = total/(nrow-1);
             return variance;
         }
+
+    /**
+     * Get Standard Deviation
+     *
+     * @return Standard Deviation
+     */
+    public double getStandardDeviation() throws IOException{
+        return Math.sqrt(getVariance());
+    }
+
+    /**
+     * Get Minimum Value Index
+     *
+     * @return Minimum Value Index
+     */
+    public int getMinIndex () throws IOException{
+        ArrayList<Double> file = _data;
+        return file.indexOf(Collections.min(file));
+    }
+
+    /**
+     * Get Maximum Value Index
+     *
+     * @return Maximum Value Index
+     */
+    public int getMaxIndex () throws IOException{
+        ArrayList<Double> file = _data;
+        return file.indexOf(Collections.max(file));
+    }
+
+    /**
+     * Get Minimum Value Based On Index
+     *
+     * @return Minimum Value
+     */
+    public double getMin () throws IOException{
+        ArrayList<Double> file = _data;
+        int MinIndex = getMinIndex();
+        return file.get(MinIndex);
+    }
+
+    /**
+     * Get Maximum Value Based On Index
+     *
+     * @return Maximum Value
+     */
+    public double getMax () throws IOException{
+        ArrayList<Double> file = _data;
+        int MaxIndex = getMaxIndex();
+        return file.get(MaxIndex);
+    }
 
     /**
      * Get auto-covariance
