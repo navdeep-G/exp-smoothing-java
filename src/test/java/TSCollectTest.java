@@ -11,7 +11,7 @@ import main.java.collect.TSCollect;
 public class TSCollectTest {
 
     //Define initial inputs for TSCollect
-    public static int lag = 2;
+    public static int lag = 0;
     public static  String pathToData = "data/birth.txt";
 
      //Quick check of output from previous methods.
