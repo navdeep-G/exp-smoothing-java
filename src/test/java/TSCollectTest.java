@@ -2,7 +2,11 @@ package test.java;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import main.java.collect.TSCollect;
+import main.java.collect.TSTransform;
+import main.java.collect.TSUtil;
 
 /**
  * @author navdeepgill
@@ -24,6 +28,13 @@ public class TSCollectTest {
         for(int i = 0; i < 10; i++) {
             System.out.println(file.get(i));
         }
+
+        System.out.println("First 10 Rows of Transformed (log) Time Series Dataset: " + pathToData);
+        List<Double> t_file = TSUtil.transform(file, TSTransform.Type.LOG);
+        for(int i = 0; i < 10; i++) {
+            System.out.println(t_file.get(i));
+        }
+
         System.out.println("Number of rows for " + pathToData + " = " + file.size());
         System.out.println("\n");
 

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**Utility functions for time series.
  *  Handles reading in data. Currently only taking in csv files.
@@ -29,5 +30,9 @@ public class TSUtil {
 
         bufferedReader.close();
         return data;
+    }
+
+    public static List<Double> transform(List<Double> l, TSTransform.Type t) {
+        return TSTransform.getFunction(t).exec(l);
     }
 }
