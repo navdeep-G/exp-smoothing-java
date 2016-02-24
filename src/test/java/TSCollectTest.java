@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.collect.TSCollect;
-import main.java.collect.TSTransform;
-import main.java.collect.TSUtil;
+import main.java.util.TSTransform;
+import main.java.util.TSUtil;
 
 /**
  * @author navdeepgill
