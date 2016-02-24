@@ -1,6 +1,6 @@
 # Time Series in Java
 
-An implementation of common time series calculations in Java.
+An implementation of common time series calculations & algoriths in Java.
 
 ### Current calculations include the following:
 - [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/collect/TSCollect.java)
