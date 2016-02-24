@@ -1,4 +1,4 @@
-package main.java.collect;
+package main.java.algos;
 
 import java.util.LinkedList;
 import java.util.Queue;
