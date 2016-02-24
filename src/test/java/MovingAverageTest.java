@@ -1,5 +1,5 @@
 package test.java;
-import main.java.collect.MovingAverage;
+import main.java.algos.MovingAverage;
 import main.java.collect.TSCollect;
 import java.util.ArrayList;
 
