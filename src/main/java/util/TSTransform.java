@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 import java.lang.IllegalArgumentException;
 
-/**Methods to Transform Time Series (log, sqrt, cubic, etc)
+/**Methods to Transform Time Series (log and power transformations)
  *
  * @author navdeepgill
  */
@@ -13,7 +13,7 @@ import java.lang.IllegalArgumentException;
 public class TSTransform {
 
     public enum Type {
-        LOG, ROOT_2, ROOT_3;
+        LOG, ROOT_2, ROOT_3,ROOT_4;
     }
 
     static TSTransformFunction getFunction(Type t) {
@@ -24,6 +24,8 @@ public class TSTransform {
                 return new Root_2();
             case ROOT_3:
                 return new Root_3();
+            case ROOT_4:
+                return new Root_4();
             default:
                 throw new IllegalArgumentException("Transform function of type '" + t.name() + "' doesn't exist");
         }
@@ -59,6 +61,16 @@ class Root_3 implements TSTransformFunction {
         List<Double> t_list = new ArrayList<Double>();
         for (double i : l) {
             t_list.add(Math.cbrt(i));
+        }
+        return t_list;
+    }
+}
+
+class Root_4 implements TSTransformFunction{
+    public List<Double> exec (List<Double> l) {
+        List<Double> t_list = new ArrayList<Double>();
+        for(double i : l){
+            t_list.add(Math.pow(i,1.0/4));
         }
         return t_list;
     }
