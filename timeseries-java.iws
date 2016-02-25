@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e7243fd-aaeb-4f8b-9da9-9f6667406f5d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/MovingAverageTest.java" afterPath="$PROJECT_DIR$/src/test/java/MovingAverageTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/collect/TSCollect.java" afterPath="$PROJECT_DIR$/src/main/java/collect/TSCollect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TSCollectTest.java" afterPath="$PROJECT_DIR$/src/test/java/TSCollectTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/timeseries-java.ipr" afterPath="$PROJECT_DIR$/timeseries-java.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/TSTransform.java" afterPath="$PROJECT_DIR$/src/main/java/util/TSTransform.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/timeseries-java.iws" afterPath="$PROJECT_DIR$/timeseries-java.iws" />
     </list>
     <ignored path="timeseries-java.iws" />
@@ -40,23 +37,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TSTransform.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TSTransform.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/util/TSTransform.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.28592375">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1529#1537#0" expanded="true" />
+                <element signature="e#1786#1794#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TSCollect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TSCollect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/collect/TSCollect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4540163">
-              <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -133,10 +132,11 @@
         <option value="$PROJECT_DIR$/src/main/java/collect/MovingAverage.java" />
         <option value="$PROJECT_DIR$/src/main/java/collect/TSUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/collect/TSTransform.java" />
-        <option value="$PROJECT_DIR$/src/main/java/util/TSTransform.java" />
         <option value="$PROJECT_DIR$/src/test/java/TSCollectTest.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/test/java/MovingAverageTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/BoxCox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/TSTransform.java" />
       </list>
     </option>
   </component>
@@ -146,7 +146,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1005" />
+    <option name="height" value="828" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -705,7 +705,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1005" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="828" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -771,6 +771,8 @@
           <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1529#1537#0" expanded="true" />
+            <element signature="e#1786#1794#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -847,6 +849,8 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1529#1537#0" expanded="true" />
+            <element signature="e#1786#1794#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -905,6 +909,8 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1529#1537#0" expanded="true" />
+            <element signature="e#1786#1794#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,26 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/util/TSTransform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/MovingAverageTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TSCollectTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1007,9 +993,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/collect/TSCollect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4540163">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MovingAverageTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/util/TSTransform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28592375">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1529#1537#0" expanded="true" />
+            <element signature="e#1786#1794#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
