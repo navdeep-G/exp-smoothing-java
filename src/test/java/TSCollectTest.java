@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.collect.TSCollect;
+import main.java.util.BoxCox;
 import main.java.util.TSTransform;
 import main.java.util.TSUtil;
+
+import javax.swing.*;
 
 /**
  * @author navdeepgill
@@ -17,23 +20,35 @@ public class TSCollectTest {
     //Define initial inputs for TSCollect
     public static int lag = 0;
     public static  String pathToData = "data/birth.txt";
+    public static int lambda = 0;
 
      //Quick check of output from previous methods.
     public static void main (String[] args) throws IOException
     {
         TSCollect _tm = new TSCollect(pathToData,lag,lag);
 
+        BoxCox _bm = new BoxCox(pathToData,lambda);
+
+        ArrayList<Double> file_bc = _bm.getBoxCox();
+        System.out.println("Box Cox transform with lambda = " + lambda);
+        for(int i = 0; i < 10; i++){
+            System.out.println(file_bc.get(i));
+        }
+        System.out.println("\n");
+
         ArrayList<Double> file = _tm.ReadFile();
         System.out.println("First 10 Rows of Time Series Dataset: " + pathToData);
         for(int i = 0; i < 10; i++) {
             System.out.println(file.get(i));
         }
+        System.out.println("\n");
 
         System.out.println("First 10 Rows of Transformed (log) Time Series Dataset: " + pathToData);
         List<Double> t_file = TSUtil.transform(file, TSTransform.Type.LOG);
         for(int i = 0; i < 10; i++) {
             System.out.println(t_file.get(i));
         }
+        System.out.println("\n");
 
         System.out.println("Number of rows for " + pathToData + " = " + file.size());
         System.out.println("\n");
