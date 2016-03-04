@@ -37,7 +37,7 @@ public class BoxCoxLambdaSearch extends TSCollect {
             double guer_sd = guer_mean;
             if(i.hasNext()){
                 double next = i.next();
-                guer_mean = getAverage(i.next() + guer_mean)/2;
+                //guer_mean = getAverage(new ArrayList<Double>(new double[] {guer_mean, next});
                 guer_sd = guer_mean ;
             }
 

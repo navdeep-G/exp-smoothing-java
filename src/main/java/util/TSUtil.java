@@ -32,6 +32,36 @@ public class TSUtil {
         return data;
     }
 
+    public static double average(List<Double> data) {
+        double total = 0;
+        double nrow = data.size();
+
+        for (double item : data) {
+            total += item;
+        }
+
+        double average = total/nrow;
+        return average;
+    }
+
+    public static double variance(List<Double> data) {
+        double avg = average(data);
+        double total = 0;
+        double nrow = data.size();
+        if (nrow == 1) return 0.0;
+
+        for (double item : data) {
+            total += (item - avg) * (item - avg);
+        }
+
+        double variance = total/(nrow-1);
+        return variance;
+    }
+
+    public static double standardDeviation(List<Double> data) {
+        return Math.sqrt(variance(data));
+    }
+
     public static List<Double> transform(List<Double> l, TSTransform.Type t) {
         return TSTransform.getFunction(t).exec(l);
     }

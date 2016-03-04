@@ -43,16 +43,7 @@ public class TSCollect {
      * @return Average of the time series
      */
     public double getAverage() throws IOException {
-        ArrayList<Double> file = _data;
-        double total = 0;
-        double nrow = file.size();
-
-            for (int i = 0; i < file.size(); i++) {
-                total = total + file.get(i);
-            }
-
-       double average = total/nrow;
-       return average;
+        return TSUtil.average(_data);
     }
 
     /**
@@ -61,17 +52,7 @@ public class TSCollect {
      * @return Variance
      */
     public double getVariance() throws IOException {
-        ArrayList<Double> file = _data;
-        double avg = getAverage();
-        double total = 0;
-        double nrow = file.size();
-
-            for (int i = 0; i < file.size(); i++) {
-                total += (file.get(i) - avg) * (file.get(i) - avg);
-            }
-
-            double variance = total/(nrow-1);
-            return variance;
+            return TSUtil.variance(_data);
         }
 
     /**
@@ -80,7 +61,7 @@ public class TSCollect {
      * @return Standard Deviation
      */
     public double getStandardDeviation() throws IOException{
-        return Math.sqrt(getVariance());
+        return TSUtil.standardDeviation(_data);
     }
 
     /**
