@@ -1,4 +1,4 @@
-package main.java.util;
+package main.java.util.transform;
 
 import main.java.collect.TSCollect;
 import main.java.util.TSUtil;
@@ -15,19 +15,10 @@ import java.util.ListIterator;
  *
  * @author navdeepgill
  */
-public class BoxCoxLambdaSearch extends TSCollect {
+public class BoxCoxLambdaSearch {
 
-    private final int lower;
-    private final int upper;
-
-    public BoxCoxLambdaSearch(String filepath, int k, int n, int lowLam, int upperLam) throws IOException{
-        super(filepath, k, n);
-        lower = lowLam;
-        upper = upperLam;
-    }
-
-    public double guer_cv(int lam) throws IOException {
-        Iterator<Double> iter = _data.iterator();
+    public static double guer_cv(List<Double> data, int lam) throws IOException {
+        Iterator<Double> iter = data.iterator();
         List<Double> avg = new ArrayList<Double>();
         List<Double> result = new ArrayList<Double>();
         while(iter.hasNext()) {
@@ -42,4 +33,6 @@ public class BoxCoxLambdaSearch extends TSCollect {
         }
         return TSUtil.standardDeviation(result)/TSUtil.average(result);
     }
+
+    //public static double guerrero(List<Double> data, int lower, int upper, int n_length;)
 }

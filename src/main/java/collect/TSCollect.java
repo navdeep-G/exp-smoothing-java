@@ -195,23 +195,6 @@ public class TSCollect {
         return pacfValues;
     }
 
-    public double guer_cv(int lam) throws IOException {
-        Iterator<Double> iter = _data.iterator();
-        List<Double> avg = new ArrayList<Double>();
-        List<Double> result = new ArrayList<Double>();
-        while(iter.hasNext()) {
-            List<Double> l = new ArrayList<Double>();
-            l.add(iter.next());
-            if(iter.hasNext()) l.add(iter.next());
-            avg.add(TSUtil.average(l));
-            result.add(TSUtil.standardDeviation(l));
-        }
-        for (int i = 0; i < result.size(); i+=1) {
-            result.set(i, result.get(i) / Math.pow(avg.get(i), 1 - lam));
-        }
-        return TSUtil.standardDeviation(result)/TSUtil.average(result);
-    }
-
 }
 
 

@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.collect.TSCollect;
-import main.java.util.BoxCox;
-import main.java.util.BoxCoxLambdaSearch;
-import main.java.util.TSTransform;
+import main.java.util.transform.BoxCox;
+import main.java.util.transform.TSTransform;
 import main.java.util.TSUtil;
-
-import javax.swing.*;
 
 /**
  * @author navdeepgill
@@ -112,8 +109,5 @@ public class TSCollectTest {
         for(int i = 0; i < pacf.length; i++) {
             System.out.println(pacf[i]);
         }
-
-        System.out.println("Box Cox Lambda Search");
-        System.out.println(_tm.guer_cv(0));
     }
 }
