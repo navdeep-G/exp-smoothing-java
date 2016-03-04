@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**Utility functions for time series.
@@ -60,6 +61,24 @@ public class TSUtil {
 
     public static double standardDeviation(List<Double> data) {
         return Math.sqrt(variance(data));
+    }
+
+    public static int getMinimumIndex(List<Double> data){
+        return data.indexOf(Collections.min(data));
+    }
+
+    public static int getMaximumIndex(List<Double> data){
+        return data.indexOf(Collections.max(data));
+    }
+
+    public static getMinimum(List<Double> data){
+        int MinIndex = getMinimumIndex(data);
+        return data.get(MinIndex);
+    }
+
+    public static getMaximium(List<Double> data){
+        int MaxIndex = getMaximumIndex(data);
+        return data.get(MaxIndex);
     }
 
     public static List<Double> transform(List<Double> l, TSTransform.Type t) {
