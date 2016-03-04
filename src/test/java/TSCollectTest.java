@@ -112,5 +112,8 @@ public class TSCollectTest {
         for(int i = 0; i < pacf.length; i++) {
             System.out.println(pacf[i]);
         }
+
+        System.out.println("Box Cox Lambda Search");
+        System.out.println(_tm.guer_cv(0));
     }
 }

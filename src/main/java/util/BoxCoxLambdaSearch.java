@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Math;
+import java.util.List;
+import java.util.ListIterator;
 
-import org.apache.commons.math3.optimization.univariate.*;
+//import org.apache.commons.math3.optimization.univariate.*;
 
 /**Extract the Box-Cox parameter, lambda, using Guerrero's method (1993)
  *
@@ -17,7 +19,6 @@ public class BoxCoxLambdaSearch extends TSCollect {
 
     private final int lower;
     private final int upper;
-    private final int nonseasonalLength = 2;
 
     public BoxCoxLambdaSearch(String filepath, int k, int n, int lowLam, int upperLam) throws IOException{
         super(filepath, k, n);
@@ -25,23 +26,20 @@ public class BoxCoxLambdaSearch extends TSCollect {
         upper = upperLam;
     }
 
-    public double guer_cv(int lam) throws IOException{
-        int period = Math.round(Math.max(nonseasonalLength, _data.size()));
-        int nobsf = ReadFile().size();
-        int nyr = (int)Math.floor(nobsf/period);
-        int nobst = (int)Math.floor(nyr/period);
-
-        Iterator<Double> i = _data.iterator();
-        while(i.hasNext()){
-            double guer_mean = i.next();
-            double guer_sd = guer_mean;
-            if(i.hasNext()){
-                double next = i.next();
-                //guer_mean = getAverage(new ArrayList<Double>(new double[] {guer_mean, next});
-                guer_sd = guer_mean ;
-            }
-
+    public double guer_cv(int lam) throws IOException {
+        Iterator<Double> iter = _data.iterator();
+        List<Double> avg = new ArrayList<Double>();
+        List<Double> result = new ArrayList<Double>();
+        while(iter.hasNext()) {
+            List<Double> l = new ArrayList<Double>();
+            l.add(iter.next());
+            if(iter.hasNext()) l.add(iter.next());
+            avg.add(TSUtil.average(l));
+            result.add(TSUtil.standardDeviation(l));
         }
-
+        for (int i = 0; i < result.size(); i+=1) {
+            result.set(i, result.get(i) / Math.pow(avg.get(i), 1 - lam));
+        }
+        return TSUtil.standardDeviation(result)/TSUtil.average(result);
     }
 }
