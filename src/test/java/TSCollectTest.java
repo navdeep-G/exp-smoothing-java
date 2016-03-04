@@ -6,6 +6,7 @@ import java.util.List;
 
 import main.java.collect.TSCollect;
 import main.java.util.BoxCox;
+import main.java.util.BoxCoxLambdaSearch;
 import main.java.util.TSTransform;
 import main.java.util.TSUtil;
 
@@ -28,6 +29,7 @@ public class TSCollectTest {
         TSCollect _tm = new TSCollect(pathToData,lag,lag);
 
         BoxCox _bm = new BoxCox(pathToData,lambda);
+        //BoxCoxLambdaSearch _bl = new BoxCoxLambdaSearch()
 
         ArrayList<Double> file_bc = _bm.getBoxCox();
         System.out.println("Box Cox transform with lambda = " + lambda);
