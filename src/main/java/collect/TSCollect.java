@@ -18,7 +18,7 @@ public class TSCollect {
     private final String _filepath;
     private final int _k;
     private final int _n;
-    private final ArrayList<Double> _data;
+    protected final ArrayList<Double> _data;
 
     public TSCollect(String filepath, int k, int n) throws IOException{
         _filepath = filepath;
