@@ -16,7 +16,7 @@ import main.java.util.TSUtil;
 public class TSCollectTest {
 
     //Define initial inputs for TSCollect
-    public static int lag = 0;
+    public static int lag = 1;
     public static  String pathToData = "data/birth.txt";
     public static int lambda = 0;
 
@@ -25,27 +25,10 @@ public class TSCollectTest {
     {
         TSCollect _tm = new TSCollect(pathToData,lag,lag);
 
-        BoxCox _bm = new BoxCox(pathToData,lambda);
-        //BoxCoxLambdaSearch _bl = new BoxCoxLambdaSearch()
-
-        ArrayList<Double> file_bc = _bm.getBoxCox();
-        System.out.println("Box Cox transform with lambda = " + lambda);
-        for(int i = 0; i < 10; i++){
-            System.out.println(file_bc.get(i));
-        }
-        System.out.println("\n");
-
-        ArrayList<Double> file = _tm.ReadFile();
+        List<Double> file = _tm.ReadFile();
         System.out.println("First 10 Rows of Time Series Dataset: " + pathToData);
         for(int i = 0; i < 10; i++) {
             System.out.println(file.get(i));
-        }
-        System.out.println("\n");
-
-        System.out.println("First 10 Rows of Transformed (log) Time Series Dataset: " + pathToData);
-        List<Double> t_file = TSUtil.transform(file, TSTransform.Type.LOG);
-        for(int i = 0; i < 10; i++) {
-            System.out.println(t_file.get(i));
         }
         System.out.println("\n");
 
@@ -88,12 +71,12 @@ public class TSCollectTest {
         System.out.println("\n");
 
         System.out.println("Autocovariance of Time Series:");
-        double autocovar = _tm.getAutocovariance(2);
+        double autocovar = _tm.getAutocovariance();
         System.out.println(autocovar);
         System.out.println("\n");
 
         System.out.println("Autocorrelation of Time Series with lag " + lag + ":");
-        double autocor = _tm.getAutocorrelation(2);
+        double autocor = _tm.getAutocorrelation();
         System.out.println(autocor);
         System.out.println("\n");
 
@@ -105,7 +88,7 @@ public class TSCollectTest {
         System.out.println("\n");
 
         System.out.println("Partial Autocorrelation Function of Time Series with lag " +  lag + ":");
-        double[] pacf= _tm.pacf(2);
+        double[] pacf= _tm.pacf();
         for(int i = 0; i < pacf.length; i++) {
             System.out.println(pacf[i]);
         }
