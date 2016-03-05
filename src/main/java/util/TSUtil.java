@@ -73,17 +73,79 @@ public class TSUtil {
         return data.indexOf(Collections.max(data));
     }
 
-    public static getMinimum(List<Double> data){
+    public static double getMinimum(List<Double> data){
         int MinIndex = getMinimumIndex(data);
         return data.get(MinIndex);
     }
 
-    public static getMaximium(List<Double> data){
+    public static double getMaximium(List<Double> data){
         int MaxIndex = getMaximumIndex(data);
         return data.get(MaxIndex);
     }
 
-    public static List<Double> transform(List<Double> l, TSTransform.Type t) {
-        return TSTransform.getFunction(t).exec(l);
+    public static double getAutoCovariance(List<Double> data, int k){
+        double nrow = data.size();
+
+        if (k == 0) {
+            return variance(data);
+        }
+
+        double total = 0;
+        double avg = average(data);
+        for (int i = k; i < data.size(); i++) {
+            total += (data.get(i - k) - avg) * (data.get(i) - avg);
+        }
+        double autocovariance = total/nrow;
+        return autocovariance;
+
     }
+
+    public static double getAutoCorrelation(List<Double> data, int k){
+        double autocovariance = getAutoCovariance(data,k);
+        double variance = variance(data);
+        double autocorrelation = autocovariance/variance;
+        return autocorrelation;
+    }
+
+    public static double[] getAcf(List<Double> data, int n){
+
+        double[] acfValues = new double[n + 1];
+
+        for (int i = 0; i <= n; i++) {
+            acfValues[i] = getAutoCorrelation(data, i);
+        }
+
+        return acfValues;
+    }
+
+    public static double[] getPacf(List<Double> data, int n){
+
+        double[] pacfValues = new double[n + 1];
+        double[][] phi = new double[n + 1][n + 1];
+
+        pacfValues[0] = phi[0][0] = 1D;
+        pacfValues[1] = phi[1][1] = getAutoCorrelation(data, 1);
+
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j < i - 1; j++) {
+                phi[i - 1][j] = phi[i - 2][j] - phi[i - 1][i - 1]
+                        * phi[i - 2][i - 1 - j];
+            }
+
+            double a = 0D, b = 0D;
+            for (int j = 1; j < i; j++) {
+                a += phi[i - 1][j] * getAutoCorrelation(data, i - j);
+                b += phi[i - 1][j] * getAutoCorrelation(data, j);
+            }
+
+            pacfValues[i] = phi[i][i] = (getAutoCorrelation(data, i) - a)
+                    / (1 - b);
+        }
+
+        return pacfValues;
+    }
+
+//    public static List<Double> transform(List<Double> l, TSTransform.Type t) {
+//        return TSTransform.getFunction(t).exec(l);
+//    }
 }
