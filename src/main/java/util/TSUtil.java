@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**Utility functions for time series.
- *  Handles reading in data. Currently only taking in csv files.
+/**Utility functions for time series analysis
+ *
  * @author navdeepgill
  */
 public class TSUtil {
