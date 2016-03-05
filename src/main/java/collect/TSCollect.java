@@ -22,7 +22,7 @@ public class TSCollect {
     private final int _n;
     protected final ArrayList<Double> _data;
 
-    public TSCollect(String filepath, int k, int n) throws IOException{
+    public TSCollect(String filepath, int k, int n) throws IOException {
         _filepath = filepath;
         _k = k;
         _n = n;
@@ -34,7 +34,7 @@ public class TSCollect {
      *
      * @return time series array list
      */
-    public ArrayList<Double> ReadFile() throws IOException{
+    public ArrayList<Double> ReadFile() throws IOException {
         return TSUtil.ReadFile(_filepath);
     }
 
@@ -54,15 +54,15 @@ public class TSCollect {
      * @return Variance
      */
     public double getVariance() throws IOException {
-            return TSUtil.variance(_data);
-        }
+        return TSUtil.variance(_data);
+    }
 
     /**
      * Get Standard Deviation
      *
      * @return Standard Deviation
      */
-    public double getStandardDeviation() throws IOException{
+    public double getStandardDeviation() throws IOException {
         return TSUtil.standardDeviation(_data);
     }
 
@@ -71,9 +71,8 @@ public class TSCollect {
      *
      * @return Minimum Value Index
      */
-    public int getMinIndex () throws IOException{
-        ArrayList<Double> file = _data;
-        return file.indexOf(Collections.min(file));
+    public int getMinIndex() throws IOException {
+        return TSUtil.getMinimumIndex(_data);
     }
 
     /**
@@ -81,9 +80,8 @@ public class TSCollect {
      *
      * @return Maximum Value Index
      */
-    public int getMaxIndex () throws IOException{
-        ArrayList<Double> file = _data;
-        return file.indexOf(Collections.max(file));
+    public int getMaxIndex() throws IOException {
+        return TSUtil.getMaximumIndex(_data);
     }
 
     /**
@@ -91,10 +89,8 @@ public class TSCollect {
      *
      * @return Minimum Value
      */
-    public double getMin () throws IOException{
-        ArrayList<Double> file = _data;
-        int MinIndex = getMinIndex();
-        return file.get(MinIndex);
+    public double getMin() throws IOException {
+        return TSUtil.getMinimum(_data);
     }
 
     /**
@@ -102,46 +98,26 @@ public class TSCollect {
      *
      * @return Maximum Value
      */
-    public double getMax () throws IOException{
-        ArrayList<Double> file = _data;
-        int MaxIndex = getMaxIndex();
-        return file.get(MaxIndex);
+    public double getMax() throws IOException {
+        return TSUtil.getMaximium(_data);
     }
 
     /**
      * Get auto-covariance
      *
-     * @param k Lag
      * @return Auto-Covariance
      */
-    public double getAutocovariance(int k) throws IOException {
-        ArrayList<Double> file = _data;
-        double nrow = file.size();
-
-        if (k == 0) {
-            return getVariance();
-        }
-
-        double total = 0;
-        double avg = getAverage();
-            for (int i = k; i < file.size(); i++) {
-                total += (file.get(i - k) - avg) * (file.get(i) - avg);
-            }
-        double autocovariance = total/nrow;
-        return autocovariance;
+    public double getAutocovariance() throws IOException {
+        return TSUtil.getAutoCovariance(_data, _k);
     }
 
     /**
      * Get auto-correlation
      *
-     * @param k Lag
      * @return Auto-correlation
      */
-    public double getAutocorrelation(int k) throws IOException {
-        double autocovariance = getAutocovariance(k);
-        double variance = getVariance();
-        double autocorrelation = autocovariance/variance;
-        return autocorrelation;
+    public double getAutocorrelation() throws IOException {
+        return TSUtil.getAutoCorrelation(_data, _k);
     }
 
     /**
@@ -151,52 +127,18 @@ public class TSCollect {
      * @return ACF values
      */
     public double[] acf(int n) throws IOException {
-
-        double[] acfValues = new double[n + 1];
-
-        for (int i = 0; i <= n; i++) {
-            acfValues[i] = getAutocorrelation(i);
-        }
-
-        return acfValues;
+        return TSUtil.getAcf(_data, _n);
     }
 
     /**
      * Get PACF
      *
-     * @param n
-     *            lag
      * @return PACF values
      */
-    public double[] pacf(int n) throws IOException {
-
-        double[] pacfValues = new double[n + 1];
-        double[][] phi = new double[n + 1][n + 1];
-
-        pacfValues[0] = phi[0][0] = 1D;
-        pacfValues[1] = phi[1][1] = getAutocorrelation(1);
-
-        for (int i = 2; i <= n; i++) {
-            for (int j = 1; j < i - 1; j++) {
-                phi[i - 1][j] = phi[i - 2][j] - phi[i - 1][i - 1]
-                        * phi[i - 2][i - 1 - j];
-            }
-
-            double a = 0D, b = 0D;
-            for (int j = 1; j < i; j++) {
-                a += phi[i - 1][j] * getAutocorrelation(i - j);
-                b += phi[i - 1][j] * getAutocorrelation(j);
-            }
-
-            pacfValues[i] = phi[i][i] = (getAutocorrelation(i) - a)
-                    / (1 - b);
-        }
-
-        return pacfValues;
+    public double[] pacf() throws IOException {
+        return TSUtil.getPacf(_data, _n);
     }
-
 }
-
 
 
 
