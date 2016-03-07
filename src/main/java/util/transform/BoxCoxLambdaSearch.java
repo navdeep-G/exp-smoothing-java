@@ -19,7 +19,7 @@ import org.apache.commons.math3.optimization.univariate.*;
  */
 public class BoxCoxLambdaSearch {
 
-    public static double guer_cv(List<Double> data, double lam){
+    private static double guer_cv(List<Double> data, double lam){
         Iterator<Double> iter = data.iterator();
         List<Double> avg = new ArrayList<Double>();
         List<Double> result = new ArrayList<Double>();
