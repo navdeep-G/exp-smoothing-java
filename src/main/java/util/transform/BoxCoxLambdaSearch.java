@@ -9,7 +9,9 @@ import java.lang.Math;
 import java.util.List;
 import java.util.ListIterator;
 
-//import org.apache.commons.math3.optimization.univariate.*;
+import org.apache.commons.math3.analysis.UnivariateFunction;
+import org.apache.commons.math3.optimization.GoalType;
+import org.apache.commons.math3.optimization.univariate.*;
 
 /**Extract the Box-Cox parameter, lambda, using Guerrero's method (1993)
  *
@@ -17,7 +19,7 @@ import java.util.ListIterator;
  */
 public class BoxCoxLambdaSearch {
 
-    public static double guer_cv(List<Double> data, int lam) throws IOException {
+    public static double guer_cv(List<Double> data, double lam){
         Iterator<Double> iter = data.iterator();
         List<Double> avg = new ArrayList<Double>();
         List<Double> result = new ArrayList<Double>();
@@ -34,5 +36,13 @@ public class BoxCoxLambdaSearch {
         return TSUtil.standardDeviation(result)/TSUtil.average(result);
     }
 
-    //public static double guerrero(List<Double> data, int lower, int upper, int n_length;)
+    public static double guerrero(final List<Double> data, double lower, double upper, int n_length){
+        UnivariateOptimizer solver = new BrentOptimizer(1e-10, 1e-14);
+        double lambda = solver.optimize(100,new UnivariateFunction(){
+            public double value(double x){
+                return guer_cv(data,x);
+            }
+        }, GoalType.MINIMIZE,lower, upper).getPoint();
+        return lambda;
+    }
 }

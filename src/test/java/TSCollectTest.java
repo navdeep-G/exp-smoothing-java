@@ -6,6 +6,7 @@ import java.util.List;
 
 import main.java.collect.TSCollect;
 import main.java.util.transform.BoxCox;
+import main.java.util.transform.BoxCoxLambdaSearch;
 import main.java.util.transform.TSTransform;
 import main.java.util.TSUtil;
 
@@ -26,6 +27,9 @@ public class TSCollectTest {
         TSCollect _tm  = new TSCollect(pathToData,lag,lag);
         List<Double> file = TSUtil.ReadFile(pathToData);
         List<Double> fileLog = TSTransform.getTransform(file, TSTransform.Type.ROOT_2);
+        double optimalLam = BoxCoxLambdaSearch.guerrero(file,1,2,2);
+
+        System.out.println(optimalLam);
 
         System.out.println("Log data of Time Series: " + pathToData);
         for(int i = 0; i < fileLog.size(); i++) {
