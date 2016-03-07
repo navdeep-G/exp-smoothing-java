@@ -23,9 +23,16 @@ public class TSCollectTest {
      //Quick check of output from previous methods.
     public static void main (String[] args) throws IOException
     {
-        TSCollect _tm = new TSCollect(pathToData,lag,lag);
+        TSCollect _tm  = new TSCollect(pathToData,lag,lag);
+        List<Double> file = TSUtil.ReadFile(pathToData);
+        List<Double> fileLog = TSTransform.getTransform(file, TSTransform.Type.ROOT_2);
 
-        List<Double> file = _tm.ReadFile();
+        System.out.println("Log data of Time Series: " + pathToData);
+        for(int i = 0; i < fileLog.size(); i++) {
+            System.out.println(fileLog.get(i));
+        }
+        System.out.println("\n");
+
         System.out.println("First 10 Rows of Time Series Dataset: " + pathToData);
         for(int i = 0; i < 10; i++) {
             System.out.println(file.get(i));
