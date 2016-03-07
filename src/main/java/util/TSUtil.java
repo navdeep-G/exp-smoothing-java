@@ -1,6 +1,6 @@
 package main.java.util;
 
-import main.java.util.transform.TSTransform;
+import main.java.util.transform.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ import java.util.List;
 public class TSUtil {
 
     /**
-     * Read in time series dataset and sent to ArrayList<double>
+     * Read in time series dataset
      *
      * @return An array list of data that is read in from the file path
      */
@@ -144,8 +144,4 @@ public class TSUtil {
 
         return pacfValues;
     }
-
-//    public static List<Double> transform(List<Double> l, TSTransform.Type t) {
-//        return TSTransform.getFunction(t).exec(l);
-//    }
 }
