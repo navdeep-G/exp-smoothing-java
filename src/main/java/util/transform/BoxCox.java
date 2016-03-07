@@ -14,12 +14,15 @@ import java.util.List;
 public class BoxCox {
 
     /**
-     * Get Box Cox Transformation
+     * Calculate a Box Cox Transformation for a given lambda
      *
-     * @return Time Series with desired Box Cox transformation
+     *@param  data a List<Double> of time series data
+     * @param lam desired lambda for transformation
+     *
+     * @return  Time series List<Double> with desired Box Cox transformation
      */
-    public static ArrayList<Double> getBoxCox(List<Double> data, int lam) throws IOException {
-        ArrayList<Double> transform = new ArrayList<Double>();
+    public static List<Double> getBoxCox(List<Double> data, int lam) throws IOException {
+        List<Double> transform = new ArrayList<Double>();
 
         if(lam == 0){
             for (int i = 0; i < data.size(); i++) {
