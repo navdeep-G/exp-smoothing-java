@@ -47,4 +47,12 @@ public class TSTransform {
         return BoxCox.getBoxCox(data, lambda);
     }
 
+    public static double boxCoxLambdaSearch(List<Double> data,double lower, double upper) {
+        return BoxCoxLambdaSearch.guerrero(data,lower,upper);
+    }
+
+    public static double boxCoxLambdaSearch(List<Double> data) {
+        return BoxCoxLambdaSearch.guerrero(data,-1,2);
+    }
+
 }
