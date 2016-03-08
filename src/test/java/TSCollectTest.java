@@ -1,16 +1,14 @@
-package test.java;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.collect.TSCollect;
-import main.java.util.transform.BoxCox;
-import main.java.util.transform.BoxCoxLambdaSearch;
-import main.java.util.transform.TSTransform;
-import main.java.util.TSUtil;
+import collect.TSCollect;
+import util.transform.TSTransform;
+import util.TSUtil;
 
-/**
+/**Output relevant calculations from a time series dataset.
+ * Used as verification of calculations for now.
+ *
  * @author navdeepgill
  */
 
@@ -19,17 +17,37 @@ public class TSCollectTest {
     //Define initial inputs for TSCollect
     public static int lag = 1;
     public static  String pathToData = "data/birth.txt";
-    public static int lambda = 0;
+    public static double lambda = 1.6;
 
      //Quick check of output from previous methods.
     public static void main (String[] args) throws IOException
     {
-        TSCollect _tm  = new TSCollect(pathToData,lag,lag);
-        List<Double> file = TSUtil.ReadFile(pathToData);
-        List<Double> fileLog = TSTransform.sqrt(file);
-        double optimalLam = BoxCoxLambdaSearch.guerrero(file,1,2,2);
+        //Make some objects that will show relevant output:
 
-        System.out.println(optimalLam);
+        //Setting up a dataset as a List<Double> for later use:
+        List<Double> file = TSUtil.ReadFile(pathToData);
+
+        //Calling on TSCollect to get a bunch of metrics:
+        TSCollect _tm  = new TSCollect(pathToData,lag,lag);
+
+        //Test out a transformation on the dataset:
+        List<Double> fileLog = TSTransform.sqrt(file);
+
+        //Get the optimal lambda transform for a particular dataset:
+        double optimalLam = TSTransform.boxCoxLambdaSearch(file);
+
+        //Give lambda manually
+        List<Double> fileBoxCox = TSTransform.boxCox(file, lambda);
+
+        //Output of calculations and verify:
+        System.out.println("Optimal Lambda for the time series: " + pathToData + " is " + optimalLam);
+        System.out.println("\n");
+
+        System.out.println("Manually calculated Box Cox transformation of data with lambda = " + lambda);
+        for(int i = 0; i < fileBoxCox.size(); i++) {
+            System.out.println(fileBoxCox.get(i));
+        }
+        System.out.println("\n");
 
         System.out.println("Log data of Time Series: " + pathToData);
         for(int i = 0; i < fileLog.size(); i++) {
