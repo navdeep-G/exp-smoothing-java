@@ -33,13 +33,13 @@ public class BoxCoxLambdaSearch {
         return TSUtil.standardDeviation(result)/TSUtil.average(result);
     }
 
-    public static double guerrero(final List<Double> data, double lower, double upper, int n_length){
+    public static double guerrero(final List<Double> data, double lower, double upper){
         UnivariateOptimizer solver = new BrentOptimizer(1e-10, 1e-14);
         double lambda = solver.optimize(100,new UnivariateFunction(){
             public double value(double x){
                 return guer_cv(data,x);
             }
-        }, GoalType.MINIMIZE,lower, upper).getPoint();
+        }, GoalType.MINIMIZE,lower,upper).getPoint();
         return lambda;
     }
 }
