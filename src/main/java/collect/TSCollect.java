@@ -44,7 +44,7 @@ public class TSCollect {
      *
      * @return Average of the time series
      */
-    public double getAverage() throws IOException {
+    public double getAverage() {
         return TSUtil.average(_data);
     }
 
@@ -53,7 +53,7 @@ public class TSCollect {
      *
      * @return Variance
      */
-    public double getVariance() throws IOException {
+    public double getVariance() {
         return TSUtil.variance(_data);
     }
 
@@ -62,7 +62,7 @@ public class TSCollect {
      *
      * @return Standard Deviation
      */
-    public double getStandardDeviation() throws IOException {
+    public double getStandardDeviation() {
         return TSUtil.standardDeviation(_data);
     }
 
@@ -71,7 +71,7 @@ public class TSCollect {
      *
      * @return Minimum Value Index
      */
-    public int getMinIndex() throws IOException {
+    public int getMinIndex() {
         return TSUtil.getMinimumIndex(_data);
     }
 
@@ -80,7 +80,7 @@ public class TSCollect {
      *
      * @return Maximum Value Index
      */
-    public int getMaxIndex() throws IOException {
+    public int getMaxIndex() {
         return TSUtil.getMaximumIndex(_data);
     }
 
@@ -89,7 +89,7 @@ public class TSCollect {
      *
      * @return Minimum Value
      */
-    public double getMin() throws IOException {
+    public double getMin() {
         return TSUtil.getMinimum(_data);
     }
 
@@ -98,7 +98,7 @@ public class TSCollect {
      *
      * @return Maximum Value
      */
-    public double getMax() throws IOException {
+    public double getMax() {
         return TSUtil.getMaximium(_data);
     }
 
@@ -107,7 +107,7 @@ public class TSCollect {
      *
      * @return Auto-Covariance
      */
-    public double getAutocovariance() throws IOException {
+    public double getAutocovariance() {
         return TSUtil.getAutoCovariance(_data, _k);
     }
 
@@ -116,7 +116,7 @@ public class TSCollect {
      *
      * @return Auto-correlation
      */
-    public double getAutocorrelation() throws IOException {
+    public double getAutocorrelation() {
         return TSUtil.getAutoCorrelation(_data, _k);
     }
 
@@ -126,7 +126,7 @@ public class TSCollect {
      * @param n lag
      * @return ACF values
      */
-    public double[] acf(int n) throws IOException {
+    public double[] acf(int n) {
         return TSUtil.getAcf(_data, _n);
     }
 
@@ -135,7 +135,7 @@ public class TSCollect {
      *
      * @return PACF values
      */
-    public double[] pacf() throws IOException {
+    public double[] pacf() {
         return TSUtil.getPacf(_data, _n);
     }
 }

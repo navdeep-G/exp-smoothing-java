@@ -21,7 +21,7 @@ public class BoxCox {
      *
      * @return  Time series List<Double> with desired Box Cox transformation
      */
-    public static List<Double> getBoxCox(List<Double> data, int lam) throws IOException {
+    public static List<Double> getBoxCox(List<Double> data, double lam) {
         List<Double> transform = new ArrayList<Double>();
 
         if(lam == 0){

@@ -26,7 +26,7 @@ public class TSCollectTest {
     {
         TSCollect _tm  = new TSCollect(pathToData,lag,lag);
         List<Double> file = TSUtil.ReadFile(pathToData);
-        List<Double> fileLog = TSTransform.getTransform(file, TSTransform.Type.ROOT_2);
+        List<Double> fileLog = TSTransform.sqrt(file);
         double optimalLam = BoxCoxLambdaSearch.guerrero(file,1,2,2);
 
         System.out.println(optimalLam);
