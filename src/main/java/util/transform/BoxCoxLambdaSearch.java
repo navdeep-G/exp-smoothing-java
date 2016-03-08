@@ -1,13 +1,10 @@
-package main.java.util.transform;
+package util.transform;
 
-import main.java.collect.TSCollect;
-import main.java.util.TSUtil;
-import java.io.IOException;
+import util.TSUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Math;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.optimization.GoalType;
@@ -18,7 +15,7 @@ import org.apache.commons.math3.optimization.univariate.*;
  * @author navdeepgill
  */
 public class BoxCoxLambdaSearch {
-    
+
     private static double guer_cv(List<Double> data, double lam){
         Iterator<Double> iter = data.iterator();
         List<Double> avg = new ArrayList<Double>();

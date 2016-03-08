@@ -1,6 +1,6 @@
-package main.java.util.transform;
+package util.transform;
 
-import main.java.util.TSUtil;
+import util.TSUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;

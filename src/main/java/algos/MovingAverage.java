@@ -1,4 +1,4 @@
-package main.java.algos;
+package algos;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,7 +11,7 @@ import java.lang.*;
  */
 
 public class MovingAverage {
-    Queue<Double> window = new LinkedList<>();
+    Queue<Double> window = new LinkedList<Double>();
     private final int period;
     private double sum;
 

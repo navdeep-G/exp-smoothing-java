@@ -1,6 +1,6 @@
-package main.java.collect;
+package collect;
 
-import main.java.util.TSUtil;
+import util.TSUtil;
 
 import java.io.*;
 import java.util.ArrayList;

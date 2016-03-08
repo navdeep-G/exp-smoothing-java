@@ -1,6 +1,6 @@
-package main.java.util;
+package util;
 
-import main.java.util.transform.*;
+import util.transform.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,7 +23,7 @@ public class TSUtil {
     public static ArrayList<Double> ReadFile(String filepath) throws IOException {
         FileReader fileReader = new FileReader(filepath);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-        ArrayList<Double> data = new ArrayList<>();
+        ArrayList<Double> data = new ArrayList<Double>();
         String line;
 
         while ((line = bufferedReader.readLine()) != null)

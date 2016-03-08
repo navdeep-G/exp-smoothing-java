@@ -1,4 +1,4 @@
-package main.java.util.transform;
+package util.transform;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.lang.Math;
 public class TSTransform {
 
     public static List<Double> log(List<Double> data) {
-        List<Double> t_list = new ArrayList<>(data.size());
+        List<Double> t_list = new ArrayList<Double>(data.size());
         for (double i : data) {
             t_list.add(Math.log(i));
         }
@@ -20,7 +20,7 @@ public class TSTransform {
     }
 
     public static List<Double> sqrt(List<Double> data){
-        List<Double> t_list = new ArrayList<>(data.size());
+        List<Double> t_list = new ArrayList<Double>(data.size());
         for (double i : data) {
             t_list.add(Math.sqrt(i));
         }
@@ -28,7 +28,7 @@ public class TSTransform {
     }
 
     public static List<Double> cbrt(List<Double> data){
-        List<Double> t_list = new ArrayList<>(data.size());
+        List<Double> t_list = new ArrayList<Double>(data.size());
         for (double i : data) {
             t_list.add(Math.cbrt(i));
         }
@@ -36,7 +36,7 @@ public class TSTransform {
     }
 
     public static List<Double> root(List<Double> data, double root){
-        List<Double> t_list = new ArrayList<>(data.size());
+        List<Double> t_list = new ArrayList<Double>(data.size());
         for (double i : data) {
             t_list.add(Math.pow(i,1.0/root));
         }
