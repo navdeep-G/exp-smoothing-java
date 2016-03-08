@@ -144,4 +144,8 @@ public class TSUtil {
 
         return pacfValues;
     }
+
+    public static double getOptBoxCoxLam(List<Double> data){
+        return BoxCoxLambdaSearch.guerrero(data,-1,2);
+    }
 }
