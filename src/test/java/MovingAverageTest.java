@@ -1,6 +1,6 @@
-package test.java;
-import main.java.algos.MovingAverage;
-import main.java.collect.TSCollect;
+
+import algos.MovingAverage;
+import collect.TSCollect;
 import java.util.ArrayList;
 
 import java.io.IOException;
