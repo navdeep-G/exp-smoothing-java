@@ -9,8 +9,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/**Capture relevant metrics from a time series dataset.
- * These metrics can guide algorithm implementation in the future.
+/**Capture relevant metrics from a time series dataset
  *
  * @author navdeepgill
  */
