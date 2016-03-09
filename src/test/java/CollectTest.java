@@ -33,10 +33,10 @@ public class CollectTest {
         List<Double> fileLog = Transform.sqrt(file);
 
         //Get the optimal lambda transform for a particular dataset:
-        double optimalLam = BoxCox.guerrero(file);
+        double optimalLam = BoxCox.lambdaSearch(file);
 
         //Give lambda manually
-        List<Double> fileBoxCox = BoxCox.transform(file, lambda);
+        List<Double> fileBoxCox = BoxCox.transform(file,lambda);
 
         //Output of calculations and verify:
         System.out.println("Optimal Lambda for the time series: " + pathToData + " is " + optimalLam);
