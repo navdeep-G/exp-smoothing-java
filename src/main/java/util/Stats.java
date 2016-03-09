@@ -3,8 +3,9 @@ package util;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by nkalonia1 on 3/8/16.
+/**Collect relevant statistics about a time series
+ *
+ * @author navdeepgill
  */
 public class Stats {
     public static double average(List<Double> data) {

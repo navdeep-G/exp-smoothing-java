@@ -10,6 +10,8 @@ import java.lang.*;
  * @author navdeepgill
  */
 
+//TODO Return List<Double>
+
 public class MovingAverage {
     Queue<Double> window = new LinkedList<Double>();
     private final int period;
