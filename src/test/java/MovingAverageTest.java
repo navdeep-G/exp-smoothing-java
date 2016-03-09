@@ -1,6 +1,7 @@
 
-import algos.MovingAverage;
-import collect.TSCollect;
+import collect.Collect;
+import transform.MovingAverage;
+
 import java.util.ArrayList;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class MovingAverageTest {
     public static  String pathToData = "data/birth.txt";
 
     public static void main(String[] args) throws IOException {
-        TSCollect _tm = new TSCollect(pathToData,lag,lag);
+        Collect _tm = new Collect(pathToData,lag,lag);
         ArrayList<Double> testData = _tm.ReadFile();
         int[] windowSizes = {2};
         for (int windSize : windowSizes) {

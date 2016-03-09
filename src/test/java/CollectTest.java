@@ -1,10 +1,9 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import collect.TSCollect;
-import util.transform.TSTransform;
-import util.TSUtil;
+import collect.Collect;
+import transform.*;
+import util.*;
 
 /**Output relevant calculations from a time series dataset.
  * Used as verification of calculations for now.
@@ -12,9 +11,9 @@ import util.TSUtil;
  * @author navdeepgill
  */
 
-public class TSCollectTest {
+public class CollectTest {
 
-    //Define initial inputs for TSCollect
+    //Define initial inputs for Collect
     public static int lag = 1;
     public static  String pathToData = "data/birth.txt";
     public static double lambda = 1.6;
@@ -25,19 +24,19 @@ public class TSCollectTest {
         //Make some objects that will show relevant output:
 
         //Setting up a dataset as a List<Double> for later use:
-        List<Double> file = TSUtil.ReadFile(pathToData);
+        List<Double> file = Util.ReadFile(pathToData);
 
-        //Calling on TSCollect to get a bunch of metrics:
-        TSCollect _tm  = new TSCollect(pathToData,lag,lag);
+        //Calling on Collect to get a bunch of metrics:
+        Collect _tm  = new Collect(pathToData,lag,lag);
 
         //Test out a transformation on the dataset:
-        List<Double> fileLog = TSTransform.sqrt(file);
+        List<Double> fileLog = Transform.sqrt(file);
 
         //Get the optimal lambda transform for a particular dataset:
-        double optimalLam = TSTransform.boxCoxLambdaSearch(file);
+        double optimalLam = BoxCox.guerrero(file);
 
         //Give lambda manually
-        List<Double> fileBoxCox = TSTransform.boxCox(file, lambda);
+        List<Double> fileBoxCox = BoxCox.transform(file, lambda);
 
         //Output of calculations and verify:
         System.out.println("Optimal Lambda for the time series: " + pathToData + " is " + optimalLam);

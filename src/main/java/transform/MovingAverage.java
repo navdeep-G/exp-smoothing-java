@@ -1,4 +1,4 @@
-package algos;
+package transform;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -30,9 +30,11 @@ public class MovingAverage {
 
     public double getAvg() {
         if (window.isEmpty()) return 0; // technically the average is undefined
-        System.out.println(window.size()); //Added for testing purposes. Will remove later.
-        System.out.println(sum);           //Added for testing purposes. Will remove later.
+        //System.out.println(window.size()); //Added for testing purposes. Will remove later.
+        //System.out.println(sum);           //Added for testing purposes. Will remove later.
         return sum / window.size();
     }
+
+
 }
 

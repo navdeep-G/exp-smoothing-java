@@ -1,27 +1,24 @@
 package collect;
 
-import util.TSUtil;
+import util.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.lang.*;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
 /**Capture relevant metrics from a time series dataset
  *
  * @author navdeepgill
  */
 
-public class TSCollect {
+public class Collect {
 
     private final String _filepath;
     private final int _k;
     private final int _n;
     protected final ArrayList<Double> _data;
 
-    public TSCollect(String filepath, int k, int n) throws IOException {
+    public Collect(String filepath, int k, int n) throws IOException {
         _filepath = filepath;
         _k = k;
         _n = n;
@@ -34,7 +31,7 @@ public class TSCollect {
      * @return time series array list
      */
     public ArrayList<Double> ReadFile() throws IOException {
-        return TSUtil.ReadFile(_filepath);
+        return Util.ReadFile(_filepath);
     }
 
 
@@ -44,7 +41,7 @@ public class TSCollect {
      * @return Average of the time series
      */
     public double getAverage() {
-        return TSUtil.average(_data);
+        return Stats.average(_data);
     }
 
     /**
@@ -53,7 +50,7 @@ public class TSCollect {
      * @return Variance
      */
     public double getVariance() {
-        return TSUtil.variance(_data);
+        return Stats.variance(_data);
     }
 
     /**
@@ -62,7 +59,7 @@ public class TSCollect {
      * @return Standard Deviation
      */
     public double getStandardDeviation() {
-        return TSUtil.standardDeviation(_data);
+        return Stats.standardDeviation(_data);
     }
 
     /**
@@ -71,7 +68,7 @@ public class TSCollect {
      * @return Minimum Value Index
      */
     public int getMinIndex() {
-        return TSUtil.getMinimumIndex(_data);
+        return Stats.getMinimumIndex(_data);
     }
 
     /**
@@ -80,7 +77,7 @@ public class TSCollect {
      * @return Maximum Value Index
      */
     public int getMaxIndex() {
-        return TSUtil.getMaximumIndex(_data);
+        return Stats.getMaximumIndex(_data);
     }
 
     /**
@@ -89,7 +86,7 @@ public class TSCollect {
      * @return Minimum Value
      */
     public double getMin() {
-        return TSUtil.getMinimum(_data);
+        return Stats.getMinimum(_data);
     }
 
     /**
@@ -98,7 +95,7 @@ public class TSCollect {
      * @return Maximum Value
      */
     public double getMax() {
-        return TSUtil.getMaximium(_data);
+        return Stats.getMaximium(_data);
     }
 
     /**
@@ -107,7 +104,7 @@ public class TSCollect {
      * @return Auto-Covariance
      */
     public double getAutocovariance() {
-        return TSUtil.getAutoCovariance(_data, _k);
+        return Stats.getAutoCovariance(_data, _k);
     }
 
     /**
@@ -116,7 +113,7 @@ public class TSCollect {
      * @return Auto-correlation
      */
     public double getAutocorrelation() {
-        return TSUtil.getAutoCorrelation(_data, _k);
+        return Stats.getAutoCorrelation(_data, _k);
     }
 
     /**
@@ -126,7 +123,7 @@ public class TSCollect {
      * @return ACF values
      */
     public double[] acf(int n) {
-        return TSUtil.getAcf(_data, _n);
+        return Stats.getAcf(_data, _n);
     }
 
     /**
@@ -135,7 +132,7 @@ public class TSCollect {
      * @return PACF values
      */
     public double[] pacf() {
-        return TSUtil.getPacf(_data, _n);
+        return Stats.getPacf(_data, _n);
     }
 }
 
