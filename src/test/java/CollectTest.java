@@ -4,6 +4,7 @@ import java.util.List;
 import collect.Collect;
 import transform.*;
 import util.*;
+import tests.*;
 
 /**Output relevant calculations from a time series dataset.
  * Used as verification of calculations for now.
@@ -14,7 +15,7 @@ import util.*;
 public class CollectTest {
 
     //Define initial inputs for Collect
-    public static int lag = 1;
+    public static int lag = 2;
     public static  String pathToData = "data/birth.txt";
     public static double lambda = 1.6;
 
@@ -120,5 +121,11 @@ public class CollectTest {
         for(int i = 0; i < pacf.length; i++) {
             System.out.println(pacf[i]);
         }
+
+        System.out.println("Dickey-Fuller Test with lag " + lag + ":");
+        AugmentedDickeyFuller adf = new AugmentedDickeyFuller(file, lag);
+        System.out.println(adf.isNeedsDiff());
+        System.out.println(adf.getPValue());
+
     }
 }
