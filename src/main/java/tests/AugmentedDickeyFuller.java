@@ -64,12 +64,6 @@ public class AugmentedDickeyFuller {
             designMatrix.setColumn(1, ones(ts.size() - 1 - k + 1));
             designMatrix.setColumn(2, trend);
         }
-		/*OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
-		regression.setNoIntercept(true);
-		regression.newSampleData(zcol1.toArray(), designMatrix.getData());
-		double[] beta = regression.estimateRegressionParameters();
-		double[] sd = regression.estimateRegressionParametersStandardErrors();
-		*/
         RidgeRegression regression = new RidgeRegression(designMatrix.getData(), zcol1.toArray());
         regression.updateCoefficients(.0001);
         double[] beta = regression.getCoefficients();

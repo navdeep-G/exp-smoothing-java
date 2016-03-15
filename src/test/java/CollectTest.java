@@ -15,7 +15,7 @@ import tests.*;
 public class CollectTest {
 
     //Define initial inputs for Collect
-    public static int lag = 2;
+    public static int lag = 1;
     public static  String pathToData = "data/birth.txt";
     public static double lambda = 1.6;
 
