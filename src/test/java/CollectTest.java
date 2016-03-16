@@ -126,7 +126,7 @@ public class CollectTest {
         System.out.println("Dickey-Fuller Test");
         AugmentedDickeyFuller adf = new AugmentedDickeyFuller(file);
         System.out.println(adf.isNeedsDiff());
-        System.out.println(adf.getPValue());
+        System.out.println(adf.getAdfStat());
 
     }
 }
