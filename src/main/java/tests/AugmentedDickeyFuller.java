@@ -167,4 +167,8 @@ public class AugmentedDickeyFuller {
     public double[] getZeroPaddedDiff() {
         return zeroPaddedDiff;
     }
+
+    public int getLag(){
+        return lag;
+    }
 }
