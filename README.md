@@ -1,4 +1,4 @@
-# Time Series in Java
+# Time Series
 
 An implementation of common time series calculations & algorithms in Java.
 
