@@ -10,10 +10,10 @@ public class AugmentedDickeyFuller {
     private List<Double> ts;
     private int lag;
     private boolean needsDiff = true;
-    private double pValue;
+    private double adfStat;
     private double[] zeroPaddedDiff;
 
-    private double PVALUE_THRESHOLD = -3.45;
+    private double ADF_THRESHOLD = -3.45;
 
     /**
      * Uses the Augmented Dickey Fuller test to determine
@@ -70,8 +70,8 @@ public class AugmentedDickeyFuller {
         double[] sd = regression.getStandarderrors();
 
         double t = beta[0] / sd[0];
-        pValue = t;
-        if (t <= PVALUE_THRESHOLD) {
+        adfStat = t;
+        if (t <= ADF_THRESHOLD) {
             this.needsDiff = true;
         } else {
             this.needsDiff = false;
@@ -160,8 +160,8 @@ public class AugmentedDickeyFuller {
         return needsDiff;
     }
 
-    public double getPValue() {
-        return pValue;
+    public double getAdfStat() {
+        return adfStat;
     }
 
     public double[] getZeroPaddedDiff() {
