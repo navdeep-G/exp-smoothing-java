@@ -15,7 +15,7 @@ import tests.*;
 public class CollectTest {
 
     //Define initial inputs for Collect
-    public static int lag = 7;
+    public static int lag = 1;
     public static  String pathToData = "data/birth.txt";
     public static double lambda = 1.6;
 
@@ -123,10 +123,11 @@ public class CollectTest {
         }
         System.out.println("\n");
 
-        System.out.println("Dickey-Fuller Test");
+        System.out.println("Augmented Dickey-Fuller Test");
         AugmentedDickeyFuller adf = new AugmentedDickeyFuller(file);
         System.out.println(adf.isNeedsDiff());
         System.out.println(adf.getAdfStat());
+        System.out.println(adf.getLag());
 
     }
 }
