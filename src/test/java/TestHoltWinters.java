@@ -36,6 +36,6 @@ public class TestHoltWinters {
                 599.1184450128665, 733.227872348479, 949.0708357438998,
                 748.6618488792186);
         assertEquals(String.valueOf(expected),
-                prediction, 0.0000000000001);
+                String.valueOf(prediction));
     }
 }
