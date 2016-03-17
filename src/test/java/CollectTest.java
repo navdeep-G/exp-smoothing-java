@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.List;
 
+import algos.HoltWinters;
 import collect.Collect;
 import transform.*;
 import util.*;
@@ -16,7 +17,7 @@ public class CollectTest {
 
     //Define initial inputs for Collect
     public static int lag = 1;
-    public static  String pathToData = "data/birth.txt";
+    public static  String pathToData = "data/hotel.txt";
     public static double lambda = 1.6;
 
      //Quick check of output from previous methods.
@@ -129,5 +130,9 @@ public class CollectTest {
         System.out.println(adf.getAdfStat());
         System.out.println(adf.getLag());
 
+        System.out.println("\n");
+
+        HoltWinters holts = new HoltWinters();
+        System.out.println(holts.holtWintersSmoothing(file,12,.2,.01,.01,.01));
     }
 }
