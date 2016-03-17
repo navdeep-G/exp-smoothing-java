@@ -138,9 +138,16 @@ public class HoltWinters {
                                                  List<Double> initialSeasonalIndices, int period, int m, boolean debug) {
 
         List<Double> St = new ArrayList<Double>(y.size());
+        while(St.size()<y.size()) St.add(0.0);
+
         List<Double> Bt = new ArrayList<Double>(y.size());
+        while(Bt.size()<y.size()) Bt.add(0.0);
+
         List<Double> It = new ArrayList<Double>(y.size());
+        while(It.size()<y.size()) It.add(0.0);
+
         List<Double> Ft = new ArrayList<Double>(y.size() + m);
+        while(Ft.size()<y.size() + m) Ft.add(0.0);
 
         // Initialize base values
         St.add(1, a0);
