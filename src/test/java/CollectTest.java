@@ -132,11 +132,6 @@ public class CollectTest {
 
         System.out.println("\n");
 
-        HoltWinters holts = new HoltWinters();
-        System.out.println(holts.holtWintersSmoothing(file,12,.2,.01,.01,.01));
-
-        System.out.println("\n");
-
         SimpleMovingAverage movingAverage = new SimpleMovingAverage(2);
         System.out.println(movingAverage.getMA(file));
     }
