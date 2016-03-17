@@ -12,12 +12,12 @@ import java.lang.*;
 
 //TODO Return List<Double>
 
-public class MovingAverage {
+public class SimpleMovingAverage {
     Queue<Double> window = new LinkedList<Double>();
     private final int period;
     private double sum;
 
-    public MovingAverage(int period) {
+    public SimpleMovingAverage(int period) {
         assert period > 0 : "Period must be a positive integer!";
         this.period = period;
     }

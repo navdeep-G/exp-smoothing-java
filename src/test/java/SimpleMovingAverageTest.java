@@ -1,17 +1,17 @@
 
 import collect.Collect;
-import transform.MovingAverage;
+import transform.SimpleMovingAverage;
 
 import java.util.ArrayList;
 
 import java.io.IOException;
 
 
-/**Simple way to check output of MovingAverage.
+/**Simple way to check output of SimpleMovingAverage.
  *
  * @author navdeepgill
  */
-public class MovingAverageTest {
+public class SimpleMovingAverageTest {
     public static int lag = 2;
     public static  String pathToData = "data/birth.txt";
 
@@ -20,7 +20,7 @@ public class MovingAverageTest {
         ArrayList<Double> testData = _tm.ReadFile();
         int[] windowSizes = {2};
         for (int windSize : windowSizes) {
-            MovingAverage ma = new MovingAverage(windSize);
+            SimpleMovingAverage ma = new SimpleMovingAverage(windSize);
             for (double x : testData) {
                 ma.newNum(x);
                 System.out.println("Next number = " + x + ", SMA = " + ma.getAvg());
