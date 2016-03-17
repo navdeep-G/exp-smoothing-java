@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class SimpleMovingAverageTest {
     public static int lag = 2;
-    public static  String pathToData = "data/birth.txt";
+    public static  String pathToData = "data/hotel.txt";
 
     public static void main(String[] args) throws IOException {
         Collect _tm = new Collect(pathToData,lag,lag);
