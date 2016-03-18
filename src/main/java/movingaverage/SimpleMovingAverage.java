@@ -1,4 +1,4 @@
-package transform;
+package movingaverage;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

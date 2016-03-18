@@ -1,5 +1,5 @@
 import collect.Collect;
-import transform.SimpleMovingAverage;
+import movingaverage.SimpleMovingAverage;
 import java.util.ArrayList;
 import java.io.IOException;
 

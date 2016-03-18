@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.List;
 import algos.TripleExpSmoothing;
 import collect.Collect;
+import movingaverage.SimpleMovingAverage;
 import transform.*;
 import util.*;
 import tests.*;
