@@ -5,7 +5,7 @@ package movingaverage;
  * @author navdeepgill
  */
 
-class CumulativeMovingAverage {
+public class CumulativeMovingAverage {
     int n = 0;
     double average = 0.0;
 
