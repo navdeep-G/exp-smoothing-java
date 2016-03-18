@@ -8,7 +8,7 @@ import java.io.IOException;
  *
  * @author navdeepgill
  */
-public class SimpleMovingAverageTest {
+public class TestSimpleMovingAverage {
     public static int lag = 2;
     public static  String pathToData = "data/hotel.txt";
 

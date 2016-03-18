@@ -4,7 +4,7 @@ import tests.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class AugmentedDickeyFullerTest {
+public class TestAugmentedDickeyFuller {
 
     @Test
     public void testLinearTrend() {

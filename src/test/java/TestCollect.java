@@ -13,7 +13,7 @@ import tests.*;
  * @author navdeepgill
  */
 
-public class CollectTest {
+public class TestCollect {
 
     //Define initial inputs for Collect
     public static int lag = 1;
