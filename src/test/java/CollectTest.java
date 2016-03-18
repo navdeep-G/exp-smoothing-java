@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.List;
-
 import algos.TripleExpSmoothing;
 import collect.Collect;
 import transform.*;
@@ -138,7 +137,7 @@ public class CollectTest {
         System.out.println("\n");
 
         int period = 12;
-        int m = 1;
+        int m = 2;
         double alpha =  0.5411;
         double beta =  0.0086;
         double gamma = 1e-04;

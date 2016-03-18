@@ -5,7 +5,6 @@ import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.optimization.GoalType;
 import org.apache.commons.math3.optimization.univariate.BrentOptimizer;
 import org.apache.commons.math3.optimization.univariate.UnivariateOptimizer;
-
 import java.util.ArrayList;
 import java.lang.Math;
 import java.util.Iterator;

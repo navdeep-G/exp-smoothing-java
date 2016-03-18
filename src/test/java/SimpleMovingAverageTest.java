@@ -1,9 +1,6 @@
-
 import collect.Collect;
 import transform.SimpleMovingAverage;
-
 import java.util.ArrayList;
-
 import java.io.IOException;
 
 

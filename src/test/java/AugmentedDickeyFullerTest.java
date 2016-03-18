@@ -1,9 +1,7 @@
-import java.io.IOException;
 import java.util.Random;
 import java.util.ArrayList;
 import tests.*;
 import static org.junit.Assert.*;
-import java.util.Random;
 import org.junit.Test;
 
 public class AugmentedDickeyFullerTest {
