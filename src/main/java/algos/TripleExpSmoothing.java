@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 /**
  * Given a time series, say a complete monthly data for 12 months, the
- * Holt-Winters smoothing and forecasting technique is built on the following
+ * Triple Exponential smoothing and forecasting technique is built on the following
  * formulae (multiplicative version):
  *
  * St[i] = alpha * y[i] / It[i - period] + (1.0 - alpha) * (St[i - 1] + Bt[i - 1])
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * @author navdeepgill
  *
  */
-public class HoltWinters {
+public class TripleExpSmoothing {
 
     /**
      * This method is the entry point. It calculates the initial values and

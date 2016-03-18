@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.List;
 
-import algos.HoltWinters;
+import algos.TripleExpSmoothing;
 import collect.Collect;
 import transform.*;
 import util.*;
@@ -144,7 +144,7 @@ public class CollectTest {
         double gamma = 1e-04;
         boolean debug = true;
 
-        List<Double> prediction = HoltWinters.forecast(file, alpha, beta, gamma, period, m, debug);
+        List<Double> prediction = TripleExpSmoothing.forecast(file, alpha, beta, gamma, period, m, debug);
         System.out.println(prediction.size());
 
     }

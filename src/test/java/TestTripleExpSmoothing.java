@@ -1,10 +1,10 @@
 import org.junit.Test;
-import algos.HoltWinters;
+import algos.TripleExpSmoothing;
 import java.util.List;
 import java.util.Arrays;
 import static org.junit.Assert.*;
 
-public class TestHoltWinters {
+public class TestTripleExpSmoothing {
 
     @Test
     public void forecastNISTData() {
@@ -18,7 +18,7 @@ public class TestHoltWinters {
         double gamma = 0.6;
         boolean debug = true;
 
-        List<Double> prediction = HoltWinters.forecast(y, alpha, beta, gamma, period, m, debug);
+        List<Double> prediction = TripleExpSmoothing.forecast(y, alpha, beta, gamma, period, m, debug);
 
         // These are the expected results
          List<Double> expected = Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
