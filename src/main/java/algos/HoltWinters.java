@@ -178,7 +178,7 @@ public class HoltWinters {
 
 //            // Calculate forecast
             if (((i + m) >= period)) {
-                Ft.set(i+m, (St.get(i) + (m * Bt.get(i)) * It.get(i - period + m)));
+                Ft.set(i+m, (St.get(i) + m * Bt.get(i)) * It.get(i - period + m));
             }
 
             if (debug) {
