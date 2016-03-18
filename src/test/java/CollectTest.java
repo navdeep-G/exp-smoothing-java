@@ -134,5 +134,18 @@ public class CollectTest {
 
         SimpleMovingAverage movingAverage = new SimpleMovingAverage(2);
         System.out.println(movingAverage.getMA(file));
+
+        System.out.println("\n");
+
+        int period = 12;
+        int m = 1;
+        double alpha =  0.5411;
+        double beta =  0.0086;
+        double gamma = 1e-04;
+        boolean debug = true;
+
+        List<Double> prediction = HoltWinters.forecast(file, alpha, beta, gamma, period, m, debug);
+        System.out.println(prediction.size());
+
     }
 }
