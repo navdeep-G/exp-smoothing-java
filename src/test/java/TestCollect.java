@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.List;
 import algos.TripleExpSmoothing;
 import collect.Collect;
-import movingaverage.SimpleMovingAverage;
+import movingaverage.*;
 import transform.*;
 import util.*;
 import tests.*;
@@ -146,6 +146,15 @@ public class TestCollect {
 
         List<Double> prediction = TripleExpSmoothing.forecast(file, alpha, beta, gamma, period, m, debug);
         System.out.println(prediction.size());
+
+        System.out.println("\n");
+        System.out.println("Cumulative Moving Average:");
+
+        CumulativeMovingAverage cumulativeMovingAverage = new CumulativeMovingAverage();
+
+        for(int i=0;i<file.size();i++){
+            System.out.println(cumulativeMovingAverage.add(file.get(i)));
+        }
 
     }
 }
