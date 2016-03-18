@@ -154,7 +154,7 @@ public class HoltWinters {
         Bt.add(1, b0);
 
         for (int i = 0; i < period; i++) {
-            It.add(i,initialSeasonalIndices.get(i));
+            It.set(i,initialSeasonalIndices.get(i));
         }
 
         // Start calculations
@@ -162,29 +162,29 @@ public class HoltWinters {
 
             // Calculate overall smoothing
             if ((i - period) >= 0) {
-                St.add(i, alpha * y.get(i) / It.get(i - period) + (1.0 - alpha)
+                St.set(i, alpha * y.get(i) / It.get(i - period) + (1.0 - alpha)
                         * (St.get(i - 1) + Bt.get(i - 1)));
             } else {
-                St.add(i, alpha * y.get(i) + (1.0 - alpha) * (St.get(i - 1) + Bt.get(i - 1)));
+                St.set(i, alpha * y.get(i) + (1.0 - alpha) * (St.get(i - 1) + Bt.get(i - 1)));
             }
 
             // Calculate trend smoothing
-            Bt.add(i, gamma * (St.get(i) - St.get(i - 1) + (1 - gamma) * Bt.get(i - 1)));
+            Bt.set(i, gamma * (St.get(i) - St.get(i - 1)) + (1 - gamma) * Bt.get(i - 1));
 
             // Calculate seasonal smoothing
             if ((i - period) >= 0) {
-                It.add(i, beta * y.get(i) / St.get(i) + (1.0 - beta) * It.get(i - period));
+                It.set(i, beta * y.get(i) / St.get(i) + (1.0 - beta) * It.get(i - period));
             }
 
-            // Calculate forecast
+//            // Calculate forecast
             if (((i + m) >= period)) {
-                Ft.add(i + m, (St.get(i) + (m * Bt.get(i)) * It.get(i - period + m)));
+                Ft.set(i, (St.get(i) + (m * Bt.get(i)) * It.get(i - period + m)));
             }
 
             if (debug) {
                 System.out.println(String.format(
                         "i = %d, y = %d, S = %f, Bt = %f, It = %f, F = %f", i,
-                        y.get(i), St.get(i), Bt.get(i), It.get(i), Ft.get(i)));
+                        Math.round(y.get(i)), St.get(i), Bt.get(i), It.get(i), Ft.get(i)));
             }
         }
 
