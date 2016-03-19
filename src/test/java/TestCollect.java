@@ -152,9 +152,7 @@ public class TestCollect {
 
         CumulativeMovingAverage cumulativeMovingAverage = new CumulativeMovingAverage();
 
-        for(int i=0;i<file.size();i++){
-            System.out.println(cumulativeMovingAverage.add(file.get(i)));
-        }
+        System.out.println(cumulativeMovingAverage.getCMA(file));
 
     }
 }
