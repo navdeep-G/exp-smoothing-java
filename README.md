@@ -3,14 +3,15 @@
 An implementation of common time series calculations & algorithms in Java.
 
 ### Statistical Calculations:
-- [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- [Variance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- [Standard Deviation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- [Minimum](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- [Maximum](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- [Autocovariance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java) 
-- [Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- [Partial Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
+- [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L11)
+- [Variance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L23)
+- [Standard Deviation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L37)
+- [Minimum](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L49)
+- [Maximum](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L54)
+- [Autocovariance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L59) 
+- [Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L76)
+- [Autocorrelation Function](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L83)
+- [Partial Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L94)
 
 ### Transformation Algorithms:
 - [Box Cox Transformation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)
