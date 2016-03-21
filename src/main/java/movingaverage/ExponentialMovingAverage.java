@@ -3,7 +3,12 @@ package movingaverage;
 import java.util.ArrayList;
 import java.util.List;
 
-class ExponentialMovingAverage {
+/**Exponential Moving Average (CMA)
+ *
+ * @author navdeepgill
+ */
+
+public class ExponentialMovingAverage {
     private double alpha;
     private Double oldValue;
 
