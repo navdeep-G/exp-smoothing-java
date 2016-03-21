@@ -20,6 +20,7 @@ An implementation of common time series calculations & algorithms in Java.
 ### Moving Average Algorithms:
 - [Simple Moving Average](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverage.java)
 - [Cumulative Moving Average](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverage.java)
+- [Exponential Moving Average](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverage.java)
 
 ### Stationarity Tests:
 - [Augmented Dickey Fuller Test](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java) 
