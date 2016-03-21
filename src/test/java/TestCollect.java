@@ -154,5 +154,12 @@ public class TestCollect {
 
         System.out.println(cumulativeMovingAverage.getCMA(file));
 
+        System.out.println("\n");
+        System.out.println("Exponential Moving Average:");
+
+        ExponentialMovingAverage exponentialMovingAverage = new ExponentialMovingAverage(0.5);
+
+        System.out.println(exponentialMovingAverage.getEMA(file));
+
     }
 }
