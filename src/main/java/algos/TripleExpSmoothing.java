@@ -11,10 +11,6 @@ import java.util.ArrayList;
  * It[i] = beta * y[i] / St[i] + (1.0 - beta) * It[i - period]
  * Ft[i + m] = (St[i] + (m * Bt[i])) * It[i - period + m]
  *
- * Note: Many authors suggest calculating initial values of St, Bt and It in a
- * variety of ways, but some of them are incorrect e.g. determination of It
- * parameter using regression. This implementation uses the NIST recommended methods.
- *
  * For more details, see: http://adorio-research.org/wordpress/?p=1230
  * http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc435.htm
  *
