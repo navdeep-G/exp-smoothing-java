@@ -11,7 +11,7 @@ An implementation of common time series calculations & algorithms in Java.
 - [Autocovariance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L59) 
 - [Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L76)
 - [Autocorrelation Function](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L83)
-- [Partial Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L94)
+- [Partial Autocorrelation Function](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L94)
 
 ### Transformation Algorithms:
 - [Box Cox Transformation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)
