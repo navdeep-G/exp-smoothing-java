@@ -27,3 +27,5 @@ An implementation of common time series calculations & algorithms in Java.
 
 ### Forecasting Algorithms:
 - [Triple Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/TripleExpSmoothing.java)
+- [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothing.java)
+- [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothing.java)
