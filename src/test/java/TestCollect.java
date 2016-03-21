@@ -1,6 +1,6 @@
 import java.io.IOException;
 import java.util.List;
-import algos.TripleExpSmoothing;
+import algos.*;
 import collect.Collect;
 import movingaverage.*;
 import transform.*;
@@ -160,6 +160,16 @@ public class TestCollect {
         ExponentialMovingAverage exponentialMovingAverage = new ExponentialMovingAverage(0.5);
 
         System.out.println(exponentialMovingAverage.getEMA(file));
+
+        System.out.println("\n");
+        System.out.println("Single EWMA:");
+
+        SingleExpSmoothing singleExpSmoothing = new SingleExpSmoothing();
+
+        double[] fcast = singleExpSmoothing.singleExponentialForecast(file,.5,2);
+        for(int i = 0; i < fcast.length; i++){
+            System.out.println(fcast[i]);
+        }
 
     }
 }
