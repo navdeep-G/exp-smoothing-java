@@ -9,7 +9,7 @@ import util.*;
 import tests.*;
 import water.H2O;
 import water.fvec.Frame;
-import water.TestUtil;
+import util.TestUtil;
 
 /**Output relevant calculations from a time series dataset.
  * Used as verification of calculations for now.

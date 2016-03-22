@@ -3,8 +3,8 @@ package collect;
 import util.*;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.lang.*;
+import java.util.List;
 
 /**Capture relevant metrics from a time series dataset
  *
@@ -16,7 +16,7 @@ public class Collect {
     private final String _filepath;
     private final int _k;
     private final int _n;
-    protected final ArrayList<Double> _data;
+    protected final List<Double> _data;
 
     public Collect(String filepath, int k, int n) throws IOException {
         _filepath = filepath;
@@ -30,7 +30,7 @@ public class Collect {
      *
      * @return time series array list
      */
-    public ArrayList<Double> ReadFile() throws IOException {
+    public List<Double> ReadFile() throws IOException {
         return Util.ReadFile(_filepath);
     }
 

@@ -1,7 +1,7 @@
 import collect.Collect;
 import movingaverage.SimpleMovingAverage;
-import java.util.ArrayList;
 import java.io.IOException;
+import java.util.List;
 
 
 /**Simple way to check output of SimpleMovingAverage.
@@ -14,7 +14,7 @@ public class TestSimpleMovingAverage {
 
     public static void main(String[] args) throws IOException {
         Collect _tm = new Collect(pathToData,lag,lag);
-        ArrayList<Double> testData = _tm.ReadFile();
+        List<Double> testData = _tm.ReadFile();
         int[] windowSizes = {2};
         for (int windSize : windowSizes) {
             SimpleMovingAverage ma = new SimpleMovingAverage(windSize);
