@@ -21,7 +21,7 @@ import util.TestUtil;
 public class TestCollectFrame extends TestUtil {
 
     //Define initial inputs for Collect
-    public static int lag = 1;
+    public static int lag = 2;
     public static  String pathToData = "data/hotel.txt";
     public static double lambda = 1.6;
 
@@ -161,13 +161,20 @@ public class TestCollectFrame extends TestUtil {
         System.out.println(Arrays.deepToString(acfFrame));
         System.out.println("\n");
 
+        System.out.println("Partial Autocorrelation Function of Time Series with lag " +  lag + ":");
+        double[] pacf= Stats.getPacf(file,lag);
+        for(int i = 0; i < pacf.length; i++) {
+            System.out.println(pacf[i]);
+        }
+        System.out.println("\n");
+
+        System.out.println("Partial Autocorrelation Function of Time Series Using Frame with lag " +  lag + ":");
+        double[][] pacfFrame= StatsFrame.getPacf(fr,lag);
+        System.out.println(Arrays.deepToString(pacfFrame));
+        System.out.println("\n");
+
          /*
-         System.out.println("Partial Autocorrelation Function of Time Series with lag " +  lag + ":");
-         double[] pacf= _tm.pacf();
-         for(int i = 0; i < pacf.length; i++) {
-         System.out.println(pacf[i]);
-         }
-         System.out.println("\n");
+
 
          System.out.println("Augmented Dickey-Fuller Test");
          AugmentedDickeyFuller adf = new AugmentedDickeyFuller(file);
