@@ -21,7 +21,7 @@ public class TestCollectFrame extends TestUtil {
 
     //Define initial inputs for Collect
     public static int lag = 1;
-    public static  String pathToData = "/Users/nkalonia1/timeseries-java/data/hotel.csv";
+    public static  String pathToData = "data/hotel.txt";
     public static double lambda = 1.6;
 
     //Quick check of output from previous methods.
@@ -46,7 +46,7 @@ public class TestCollectFrame extends TestUtil {
         //Collect _tm  = new Collect(pathToData,lag,lag);
 
         //Test out a transformation on the dataset:
-        /**List<Double> fileLog = Transform.sqrt(file);
+        /*List<Double> fileLog = Transform.sqrt(file);
 
          //Get the optimal lambda transform for a particular dataset:
          double optimalLam = BoxCox.lambdaSearch(file);
@@ -62,14 +62,22 @@ public class TestCollectFrame extends TestUtil {
          for(int i = 0; i < fileBoxCox.size(); i++) {
          System.out.println(fileBoxCox.get(i));
          }
-         System.out.println("\n");
+         System.out.println("\n");**/
 
          System.out.println("Log data of Time Series: " + pathToData);
-         for(int i = 0; i < fileLog.size(); i++) {
-         System.out.println(fileLog.get(i));
+         for (double i : Transform.log(file)) {
+             System.out.println(i);
          }
          System.out.println("\n");
 
+         System.out.println("Log data of Time Series with Frame: " + pathToData);
+         Frame log_fr = TransformFrame.log(fr.deepCopy(null));
+         for (long i = 0; i < fr.numRows(); ++i) {
+             System.out.println(log_fr.vec(0).at(i));
+         }
+         System.out.println("\n");
+
+        /*
          System.out.println("First 10 Rows of Time Series Dataset: " + pathToData);
          for(int i = 0; i < 10; i++) {
          System.out.println(file.get(i));
@@ -77,7 +85,7 @@ public class TestCollectFrame extends TestUtil {
          System.out.println("\n");
 
          System.out.println("Number of rows for " + pathToData + " = " + file.size());
-         System.out.println("\n");**/
+         System.out.println("\n");*/
 
         System.out.println("Average of Time Series:");
         double average = Stats.average(file);
@@ -89,7 +97,7 @@ public class TestCollectFrame extends TestUtil {
         System.out.println(averageFrame);
         System.out.println("\n");
 
-        /**System.out.println("Variance of Time Series:");
+        /*System.out.println("Variance of Time Series:");
          double var = _tm.getVariance();
          System.out.println(var);
          System.out.println("\n");
@@ -188,7 +196,7 @@ public class TestCollectFrame extends TestUtil {
          double[] fcast = singleExpSmoothing.singleExponentialForecast(file,.5,2);
          for(int i = 0; i < fcast.length; i++){
          System.out.println(fcast[i]);
-         }**/
+         }*/
 
         H2O.closeAll();
 
