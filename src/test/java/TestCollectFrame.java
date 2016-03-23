@@ -173,6 +173,16 @@ public class TestCollectFrame extends TestUtil {
         System.out.println(Arrays.deepToString(pacfFrame));
         System.out.println("\n");
 
+        System.out.println("\n");
+
+        SimpleMovingAverage movingAverage = new SimpleMovingAverage(2);
+        System.out.println(movingAverage.getMA(file));
+
+        System.out.println("\n");
+
+        SimpleMovingAverageFrame movingAverageFrame = new SimpleMovingAverageFrame(2);
+        System.out.println(movingAverageFrame.getMA(fr));
+
          /*
 
 
