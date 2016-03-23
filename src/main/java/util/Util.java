@@ -46,6 +46,7 @@ public class Util {
         Scanner sc;
         if ((line = bufferedReader.readLine()) != null) {
             sc = new Scanner(line);
+            sc.useDelimiter(",");
             while (sc.hasNextDouble()) {
                 List<Double> newList = new ArrayList<Double>();
                 data.add(newList);
@@ -55,6 +56,7 @@ public class Util {
         }
         while ((line = bufferedReader.readLine()) != null) {
             sc = new Scanner(line);
+            sc.useDelimiter(",");
             for (int i = 0; sc.hasNextDouble(); i += 1) {
                 data.get(i).add(sc.nextDouble());
             }
