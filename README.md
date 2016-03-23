@@ -32,5 +32,9 @@ An implementation of common time series calculations & algorithms in Java.
 
 ### Porting over the previous calculations to an H2O Frame:
 - Progress towards this is as follows:
-  - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/StatsFrame.java)
-  - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/TransformFrame.java)
+  - Statistical Calculations:
+    - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/StatsFrame.java)
+  - Transformation Algorithms: 
+    - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/TransformFrame.java)
+  - Moving Average Algorithms:
+    - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverageFrame.java)  
