@@ -198,6 +198,20 @@ public class TestCollectFrame extends TestUtil {
         ExponentialMovingAverageFrame exponentialMovingAverageFrame = new ExponentialMovingAverageFrame(0.2);
         System.out.println(exponentialMovingAverageFrame.getEMA(fr));
 
+        System.out.println("\n");
+        System.out.println("Cumulative Moving Average:");
+
+        CumulativeMovingAverage cumulativeMovingAverage = new CumulativeMovingAverage();
+
+        System.out.println(cumulativeMovingAverage.getCMA(file));
+
+        System.out.println("\n");
+        System.out.println("Cumulative Moving Average with a Frame:");
+
+        CumulativeMovingAverageFrame cumulativeMovingAverageFrame = new CumulativeMovingAverageFrame();
+
+        System.out.println(cumulativeMovingAverageFrame.getCMA(fr));
+
 
          /*
 
