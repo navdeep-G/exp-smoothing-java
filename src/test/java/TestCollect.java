@@ -157,7 +157,7 @@ public class TestCollect {
         System.out.println("\n");
         System.out.println("Exponential Moving Average:");
 
-        ExponentialMovingAverage exponentialMovingAverage = new ExponentialMovingAverage(0.5);
+        ExponentialMovingAverage exponentialMovingAverage = new ExponentialMovingAverage(0.3);
 
         System.out.println(exponentialMovingAverage.getEMA(file));
 
