@@ -39,4 +39,4 @@ An implementation of common time series calculations & algorithms in Java.
   - Moving Average Algorithms:
     - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverageFrame.java) 
     - [CumulativeMovingAverageFrame.java (WIP)](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverageFrame.java)
-    - [ExponentialMovingAverageFrame (WIP).java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverageFrame.java)
+    - [ExponentialMovingAverageFrame .java (WIP)](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverageFrame.java)
