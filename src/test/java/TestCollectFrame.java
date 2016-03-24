@@ -175,13 +175,29 @@ public class TestCollectFrame extends TestUtil {
 
         System.out.println("\n");
 
+        System.out.println("SMA");
         SimpleMovingAverage movingAverage = new SimpleMovingAverage(2);
         System.out.println(movingAverage.getMA(file));
 
         System.out.println("\n");
 
+        System.out.println("SMA (Frame)");
         SimpleMovingAverageFrame movingAverageFrame = new SimpleMovingAverageFrame(2);
         System.out.println(movingAverageFrame.getMA(fr));
+
+
+        System.out.println("\n");
+        System.out.println("Exponential Moving Average:");
+
+        ExponentialMovingAverage exponentialMovingAverage = new ExponentialMovingAverage(0.2);
+
+        System.out.println(exponentialMovingAverage.getEMA(file));
+
+        System.out.println("\n");
+        System.out.println("Exponential MA (Frame)");
+        ExponentialMovingAverageFrame exponentialMovingAverageFrame = new ExponentialMovingAverageFrame(0.2);
+        System.out.println(exponentialMovingAverageFrame.getEMA(fr));
+
 
          /*
 
