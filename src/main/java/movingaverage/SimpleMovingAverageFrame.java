@@ -21,6 +21,7 @@ public class SimpleMovingAverageFrame {
             for (long x = 0; x < v.length(); ++x) {
                 newNum(v.at(x));
                 v.set(x,getAvg());
+                //System.out.println(v.at(x));
             }
         }
         return data;

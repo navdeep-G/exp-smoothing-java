@@ -16,13 +16,13 @@ public class CumulativeMovingAverageFrame {
 
     public Frame getCMA(Frame data){
         for(Vec v : data.vecs()){
-            for (long i = 0; i < v.length(); ++i) {
-                v.set(i,add(v.at(i)));
+            for (long x = 0; x < v.length(); ++x) {
+                v.set(x,add(v.at(x)));
+                //System.out.println(v.at(x));
             }
         }
         return data;
     }
-
 
     public double add(double x) {
         return average += (x - average) / ++n;

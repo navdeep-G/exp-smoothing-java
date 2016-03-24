@@ -22,6 +22,7 @@ public class ExponentialMovingAverageFrame {
         for(Vec v : data.vecs()){
             for (long x = 0; x < v.length(); ++x) {
                 v.set(x,average(v.at(x)));
+                //System.out.println(v.at(x));
             }
         }
         return data;
