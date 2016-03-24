@@ -3,7 +3,7 @@ package movingaverage;
 import java.util.ArrayList;
 import java.util.List;
 
-/**Exponential Moving Average (CMA)
+/**Exponential Moving Average (MA)
  *
  * @author navdeepgill
  */
@@ -17,12 +17,12 @@ public class ExponentialMovingAverage {
     }
 
     public List<Double> getEMA(List<Double> data){
-        List<Double> ema_data = new ArrayList<Double>(data.size());
+        //List<Double> ema_data = new ArrayList<>(data.size());
 
-        for (int i=0;i<data.size();i++) {
-            ema_data.add(average(data.get(i)));
+        for(int i=0;i<data.size();++i) {
+            data.set(i,average(data.get(i)));
         }
-        return ema_data;
+        return data;
     }
 
     public double average(double value) {
