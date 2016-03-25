@@ -42,6 +42,9 @@ public class TestCollectFrame extends TestUtil {
 
         System.out.println("Reading File to Frame...");
         Frame fr = parse_test_file(pathToData);
+        Frame fr_sma = parse_test_file(pathToData);
+        Frame fr_ema = parse_test_file(pathToData);
+        Frame fr_cma = parse_test_file(pathToData);
 
         //Calling on Collect to get a bunch of metrics:
         //Collect _tm  = new Collect(pathToData,lag,lag);
@@ -183,7 +186,7 @@ public class TestCollectFrame extends TestUtil {
 
         System.out.println("SMA (Frame)");
         SimpleMovingAverageFrame movingAverageFrame = new SimpleMovingAverageFrame(2);
-        System.out.println(movingAverageFrame.getMA(fr));
+        System.out.println(movingAverageFrame.getMA(fr_sma));
 
 
         System.out.println("\n");
@@ -196,7 +199,7 @@ public class TestCollectFrame extends TestUtil {
         System.out.println("\n");
         System.out.println("Exponential MA (Frame)");
         ExponentialMovingAverageFrame exponentialMovingAverageFrame = new ExponentialMovingAverageFrame(0.2);
-        System.out.println(exponentialMovingAverageFrame.getEMA(fr));
+        System.out.println(exponentialMovingAverageFrame.getEMA(fr_ema));
 
         System.out.println("\n");
         System.out.println("Cumulative Moving Average:");
@@ -210,7 +213,7 @@ public class TestCollectFrame extends TestUtil {
 
         CumulativeMovingAverageFrame cumulativeMovingAverageFrame = new CumulativeMovingAverageFrame();
 
-        System.out.println(cumulativeMovingAverageFrame.getCMA(fr));
+        System.out.println(cumulativeMovingAverageFrame.getCMA(fr_cma));
 
 
          /*
