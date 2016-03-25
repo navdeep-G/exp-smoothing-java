@@ -1,6 +1,5 @@
 package movingaverage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**Cumulative Moving Average (CMA)

@@ -1,7 +1,5 @@
 package util;
 
-import java.util.Collections;
-import java.util.List;
 import water.fvec.Frame;
 import water.fvec.Vec;
 

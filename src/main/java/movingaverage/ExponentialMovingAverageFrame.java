@@ -1,7 +1,5 @@
 package movingaverage;
 
-import java.util.ArrayList;
-import java.util.List;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
