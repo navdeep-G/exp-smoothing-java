@@ -1,7 +1,5 @@
 package transform;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.lang.Math;
 import water.fvec.Frame;
 import water.fvec.Vec;
