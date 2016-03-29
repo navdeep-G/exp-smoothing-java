@@ -2,12 +2,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import algos.*;
-import collect.Collect;
+
 import movingaverage.*;
 import transform.*;
 import util.*;
-import tests.*;
 import water.H2O;
 import water.fvec.Frame;
 import util.TestUtil;
@@ -75,7 +73,7 @@ public class TestCollectFrame extends TestUtil {
          System.out.println("\n");
 
          System.out.println("Log data of Time Series with Frame: " + pathToData);
-         Frame log_fr = TransformFrame.log(fr.deepCopy(null));
+         Frame log_fr = TransformFuncsFrame.log(fr.deepCopy(null));
          for (long i = 0; i < fr.numRows(); ++i) {
              System.out.println(log_fr.vec(0).at(i));
          }

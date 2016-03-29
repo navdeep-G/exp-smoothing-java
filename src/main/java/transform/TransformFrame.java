@@ -1,53 +1,27 @@
 package transform;
 
-import java.lang.Math;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
-/**Methods to Transform Time Series (log and power transformations)
- *
- * @author navdeepgill
+/**
+ * A base class for all simple transformations on a Frame.
+ * Created by nkalonia1 on 3/29/16.
  */
+public abstract class TransformFrame {
 
-public class TransformFrame {
-
-    public static Frame log(Frame data) {
-        long rows = data.numRows();
-        for (Vec v : data.vecs()) {
-            for (long r = 0; r < rows; ++r) {
-                v.set(r, Math.log(v.at(r)));
-            }
+    public Frame transform(Frame f) {
+        for (Vec v : f.vecs()) {
+            transform(v);
         }
-        return data;
+        return f;
     }
 
-    public static Frame sqrt(Frame data){
-        long rows = data.numRows();
-        for (Vec v : data.vecs()) {
-            for (long r = 0; r < rows; ++r) {
-                v.set(r, Math.sqrt(v.at(r)));
-            }
+    public Vec transform(Vec v) {
+        for (long r = 0; r < v.length(); ++r) {
+            v.set(r, transform(v.at(r)));
         }
-        return data;
+        return v;
     }
 
-    public static Frame cbrt(Frame data){
-        long rows = data.numRows();
-        for (Vec v : data.vecs()) {
-            for (long r = 0; r < rows; ++r) {
-                v.set(r, Math.cbrt(v.at(r)));
-            }
-        }
-        return data;
-    }
-
-    public static Frame root(Frame data, double root){
-        long rows = data.numRows();
-        for (Vec v : data.vecs()) {
-            for (long r = 0; r < rows; ++r) {
-                v.set(r, Math.pow(v.at(r), 1.0/root));
-            }
-        }
-        return data;
-    }
+    public abstract double transform(double d);
 }
