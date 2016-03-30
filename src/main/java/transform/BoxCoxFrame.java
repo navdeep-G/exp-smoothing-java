@@ -13,6 +13,7 @@ import java.util.List;
 
 import water.fvec.Frame;
 import water.fvec.Vec;
+import water.util.MathUtils.BasicStats;
 
 /**Box Cox Transformation
  *
@@ -107,27 +108,17 @@ public class BoxCoxFrame {
      * @return Coefficient of Variation
      */
     private static double lambdaCV(Vec v, double lam) {
-        long l = v.length();
-        l = l % 2 == 0 ? l : l + 2;
-        double avg = 0;
-        for (long i = 0; i < v.length(); ++i) {
-            avg += v.at(i);
+        BasicStats stats = new BasicStats(2);
+        for (long i = 0; i < v.length() - 1; i += 2) {
+            double mean = (v.at(i) + v.at(i+1)) / 2;
+            double sd = Math.sqrt((Math.pow(v.at(i) - mean, 2) + Math.pow(v.at(i+1) - mean, 2)) / 2);
+            sd /= Math.pow(mean, 1 - lam);
+            stats.add(sd, 1, 0);
+            stats.add(mean, 1, 1);
         }
-        avg /= l;
-        return avg;
-        /*Iterator<Double> iter = v.iterator();
-        List<Double> avg = new ArrayList<Double>();
-        List<Double> result = new ArrayList<Double>();
-        while(iter.hasNext()) {
-            List<Double> l = new ArrayList<Double>();
-            l.add(iter.next());
-            if(iter.hasNext()) l.add(iter.next());
-            avg.add(Stats.average(l));
-            result.add(Stats.standardDeviation(l));
+        if (v.length() % 2 > 0) {
+            stats.add(v.at(v.length() - 1), 1, 1);
         }
-        for (int i = 0; i < result.size(); i+=1) {
-            result.set(i, result.get(i) / Math.pow(avg.get(i), 1 - lam));
-        }
-        return Stats.standardDeviation(result)/Stats.average(result);*/
+        return stats.sigma(0)/stats.mean(1);
     }
 }
