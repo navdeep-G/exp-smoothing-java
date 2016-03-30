@@ -48,7 +48,7 @@ public class TestCollectFrame extends TestUtil {
         //Collect _tm  = new Collect(pathToData,lag,lag);
 
         //Test out a transformation on the dataset:
-        /*List<Double> fileLog = Transform.sqrt(file);
+        List<Double> fileLog = Transform.sqrt(file);
 
          //Get the optimal lambda transform for a particular dataset:
          double optimalLam = BoxCox.lambdaSearch(file);
@@ -64,7 +64,26 @@ public class TestCollectFrame extends TestUtil {
          for(int i = 0; i < fileBoxCox.size(); i++) {
          System.out.println(fileBoxCox.get(i));
          }
-         System.out.println("\n");**/
+         System.out.println("\n");
+
+         double[] lam_opt = BoxCoxFrame.lambdaSearch(fr);
+
+        System.out.print("Optimal Lambdas for the time series: " + pathToData + " is " );
+        System.out.print("[ ");
+        for (double d : lam_opt) {
+            System.out.print(d + " ");
+        }
+        System.out.println("]");
+        System.out.println("\n");
+        Frame fr_boxcox = fr.deepCopy(null);
+        fr_boxcox = BoxCoxFrame.transform(fr_boxcox,new double[] {lambda});
+
+        System.out.println("Manually calculated Frame Box Cox transformation of data with lambda = " + lambda);
+        System.out.println(fr_boxcox);
+        System.out.println("\n");
+
+        fr_boxcox.delete();
+
 
          System.out.println("Log data of Time Series: " + pathToData);
          for (double i : Transform.log(file)) {
