@@ -108,17 +108,15 @@ public class BoxCoxFrame {
      * @return Coefficient of Variation
      */
     private static double lambdaCV(Vec v, double lam) {
-        BasicStats stats = new BasicStats(2);
+        BasicStats stats = new BasicStats(1);
         for (long i = 0; i < v.length() - 1; i += 2) {
             double mean = (v.at(i) + v.at(i+1)) / 2;
-            double sd = Math.sqrt((Math.pow(v.at(i) - mean, 2) + Math.pow(v.at(i+1) - mean, 2)) / 2);
+            double sd = Math.sqrt(Math.pow(v.at(i) - mean, 2) + Math.pow(v.at(i+1) - mean, 2));
             sd /= Math.pow(mean, 1 - lam);
             stats.add(sd, 1, 0);
-            stats.add(mean, 1, 1);
         }
-        if (v.length() % 2 > 0) {
-            stats.add(v.at(v.length() - 1), 1, 1);
-        }
-        return stats.sigma(0)/stats.mean(1);
+        long len = v.length() % 2 == 0 ? v.length()/2 : v.length()/2 + 1;
+        stats.fillInZeros(len,len);
+        return stats.sigma(0) / stats.mean(0);
     }
 }
