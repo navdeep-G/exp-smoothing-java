@@ -1,14 +1,162 @@
+/*
+ * This is a simple build file for building H2O applications.
+ * 
+ * For more details please follow README.md
+ */
+
+// Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'groovy'
+// Support idea and Eclipse IDEs
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 
-dependencies {
-    compile fileTree('resources/')
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+apply plugin: 'application'
+mainClassName = 'water.H2OApp' //'ai.h2o.automl.autocollect.AutoCollect'
+
+//
+// Configure project properties
+//
+ext {
+  // Configure h2o-dev dependency information
+  if( h2oBuild != '99999' ) {
+      h2oBuild = new URL('http://h2o-release.s3.amazonaws.com/h2o/master/latest').text.trim()
+  }
+  h2oBranch         = "$h2oMajorName"
+  h2oBuildNumber    = "$h2oBuild"
+  h2oProjectVersion = "$h2oMajorVersion.$h2oBuild"
+  junitVersion      = '4.11'
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
+    }
+}
+
+// In this section you declare where to find the dependencies of your project
 repositories {
+    // Use 'maven central' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    if (h2oBuild == '99999') mavenLocal()
     mavenCentral()
+
+
+    // Cloudera dependencies
+    maven {
+      url "https://repository.cloudera.com/artifactory/cloudera-repos/"
+    }
+
+    // Hortonworks dependencies
+    maven {
+      url "http://repo.hortonworks.com/content/repositories/releases/"
+    }
+
+    // Include build h2o-dev dependencies if branch if pulling from master
+    if (h2oBranch == 'master') {
+        maven {
+            url "http://h2o-release.s3.amazonaws.com/h2o/master/$h2oBuild/maven/repo/"
+        }
+    }
+
+    // Enable 'maven local' for resolving your locally cached dependencies
+    // Useful for cross development for example with h2o-dev
+//    if (h2oBuildNumber == '99999') mavenLocal()
 }
 
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // Define dependency on core of H2O
+    compile "ai.h2o:h2o-core:${h2oProjectVersion}"
+    // Define dependency on H2O algorithm 
+    compile "ai.h2o:h2o-algos:${h2oProjectVersion}"
+    // Demands web support 
+    compile "ai.h2o:h2o-web:${h2oProjectVersion}"
+    // Contains H2O entry points
+    compile "ai.h2o:h2o-app:${h2oProjectVersion}"
+
+    // Groovy
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+
+    // mysql
+    compile 'mysql:mysql-connector-java:5.1.6'
+
+    // to json
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.2'
+    compile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.7.1'
+
+
+    // H2O uses jUnit for testing 
+    testCompile 'junit:junit:4.11'
+}
+
+//
+// Project specific settings
+//
+
+// Setup group ID for this project
+group = "ai.h2o"
+
+//
+// Setup Java plugin
+//
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+compileJava { 
+    options.debug = true 
+}
+
+//
+// Setup Gradle wrapper task to obtain latest gradle version
+//
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
 }
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+shadowJar {
+    mergeServiceFiles()
+    classifier = ''
+    // CDH 5.3.0 provides joda-time v1.6 which is too old, shadow the library instead
+    relocate 'org.joda.time', 'ai.h2o.org.joda.time'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.SF'
+    exclude 'synchronize.properties'
+    exclude 'uploader.properties'
+    exclude 'test.properties'
+    exclude 'cockpitlite.properties'
+    exclude 'devpay_products.properties'
+    manifest {
+        attributes 'Main-Class': 'water.H2OApp' //'ai.h2o.automl.autocollect.AutoCollect'
+    }
+}
+
+artifacts {
+    archives shadowJar
+}
+
+//
+// Support make infrastructure by copying the resulting assembly into parent
+// project build directory
+//
+
+def assembly = "steam-automl-1.5.99999-SNAPSHOT.jar"
+def allInOne = "h2o.jar"
+
+task copyJar(type: Copy) {
+    from ("build/libs"){
+        include assembly
+    }
+    into "build"
+    rename { it.replace(assembly, allInOne) }
+}
+// Execute always copyJar
+shadowJar.finalizedBy copyJar
+// Run shadowJar as par of build
+jar.finalizedBy shadowJar
