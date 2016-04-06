@@ -1,6 +1,6 @@
 # Time Series
 
-An implementation of common time series calculations & algorithms in Java.
+An implementation of common time series calculations & algorithms in Java & H2O.
 
 ### Statistical Calculations:
 - [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L11)
@@ -30,12 +30,13 @@ An implementation of common time series calculations & algorithms in Java.
 - [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothing.java)
 - [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothing.java)
 
-### Porting over the previous calculations to an H2O Frame:
+### Previous calculations conducted on an H2O Frame:
 - Progress towards this is as follows:
   - Statistical Calculations:
     - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/StatsFrame.java)
   - Transformation Algorithms: 
     - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/TransformFrame.java)
+    - [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCoxFrame.java)
   - Moving Average Algorithms:
     - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverageFrame.java) 
     - [CumulativeMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverageFrame.java)
