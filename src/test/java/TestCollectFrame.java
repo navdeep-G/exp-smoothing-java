@@ -33,8 +33,10 @@ public class TestCollectFrame extends TestUtil {
         //Setting up a dataset as a List<Double> for later use:
         System.out.println("Reading File to List...");
         List<Double> file = new ArrayList<Double>();
+        List<Double> file_ses = new ArrayList<Double>();
         try {
             file = Util.ReadFile(pathToData);
+            file_ses = Util.ReadFile(pathToData);
         } catch (IOException ioe) {
             System.err.println(ioe);
         }
@@ -44,6 +46,7 @@ public class TestCollectFrame extends TestUtil {
         Frame fr_sma = parse_test_file(pathToData);
         Frame fr_ema = parse_test_file(pathToData);
         Frame fr_cma = parse_test_file(pathToData);
+        Frame fr_ses = parse_test_file(pathToData);
 
         //Calling on Collect to get a bunch of metrics:
         //Collect _tm  = new Collect(pathToData,lag,lag);
@@ -280,14 +283,14 @@ public class TestCollectFrame extends TestUtil {
 
          SingleExpSmoothing singleExpSmoothing = new SingleExpSmoothing();
 
-         double[] fcast = singleExpSmoothing.singleExponentialForecast(file,.5,2);
+         double[] fcast = singleExpSmoothing.singleExponentialForecast(file_ses,.5,2);
          for(int i = 0; i < fcast.length; i++){
          System.out.println(fcast[i]);
          }
 
         SingleExpSmoothingFrame singleExpSmoothingFrame = new SingleExpSmoothingFrame();
 
-        double[] fcastFrame = singleExpSmoothingFrame.singleExponentialForecastFrame(fr,.5,2);
+        double[] fcastFrame = singleExpSmoothingFrame.singleExponentialForecastFrame(fr_ses, .5, 2);
         for(int i = 0; i < fcastFrame.length; i++){
             System.out.println(fcastFrame[i]);
         }
