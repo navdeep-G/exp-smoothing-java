@@ -9,6 +9,7 @@ import util.*;
 import water.H2O;
 import water.fvec.Frame;
 import util.TestUtil;
+import algos.*;
 
 /**Output relevant calculations from a time series dataset.
  * Used as verification of calculations for now.
@@ -275,13 +276,21 @@ public class TestCollectFrame extends TestUtil {
 
          System.out.println("\n");
          System.out.println("Single EWMA:");
+         */
 
          SingleExpSmoothing singleExpSmoothing = new SingleExpSmoothing();
 
          double[] fcast = singleExpSmoothing.singleExponentialForecast(file,.5,2);
          for(int i = 0; i < fcast.length; i++){
          System.out.println(fcast[i]);
-         }*/
+         }
+
+        SingleExpSmoothingFrame singleExpSmoothingFrame = new SingleExpSmoothingFrame();
+
+        double[] fcastFrame = singleExpSmoothingFrame.singleExponentialForecastFrame(fr,.5,2);
+        for(int i = 0; i < fcastFrame.length; i++){
+            System.out.println(fcastFrame[i]);
+        }
 
         H2O.closeAll();
 
