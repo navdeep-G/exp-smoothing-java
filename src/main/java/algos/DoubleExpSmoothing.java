@@ -2,6 +2,7 @@ package algos;
 
 import java.util.List;
 
+//Double Exponential Smoothing
 public class DoubleExpSmoothing {
     public static double[] doubleExponentialForecast(List<Double> data, double alpha, double gamma, int initializationMethod, int numForecasts) {
         double[] y = new double[data.size() + numForecasts];
