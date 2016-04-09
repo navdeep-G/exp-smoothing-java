@@ -4,6 +4,7 @@ import java.util.List;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
+//Single Exponential Smoothing
 public class SingleExpSmoothingFrame {
     public static double[] singleExponentialForecastFrame(Frame data, double alpha, int numForecasts) {
         double[] y = new double[0];
