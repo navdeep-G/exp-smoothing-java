@@ -2,6 +2,7 @@ package algos;
 
 import java.util.List;
 
+//Single Exponential Smoothing
 public class SingleExpSmoothing{
     public static double[] singleExponentialForecast(List<Double> data, double alpha, int numForecasts) {
         double[] y = new double[data.size() + numForecasts];
