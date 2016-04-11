@@ -3,7 +3,7 @@ package algos;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
-//Double Exponential Smoothing
+//Double Exponential Smoothing for an H2O Frame
 public class DoubleExpSmoothingFrame {
     public static double[] doubleExponentialForecast(Frame data, double alpha, double gamma, int initializationMethod, int numForecasts) {
         double[] y = new double[0];
