@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
  * Created by nkalonia1 on 3/21/16.
  */
 public class TestTransform extends TestUtil {
+    //TODO Remove String path and make Frame manually for test.
     @BeforeClass public static void stall() { stall_till_cloudsize(1); }
 
     static String path = "data/hotel.txt";
@@ -30,6 +31,7 @@ public class TestTransform extends TestUtil {
         }
     }
 
+    //TODO Add correct output for test.
     @Test
     public void testLogTransform() {
         Frame log_fr = TransformFuncsFrame.log(fr.deepCopy(null));

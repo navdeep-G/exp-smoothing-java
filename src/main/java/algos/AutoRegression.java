@@ -4,7 +4,7 @@ import Jama.Matrix;
 
 /**
  *
- * class to build an autoregressive model and calculate the AR coefficients
+ * Class to build an autoregressive model and calculate the AR coefficients
  *
  * @author navdeepgill
  *
@@ -13,7 +13,7 @@ import Jama.Matrix;
 public class AutoRegression {
 
     /**
-     * calculates the autoregressive coefficients for the input samples
+     * Calculates the autoregressive coefficients for the input samples
      * @param inputseries input samples
      * @param order order of the model
      * @param removeMean remove the mean value
@@ -38,7 +38,7 @@ public class AutoRegression {
     }
 
     /**
-     * calculate the Root Mean Square Error
+     * Calculate the Root Mean Square Error
      */
     public static double calculateRMSE(double[] inputseries, double[] arCoefficients, boolean removeMean){
         int length = inputseries.length;
