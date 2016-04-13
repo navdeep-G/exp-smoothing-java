@@ -45,3 +45,4 @@ An implementation of common time series calculations & algorithms in Java & H2O.
   - Forecasting Algorithms:
     - [SingleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothingFrame.java)
     - [DoubleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothingFrame.java)
+    - [TripleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/TripleExpSmoothingFrame.java)
