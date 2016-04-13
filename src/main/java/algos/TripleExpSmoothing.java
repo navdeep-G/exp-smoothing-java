@@ -2,17 +2,14 @@ package algos;
 import java.util.List;
 import java.util.ArrayList;
 /**
- * Given a time series, say a complete monthly data for 12 months, the
- * Triple Exponential smoothing and forecasting technique is built on the following
- * formulae (multiplicative version):
+ * Given a time series, say a complete monthly data for 12 months or weekly data, the
+ * Triple Exponential smoothing is built as follows:
  *
  * St[i] = alpha * y[i] / It[i - period] + (1.0 - alpha) * (St[i - 1] + Bt[i - 1])
  * Bt[i] = gamma * (St[i] - St[i - 1]) + (1 - gamma) * Bt[i - 1]
  * It[i] = beta * y[i] / St[i] + (1.0 - beta) * It[i - period]
  * Ft[i + m] = (St[i] + (m * Bt[i])) * It[i - period + m]
  *
- * For more details, see: http://adorio-research.org/wordpress/?p=1230
- * http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc435.htm
  *
  * @author navdeepgill
  *
@@ -20,7 +17,7 @@ import java.util.ArrayList;
 public class TripleExpSmoothing {
 
     /**
-     * This method is the entry point. It calculates the initial values and
+     * Calculates the initial values and
      * returns the forecast for the future m periods.
      *
      * @param y - Time series data.
@@ -39,7 +36,7 @@ public class TripleExpSmoothing {
      *          - 7 weekly,
      *          - 12 monthly
      *
-     * @param debug - Print debug values. Useful for testing.
+     * @param debug - Print debug values.
      *
      */
     public static List<Double> forecast(List<Double> y, double alpha, double beta,
@@ -171,7 +168,7 @@ public class TripleExpSmoothing {
                 It.set(i, beta * y.get(i) / St.get(i) + (1.0 - beta) * It.get(i - period));
             }
 
-//            // Calculate forecast
+            // Calculate forecast
             if (((i + m) >= period)) {
                 Ft.set(i+m, (St.get(i) + m * Bt.get(i)) * It.get(i - period + m));
             }
