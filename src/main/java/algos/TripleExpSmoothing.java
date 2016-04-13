@@ -69,10 +69,10 @@ public class TripleExpSmoothing {
         return forecast;
     }
 
-    public static List<Double> forecast(List<Double> y, double alpha, double beta,
-                                    double gamma, int period, int m) {
-        return forecast(y, alpha, beta, gamma, period, m, false);
-    }
+//    public static List<Double> forecast(List<Double> y, double alpha, double beta,
+//                                    double gamma, int period, int m) {
+//        return forecast(y, alpha, beta, gamma, period, m, false);
+//    }
 
     /**
      * Validate input.
