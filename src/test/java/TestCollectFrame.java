@@ -25,7 +25,7 @@ public class TestCollectFrame extends TestUtil {
     public static double lambda = 1.6;
 
     //Quick check of output from previous methods.
-    public static void main (String[] args)
+    public static void main (String[] args) throws Exception
     {
         //Make some objects that will show relevant output:
         System.out.println("Starting H2O...");
@@ -253,19 +253,28 @@ public class TestCollectFrame extends TestUtil {
 
          System.out.println("\n");
         */
-         System.out.println("Starting Triple Exp Smoothing; ");
-         int period = 12;
-         int m = 2;
-         double alpha =  0.5411;
-         double beta =  0.0086;
-         double gamma = 1e-04;
-         boolean debug = true;
+//         System.out.println("Starting Triple Exp Smoothing; ");
+//         int period = 12;
+//         int m = 2;
+//         double alpha =  0.5411;
+//         double beta =  0.0086;
+//         double gamma = 1e-04;
+//         boolean debug = true;
+//
+//         List<Double> prediction = TripleExpSmoothing.forecast(file, alpha, beta, gamma, period, m, debug);
+//         System.out.println(prediction.size());
+//
+//         List<Double> prediction_fr = TripleExpSmoothingFrame.forecast(fr, alpha, beta, gamma, period, m, debug);
+//         System.out.println(prediction_fr.size());
 
-         List<Double> prediction = TripleExpSmoothing.forecast(file, alpha, beta, gamma, period, m, debug);
-         System.out.println(prediction.size());
+         //Checking out autoregression
+        double[] x = { 13.5, 18.4, 19.6, 21.4};
+        double[] ar = AutoRegression.calculateARCoefficients(x,1,true);
+        for(int i =0; i < ar.length; ++i){
+            System.out.println(ar[i]);
+        }
 
-        List<Double> prediction_fr = TripleExpSmoothingFrame.forecast(fr, alpha, beta, gamma, period, m, debug);
-        System.out.println(prediction_fr.size());
+
 
          /*
          System.out.println("\n");
