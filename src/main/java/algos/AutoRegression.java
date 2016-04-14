@@ -34,7 +34,7 @@ public class AutoRegression {
         return calcLeastSquare(w,order);
 
         //use max entropy method of burg
-        //return calcMaxEntropy(w,degree);
+        //return calcMaxEntropy(w,order);
     }
 
     /**
