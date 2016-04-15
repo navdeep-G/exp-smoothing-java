@@ -1,3 +1,5 @@
+package random;
+
 import collect.Collect;
 import movingaverage.SimpleMovingAverage;
 import java.io.IOException;

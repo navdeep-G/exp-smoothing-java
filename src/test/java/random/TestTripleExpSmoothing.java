@@ -1,3 +1,5 @@
+package random;
+
 import org.junit.Test;
 import algos.TripleExpSmoothing;
 import java.util.List;
