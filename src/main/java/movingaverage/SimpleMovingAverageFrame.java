@@ -9,6 +9,12 @@ import java.util.Queue;
 
 /**Simple Moving Average (SMA)
  *
+ * a simple moving average (SMA) is the unweighted mean of the previous n data. However, in science and engineering
+ * the mean is normally taken from an equal number of data on either side of a central value. This ensures that
+ * variations in the mean are aligned with the variations in the data rather than being shifted in time.
+ * An example of a simple equally weighted running mean for a n-day sample of closing price is the mean of
+ * the previous n days' closing prices.
+ *
  * @author navdeepgill
  */
 

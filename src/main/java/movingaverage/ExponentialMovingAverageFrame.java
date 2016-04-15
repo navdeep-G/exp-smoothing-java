@@ -6,6 +6,10 @@ import water.fvec.Vec;
 
 /**Exponential Moving Average (EMA)
  *
+ * An exponential moving average (EMA), also known as an exponentially weighted moving average (EWMA), is a
+ * type of infinite impulse response filter that applies weighting factors which decrease exponentially.
+ * The weighting for each older datum decreases exponentially, never reaching zero.
+ *
  * @author navdeepgill
  */
 
