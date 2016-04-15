@@ -9,7 +9,7 @@ import water.fvec.Frame;
 import water.fvec.Vec;
 import water.util.MathUtils.BasicStats;
 
-/**Box Cox Transformation
+/**Box Cox Transformation on a Frame
  *
  * @author navdeepgill
  */
@@ -25,13 +25,6 @@ public class BoxCoxFrame implements TransformFrame {
         this(null);
     }
 
-    /**
-     *Find the optimal lambda for a given time series data set and conduct transformation
-     *
-     *@param  data a List<Double> of time series data
-     *
-     *@return  Time series List<Double> with optimal Box Cox lambda transformation
-     */
     public Frame transform(Frame data) {
         return lambda == null ? transform(data, lambdaSearch(data)) : transform(data, lambda);
     }
@@ -39,10 +32,10 @@ public class BoxCoxFrame implements TransformFrame {
     /**
      *Calculate a Box Cox Transformation for a given lambda
      *
-     *@param  data a List<Double> of time series data
+     *@param  data a Frame of time series data
      *@param lam desired lambda for transformation
      *
-     *@return  Time series List<Double> with desired Box Cox transformation
+     *@return  Time series Frame with desired Box Cox transformation
      */
      public Frame transform(Frame data, final double[] lam) {
          for (int c = 0; c < data.numCols(); ++c) {
@@ -71,9 +64,9 @@ public class BoxCoxFrame implements TransformFrame {
     /**
      *Find the optimal lambda for a given time series data set with default lower/upper bounds for lambda search
      *
-     *@param  data a List<Double> of time series data
+     *@param  data a Frame of time series data
      *
-     *@return  Time series List<Double> with optimal Box Cox lambda transformation
+     *@return  Time series Frame with optimal Box Cox lambda transformation
      */
     public static double[] lambdaSearch(final Frame data) {
         return lambdaSearch(data, -1, 2);
@@ -82,7 +75,7 @@ public class BoxCoxFrame implements TransformFrame {
     /**
      *Find the optimal lambda for a given time series data set given lower/upper bounds for lambda search
      *
-     *@param  data a List<Double> of time series data
+     *@param  data a Frame of time series data
      *@param lower lower bound for lambda search
      *@param upper upper bound for lambda search
      *
@@ -105,7 +98,7 @@ public class BoxCoxFrame implements TransformFrame {
     /**
      * Compute the coefficient of variation
      *
-     * @param v a List<Double> of time series data
+     * @param v a Vec of time series data
      * @param lam lambda
      *
      * @return Coefficient of Variation
