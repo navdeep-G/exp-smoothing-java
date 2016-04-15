@@ -1,4 +1,4 @@
-package algos;
+package algos.frame;
 
 import water.fvec.Frame;
 import water.fvec.Vec;

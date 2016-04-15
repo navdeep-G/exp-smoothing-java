@@ -1,7 +1,6 @@
-package transform;
+package transform.frame;
 
 import java.lang.Math;
-import water.fvec.Frame;
 
 /**Methods to Transform Time Series (log and power transformations)
  *

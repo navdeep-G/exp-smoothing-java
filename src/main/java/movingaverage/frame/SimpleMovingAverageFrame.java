@@ -1,4 +1,4 @@
-package movingaverage;
+package movingaverage.frame;
 
 import transform.TransformFrame;
 import water.fvec.Frame;

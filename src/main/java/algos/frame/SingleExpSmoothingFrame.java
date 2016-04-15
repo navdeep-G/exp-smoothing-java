@@ -1,4 +1,4 @@
-package algos;
+package algos.frame;
 
 import java.util.List;
 import water.fvec.Frame;

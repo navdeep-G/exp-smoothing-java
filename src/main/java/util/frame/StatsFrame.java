@@ -1,4 +1,4 @@
-package util;
+package util.frame;
 
 import water.fvec.Frame;
 import water.fvec.Vec;

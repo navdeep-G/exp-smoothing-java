@@ -1,13 +1,8 @@
-package collect;
+package collect.frame;
 
 import transform.TransformFrame;
 import util.StatsFrame;
-import util.Util;
 
-import java.awt.*;
-import java.io.IOException;
-import java.util.List;
-import water.H2O;
 import water.fvec.Frame;
 
 /**Capture relevant metrics from a time series dataset
