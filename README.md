@@ -36,7 +36,7 @@ An implementation of common time series calculations & algorithms in Java & H2O.
   - Statistical Calculations:
     - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
   - Transformation Algorithms: 
-    - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/TransformFrame.java)
+    - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/TransformFuncsFrame.java)
     - [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/BoxCoxFrame.java)
   - Moving Average Algorithms:
     - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/SimpleMovingAverageFrame.java) 
