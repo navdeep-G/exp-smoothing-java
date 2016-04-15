@@ -34,7 +34,7 @@ public class TestTransform extends TestUtil {
     //TODO Add correct output for test.
     @Test
     public void testLogTransform() {
-        Frame log_fr = TransformFuncsFrame.log(fr.deepCopy(null));
+        Frame log_fr = (new TransformFuncsFrame.Log()).transform((fr.deepCopy(null)));
         long rows = log_fr.numRows();
         assertEquals("Mismatched number of columns in Frame", correct.size(), log_fr.numCols());
         for (int c = 0; c < log_fr.numCols(); ++c) {
@@ -50,7 +50,7 @@ public class TestTransform extends TestUtil {
 
     @Test
     public void testRootTransform() {
-        Frame root_fr = TransformFuncsFrame.root(fr.deepCopy(null), 5);
+        Frame root_fr = (new TransformFuncsFrame.Root(5)).transform(fr.deepCopy(null));
         long rows = root_fr.numRows();
         assertEquals("Mismatched number of columns in Frame", correct.size(), root_fr.numCols());
         for (int c = 0; c < root_fr.numCols(); ++c) {
@@ -66,7 +66,7 @@ public class TestTransform extends TestUtil {
 
     @Test
     public void testSqrtTransform() {
-        Frame sqrt_fr = TransformFuncsFrame.sqrt(fr.deepCopy(null));
+        Frame sqrt_fr = (new TransformFuncsFrame.Sqrt()).transform(fr.deepCopy(null));
         long rows = sqrt_fr.numRows();
         assertEquals("Mismatched number of columns in Frame", correct.size(), sqrt_fr.numCols());
         for (int c = 0; c < sqrt_fr.numCols(); ++c) {
@@ -82,7 +82,7 @@ public class TestTransform extends TestUtil {
 
     @Test
     public void testCbrtTransform() {
-        Frame cbrt_fr = TransformFuncsFrame.cbrt(fr.deepCopy(null));
+        Frame cbrt_fr = (new TransformFuncsFrame.Cbrt()).transform(fr.deepCopy(null));
         long rows = cbrt_fr.numRows();
         assertEquals("Mismatched number of columns in Frame", correct.size(), cbrt_fr.numCols());
         for (int c = 0; c < cbrt_fr.numCols(); ++c) {
