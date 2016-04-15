@@ -3,7 +3,16 @@ package util;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
-/**Collect relevant statistics about a time series
+/**Collect relevant statistics about a time series:
+ *  -Mean
+ *  -Standard Deviation
+ *  -Variance
+ *  -Minimum
+ *  -Maximum
+ *  -AutoCovariance
+ *  -AutoCorrelatin
+ *  -AutoCorrelationFunction
+ *  -PartialAutoCorrelationFunction
  *
  * @author navdeepgill
  */
