@@ -34,15 +34,15 @@ An implementation of common time series calculations & algorithms in Java & H2O.
 ### Previous calculations conducted on an H2O Frame:
 - Progress towards this is as follows:
   - Statistical Calculations:
-    - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/StatsFrame.java)
+    - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
   - Transformation Algorithms: 
-    - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/TransformFrame.java)
-    - [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCoxFrame.java)
+    - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/TransformFrame.java)
+    - [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/BoxCoxFrame.java)
   - Moving Average Algorithms:
-    - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverageFrame.java) 
-    - [CumulativeMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverageFrame.java)
-    - [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverageFrame.java)
+    - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/SimpleMovingAverageFrame.java) 
+    - [CumulativeMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/CumulativeMovingAverageFrame.java)
+    - [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/ExponentialMovingAverageFrame.java)
   - Forecasting Algorithms:
-    - [SingleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothingFrame.java)
-    - [DoubleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothingFrame.java)
-    - [TripleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/TripleExpSmoothingFrame.java)
+    - [SingleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/SingleExpSmoothingFrame.java)
+    - [DoubleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/DoubleExpSmoothingFrame.java)
+    - [TripleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/TripleExpSmoothingFrame.java)
