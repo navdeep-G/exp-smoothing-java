@@ -1,7 +1,7 @@
 package collect.frame;
 
-import transform.TransformFrame;
-import util.StatsFrame;
+import transform.frame.TransformFrame;
+import util.frame.StatsFrame;
 
 import water.fvec.Frame;
 

@@ -1,6 +1,7 @@
 package transform;
 
 import org.junit.Test;
+import transform.frame.TransformFuncsFrame;
 import util.Util;
 import util.TestUtil;
 import water.fvec.Frame;

@@ -1,10 +1,8 @@
 package movingaverage.frame;
 
-import transform.TransformFrame;
+import transform.frame.TransformFrame;
 import water.fvec.Frame;
 import water.fvec.Vec;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 /**Cumulative Moving Average (CMA)
  *
