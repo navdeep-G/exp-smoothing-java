@@ -10,43 +10,37 @@ import water.fvec.Frame;
 
 public class TransformFuncsFrame {
 
-    public static Frame log(Frame data) {
-        SimpleTransformFrame log = new SimpleTransformFrame() {
-            @Override
-            public double transform(double d) {
-                return Math.log(d);
-            }
-        };
-        return log.transform(data);
+    public static class Log extends SimpleTransformFrame{
+        @Override
+        public double transform(double d) {
+            return Math.log(d);
+        }
     }
 
-    public static Frame sqrt(Frame data){
-        SimpleTransformFrame sqrt = new SimpleTransformFrame() {
-            @Override
-            public double transform(double d) {
-                return Math.sqrt(d);
-            }
-        };
-        return sqrt.transform(data);
+    public static class Sqrt extends SimpleTransformFrame{
+        @Override
+        public double transform(double d) {
+            return Math.sqrt(d);
+        }
     }
 
-    public static Frame cbrt(Frame data) {
-        SimpleTransformFrame cbrt = new SimpleTransformFrame() {
-            @Override
-            public double transform(double d) {
-                return Math.cbrt(d);
-            }
-        };
-        return cbrt.transform(data);
+    public static class Cbrt extends SimpleTransformFrame{
+        @Override
+        public double transform(double d) {
+            return Math.cbrt(d);
+        }
     }
 
-    public static Frame root(Frame data, final double r){
-        SimpleTransformFrame root = new SimpleTransformFrame() {
-            @Override
-            public double transform(double d) {
-                return Math.pow(d, 1.0 / r);
-            }
-        };
-        return root.transform(data);
+    public static class Root extends SimpleTransformFrame{
+        double r;
+
+        public Root(double r){
+            this.r = r;
+        }
+        @Override
+        public double transform(double d) {
+            return Math.pow(d, 1.0 / r);
+        }
     }
+
 }
