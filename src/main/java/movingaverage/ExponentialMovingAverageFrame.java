@@ -1,5 +1,6 @@
 package movingaverage;
 
+import transform.TransformFrame;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
@@ -8,7 +9,7 @@ import water.fvec.Vec;
  * @author navdeepgill
  */
 
-public class ExponentialMovingAverageFrame {
+public class ExponentialMovingAverageFrame implements TransformFrame {
     private double alpha;
     private Double oldValue;
 
@@ -16,7 +17,8 @@ public class ExponentialMovingAverageFrame {
         this.alpha = alpha;
     }
 
-    public Frame getEMA(Frame data){
+    @Override
+    public Frame transform(Frame data){
         for(Vec v : data.vecs()){
             for (long x = 0; x < v.length(); ++x) {
                 v.set(x,average(v.at(x)));
