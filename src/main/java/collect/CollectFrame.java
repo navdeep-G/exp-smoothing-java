@@ -1,5 +1,6 @@
 package collect;
 
+import transform.TransformFrame;
 import util.StatsFrame;
 import util.Util;
 
@@ -20,7 +21,7 @@ public class CollectFrame {
     private final int _n;
     protected final Frame _data;
 
-    public CollectFrame(Frame data, int k, int n) throws IOException {
+    public CollectFrame(Frame data, int k, int n) {
         _data = data;
         _k = k;
         _n = n;
@@ -107,6 +108,17 @@ public class CollectFrame {
      */
     public double[][] pacf() {
         return StatsFrame.getPacf(_data, _n);
+    }
+
+    /**
+     * Deletes the stored frame
+     **/
+    public void delete() {
+        _data.delete();
+    }
+
+    public CollectFrame transform(TransformFrame tf, String key_name) {
+        return new CollectFrame(tf.transform(_data.deepCopy(key_name)), _k, _n);
     }
 }
 

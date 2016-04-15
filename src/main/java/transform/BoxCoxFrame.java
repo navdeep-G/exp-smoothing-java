@@ -4,12 +4,6 @@ import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.optimization.GoalType;
 import org.apache.commons.math3.optimization.univariate.BrentOptimizer;
 import org.apache.commons.math3.optimization.univariate.UnivariateOptimizer;
-import util.Stats;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 import water.fvec.Frame;
 import water.fvec.Vec;
@@ -19,8 +13,17 @@ import water.util.MathUtils.BasicStats;
  *
  * @author navdeepgill
  */
-public class BoxCoxFrame {
+public class BoxCoxFrame implements TransformFrame {
 
+    private double[] lambda;
+
+    public BoxCoxFrame(double[] lambda) {
+        this.lambda = lambda;
+    }
+
+    public BoxCoxFrame() {
+        this(null);
+    }
 
     /**
      *Find the optimal lambda for a given time series data set and conduct transformation
@@ -29,8 +32,8 @@ public class BoxCoxFrame {
      *
      *@return  Time series List<Double> with optimal Box Cox lambda transformation
      */
-    public static Frame transform(Frame data) {
-        return transform(data, lambdaSearch(data));
+    public Frame transform(Frame data) {
+        return lambda == null ? transform(data, lambdaSearch(data)) : transform(data, lambda);
     }
 
     /**
@@ -41,19 +44,19 @@ public class BoxCoxFrame {
      *
      *@return  Time series List<Double> with desired Box Cox transformation
      */
-     public static Frame transform(Frame data, final double[] lam) {
+     public Frame transform(Frame data, final double[] lam) {
          for (int c = 0; c < data.numCols(); ++c) {
              final double lambda = lam[c];
-             TransformFrame t;
+             SimpleTransformFrame t;
              if (lambda == 0) {
-                 t = new TransformFrame() {
+                 t = new SimpleTransformFrame() {
                      @Override
                      public double transform(double d) {
                          return (Math.log(d));
                      }
                  };
              } else {
-                 t = new TransformFrame() {
+                 t = new SimpleTransformFrame() {
                      @Override
                      public double transform(double d) {
                          return (Math.pow(d, lambda) - 1.0) / lambda;

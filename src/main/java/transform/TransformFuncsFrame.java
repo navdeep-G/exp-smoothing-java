@@ -11,7 +11,7 @@ import water.fvec.Frame;
 public class TransformFuncsFrame {
 
     public static Frame log(Frame data) {
-        TransformFrame log = new TransformFrame() {
+        SimpleTransformFrame log = new SimpleTransformFrame() {
             @Override
             public double transform(double d) {
                 return Math.log(d);
@@ -21,7 +21,7 @@ public class TransformFuncsFrame {
     }
 
     public static Frame sqrt(Frame data){
-        TransformFrame sqrt = new TransformFrame() {
+        SimpleTransformFrame sqrt = new SimpleTransformFrame() {
             @Override
             public double transform(double d) {
                 return Math.sqrt(d);
@@ -31,7 +31,7 @@ public class TransformFuncsFrame {
     }
 
     public static Frame cbrt(Frame data) {
-        TransformFrame cbrt = new TransformFrame() {
+        SimpleTransformFrame cbrt = new SimpleTransformFrame() {
             @Override
             public double transform(double d) {
                 return Math.cbrt(d);
@@ -41,7 +41,7 @@ public class TransformFuncsFrame {
     }
 
     public static Frame root(Frame data, final double r){
-        TransformFrame root = new TransformFrame() {
+        SimpleTransformFrame root = new SimpleTransformFrame() {
             @Override
             public double transform(double d) {
                 return Math.pow(d, 1.0 / r);
