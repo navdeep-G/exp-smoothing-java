@@ -1,5 +1,6 @@
 package movingaverage;
 
+import transform.TransformFrame;
 import water.fvec.Frame;
 import water.fvec.Vec;
 
@@ -11,12 +12,13 @@ import java.util.Queue;
  * @author navdeepgill
  */
 
-public class SimpleMovingAverageFrame {
+public class SimpleMovingAverageFrame implements TransformFrame {
     Queue<Double> window = new LinkedList<Double>();
     private final int period;
     private double sum;
 
-    public Frame getMA(Frame data){
+    @Override
+    public Frame transform(Frame data){
         for(Vec v : data.vecs()){
             for (long x = 0; x < v.length(); ++x) {
                 newNum(v.at(x));
