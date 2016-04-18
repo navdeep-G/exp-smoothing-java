@@ -30,7 +30,7 @@
 - [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothing.java)
 - [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothing.java)
 
-## Calculations conducted on an H2O Frame:
+## In H2O (Calculations conducted on an H2O Frame):
 ### Statistical Calculations:
 - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
 
