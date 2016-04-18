@@ -31,16 +31,16 @@ Time series conducted in Java and within H2O's framework.
 - [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothing.java)
 
 ## Calculations conducted on an H2O Frame:
-  ### Statistical Calculations:
-  - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
-  ### Transformations: 
-  - [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/TransformFuncsFrame.java)
-  - [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/BoxCoxFrame.java)
-  ### Moving Averages:
-  - [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/SimpleMovingAverageFrame.java) 
-  - [CumulativeMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/CumulativeMovingAverageFrame.java)
-  - [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/ExponentialMovingAverageFrame.java)
-  ### Forecasting Algorithms:
-  - [SingleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/SingleExpSmoothingFrame.java)
-  - [DoubleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/DoubleExpSmoothingFrame.java)
-  - [TripleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/TripleExpSmoothingFrame.java)
+### Statistical Calculations:
+- [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
+### Transformations: 
+- [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/TransformFuncsFrame.java)
+- [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/frame/BoxCoxFrame.java)
+### Moving Averages:
+- [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/SimpleMovingAverageFrame.java) 
+- [CumulativeMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/CumulativeMovingAverageFrame.java)
+- [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/ExponentialMovingAverageFrame.java)
+### Forecasting Algorithms:
+- [SingleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/SingleExpSmoothingFrame.java)
+- [DoubleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/DoubleExpSmoothingFrame.java)
+- [TripleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/TripleExpSmoothingFrame.java)
