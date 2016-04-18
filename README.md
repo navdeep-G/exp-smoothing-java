@@ -1,6 +1,6 @@
 # Time Series
 
-An implementation of common time series calculations & algorithms in Java & H2O.
+Time series conducted in Java and within H2O's framework.
 
 ### Statistical Calculations:
 - [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L11)
