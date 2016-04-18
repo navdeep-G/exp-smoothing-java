@@ -1,4 +1,4 @@
-# Time series conducted in Java and within H2O [https://github.com/h2oai/h2o-3]
+# Time series conducted in Java and within [H2O](https://github.com/h2oai/h2o-3)
 
 ## In Java:
 ### Statistical Calculations:
