@@ -1,6 +1,6 @@
-Time series conducted in Java and within H2O's framework.
+# Time series conducted in Java and within H2O's framework.
 
-##In Java:
+## In Java:
 ### Statistical Calculations:
 - [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L11)
 - [Variance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L23)
