@@ -31,7 +31,7 @@ Time series conducted in Java and within H2O's framework.
 - [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothing.java)
 - [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothing.java)
 
-### Previous calculations conducted on an H2O Frame:
+### Calculations conducted on an H2O Frame:
 - Progress towards this is as follows:
   - Statistical Calculations:
     - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
