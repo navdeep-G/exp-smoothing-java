@@ -1,4 +1,4 @@
-package random;
+package tstest;
 
 import java.io.IOException;
 import java.util.Random;
@@ -8,6 +8,10 @@ import static org.junit.Assert.*;
 import java.util.Random;
 import org.junit.Test;
 
+/**
+ * Unit Test for Augmented Dickey Fuller
+ * @author navdeepgill
+ */
 public class AugmentedDickeyFullerTest {
 
     @Test
