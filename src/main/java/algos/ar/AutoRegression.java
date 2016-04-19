@@ -1,4 +1,4 @@
-package algos;
+package algos.ar;
 
 import Jama.Matrix;
 

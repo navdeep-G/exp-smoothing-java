@@ -1,4 +1,4 @@
-package algos;
+package algos.expsmoothing;
 import java.util.List;
 import java.util.ArrayList;
 /**
