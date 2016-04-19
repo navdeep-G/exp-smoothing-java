@@ -5,7 +5,7 @@ An implementation of common time series algorithms in Java and [H2O](https://git
 ## In Java:
 ### Statistical Calculations:
 - [Stats.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
-- 
+
 ### Transformation Algorithms:
 - [BoxCox.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)
 - [Transform.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)
