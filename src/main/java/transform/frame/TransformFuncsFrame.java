@@ -31,7 +31,7 @@ public class TransformFuncsFrame {
     }
 
     public static class Root extends SimpleTransformFrame{
-        double r;
+        private double r;
 
         public Root(double r){
             this.r = r;

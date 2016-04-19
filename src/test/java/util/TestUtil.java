@@ -1,9 +1,7 @@
 package util;
 
 import org.junit.Ignore;
-import water.H2O;
-import water.Iced;
-import water.Key;
+import water.*;
 import water.fvec.*;
 import water.parser.ParseDataset;
 import water.parser.ParseSetup;
@@ -115,5 +113,26 @@ public class TestUtil extends Iced {
         Key[] res = new Key[keys.size()];
         keys.toArray(res);
         return ParseDataset.parse(Key.make(), res);
+    }
+
+    public static  Key makeByteVec(Key k, String... data) {
+        byte [][] chunks = new byte[data.length][];
+        long [] espc = new long[data.length+1];
+        for(int i = 0; i < chunks.length; ++i){
+            chunks[i] = data[i].getBytes();
+            espc[i+1] = espc[i] + data[i].length();
+        }
+        Futures fs = new Futures();
+        Key key = Vec.newKey();
+        ByteVec bv = new ByteVec(key,Vec.ESPC.rowLayout(key,espc));
+        for(int i = 0; i < chunks.length; ++i){
+            Key chunkKey = bv.chunkKey(i);
+            DKV.put(chunkKey, new Value(chunkKey,chunks[i].length,chunks[i],TypeMap.C1NCHUNK,Value.ICE),fs);
+        }
+        DKV.put(bv._key,bv,fs);
+        Frame fr = new Frame(k,new String[]{"makeByteVec"},new Vec[]{bv});
+        DKV.put(k, fr, fs);
+        fs.blockForPending();
+        return k;
     }
 }
