@@ -1,7 +1,7 @@
 package algos;
 
 import org.junit.Test;
-import algos.TripleExpSmoothing;
+import algos.expsmoothing.TripleExpSmoothing;
 import java.util.List;
 import java.util.Arrays;
 import static org.junit.Assert.*;

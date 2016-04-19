@@ -2,7 +2,9 @@ package output;
 
 import java.io.IOException;
 import java.util.List;
-import algos.*;
+
+import algos.expsmoothing.SingleExpSmoothing;
+import algos.expsmoothing.TripleExpSmoothing;
 import collect.Collect;
 import movingaverage.*;
 import transform.*;
