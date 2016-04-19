@@ -1,5 +1,7 @@
 # Time Series
 
+An implementation of common time series algorithms in Java and H2O, an open source package that scales statistics, machine learning, and math over Big Data.
+
 ## In Java:
 ### Statistical Calculations:
 - [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L11)
