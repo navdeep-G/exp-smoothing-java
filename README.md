@@ -25,10 +25,10 @@
 - [Augmented Dickey Fuller Test](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java) 
 
 ### Forecasting Algorithms:
-- [Autoregressive Model](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/AutoRegression.java)
-- [Triple Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/TripleExpSmoothing.java)
-- [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/DoubleExpSmoothing.java)
-- [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/SingleExpSmoothing.java)
+- [Autoregressive Model](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/ar/AutoRegression.java)
+- [Triple Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)
+- [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
+- [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
 
 ## In H2O (Calculations conducted on an H2O Frame):
 ### Statistical Calculations:
