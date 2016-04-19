@@ -1,4 +1,4 @@
-package random;
+package output;
 
 import java.io.IOException;
 import java.util.List;

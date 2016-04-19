@@ -1,4 +1,4 @@
-package random;
+package movingaverage;
 
 import collect.Collect;
 import movingaverage.SimpleMovingAverage;

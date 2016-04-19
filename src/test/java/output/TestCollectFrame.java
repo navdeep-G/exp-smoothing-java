@@ -1,12 +1,9 @@
-package random;
+package output;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import movingaverage.*;
-import transform.*;
 import util.*;
 import water.H2O;
 import water.fvec.Frame;

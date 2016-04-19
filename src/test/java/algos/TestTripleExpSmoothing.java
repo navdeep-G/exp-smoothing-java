@@ -1,4 +1,4 @@
-package random;
+package algos;
 
 import org.junit.Test;
 import algos.TripleExpSmoothing;
