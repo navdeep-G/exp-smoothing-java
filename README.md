@@ -4,33 +4,25 @@ An implementation of common time series algorithms in Java and [H2O](https://git
 
 ## In Java:
 ### Statistical Calculations:
-- [Mean](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L11)
-- [Variance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L23)
-- [Standard Deviation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L37)
-- [Minimum](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L49)
-- [Maximum](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L54)
-- [Autocovariance](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L59) 
-- [Autocorrelation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L76)
-- [Autocorrelation Function](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L83)
-- [Partial Autocorrelation Function](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java#L94)
-
+- [Stats.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)
+- 
 ### Transformation Algorithms:
-- [Box Cox Transformation](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)
-- [Log & Root Tranformations](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)
+- [BoxCox.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)
+- [Transform.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)
 
 ### Moving Average Algorithms:
-- [Simple Moving Average](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverage.java)
-- [Cumulative Moving Average](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverage.java)
-- [Exponential Moving Average](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverage.java)
+- [SimpleMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverage.java)
+- [CumulativeMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverage.java)
+- [ExponentialMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverage.java)
 
 ### Stationarity Tests:
-- [Augmented Dickey Fuller Test](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java) 
+- [AugmentedDickeyFuller.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java) 
 
 ### Forecasting Algorithms:
-- [Autoregressive Model](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/ar/AutoRegression.java)
-- [Triple Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)
-- [Double Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
-- [Single Exponential Smoothing](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
+- [Autoregression.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/ar/AutoRegression.java)
+- [TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)
+- [DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
+- [SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
 
 ## In H2O:
 ### Statistical Calculations:
@@ -46,6 +38,6 @@ An implementation of common time series algorithms in Java and [H2O](https://git
 - [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/ExponentialMovingAverageFrame.java)
 
 ### Forecasting Algorithms:
-- [SingleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/SingleExpSmoothingFrame.java)
-- [DoubleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/DoubleExpSmoothingFrame.java)
-- [TripleExpSmoothingFrame](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/TripleExpSmoothingFrame.java)
+- [SingleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/SingleExpSmoothingFrame.java)
+- [DoubleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/DoubleExpSmoothingFrame.java)
+- [TripleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/TripleExpSmoothingFrame.java)
