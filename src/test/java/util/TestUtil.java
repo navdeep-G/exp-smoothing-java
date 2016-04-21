@@ -135,4 +135,22 @@ public class TestUtil extends Iced {
         fs.blockForPending();
         return k;
     }
+
+    // Shortcuts for initializing constant arrays
+    public static String[]   ar (String ...a)   { return a; }
+    public static String[][] ar (String[] ...a) { return a; }
+    public static long  []   ar (long   ...a)   { return a; }
+    public static long[][]   ar (long[] ...a)   { return a; }
+    public static int   []   ari(int    ...a)   { return a; }
+    public static int [][]   ar (int[]  ...a)   { return a; }
+    public static float []   arf(float  ...a)   { return a; }
+    public static double[]   ard(double ...a)   { return a; }
+    public static double[][] ard(double[] ...a) { return a; }
+    public static double[][] ear (double ...a) {
+        double[][] r = new double[a.length][1];
+        for (int i=0; i<a.length;i++) r[i][0] = a[i];
+        return r;
+    }
+    public static <T> T[] aro(T ...a) { return a ;}
+
 }
