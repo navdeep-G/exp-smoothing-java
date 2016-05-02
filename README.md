@@ -1,6 +1,6 @@
 # Time Series
 
-An implementation of common time series algorithms in Java and [H2O](https://github.com/h2oai/h2o-3), an open source software that scales statistics, machine learning, and math over Big Data.
+An implementation of time series algorithms in Java and [H2O](https://github.com/h2oai/h2o-3), an open source software that scales statistics, machine learning, and math over Big Data.
 
 ## In Java:
 ### Statistical Calculations:
