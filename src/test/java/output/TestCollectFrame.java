@@ -40,12 +40,12 @@ public class TestCollectFrame extends TestUtil {
             System.err.println(ioe);
         }
 
-        System.out.println("Reading File to Frame...");
-        Frame fr = parse_test_file(pathToData);
-        Frame fr_sma = parse_test_file(pathToData);
-        Frame fr_ema = parse_test_file(pathToData);
-        Frame fr_cma = parse_test_file(pathToData);
-        Frame fr_ses = parse_test_file(pathToData);
+//        System.out.println("Reading File to Frame...");
+//        Frame fr = parse_test_file(pathToData);
+//        Frame fr_sma = parse_test_file(pathToData);
+//        Frame fr_ema = parse_test_file(pathToData);
+//        Frame fr_cma = parse_test_file(pathToData);
+//        Frame fr_ses = parse_test_file(pathToData);
 
 //        //Calling on Collect to get a bunch of metrics:
 //        //Collect _tm  = new Collect(pathToData,lag,lag);
@@ -267,13 +267,18 @@ public class TestCollectFrame extends TestUtil {
 //         System.out.println(prediction_fr.size());
 
          //Checking out autoregression
-        double[] x = { 13.5, 18.4, 19.6, 21.4};
-        double[] ar = AutoRegression.calculateARCoefficients(x, 1, true);
-        for(int i =0; i < ar.length; ++i){
-            System.out.println(ar[i]);
+        double[] x = { 13.5, 18.4, 19.6, 21.4, 25, 26};
+        double[] ar = { 2 };
+        int ar_order = 2;
+        double[] armodel = AutoRegression.calculateARCoefficients(x, ar_order, false);
+        for(int i =0; i < armodel.length; ++i){
+            System.out.println("AR coefficient is " + armodel[i]);
         }
 
-
+        double[] est = AutoRegression.calculateEstimation(x,armodel,false);
+        for(int i =0; i <= est.length; ++i){
+            System.out.println("AR estimation is " + est[i]);
+        }
 
          /*
          System.out.println("\n");
