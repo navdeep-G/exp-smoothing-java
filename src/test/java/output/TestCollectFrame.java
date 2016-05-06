@@ -275,7 +275,7 @@ public class TestCollectFrame extends TestUtil {
             System.out.println("AR coefficient " + i + " is " + armodel[i]);
         }
 
-        double[] est = AutoRegression.calculateEstimation(x,armodel,false);
+        double[] est = AutoRegression.calculateEstimation(x,armodel,false,3);
         for(int i =0; i < est.length; ++i){
             System.out.println("AR estimation for index " + i + " is " + est[i]);
         }

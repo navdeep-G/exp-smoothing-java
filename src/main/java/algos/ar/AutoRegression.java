@@ -66,11 +66,9 @@ public class AutoRegression {
         return rmse;
     }
 
-    //Currently runs estimation on full dataset and predicts for all observations.
-    //TODO Need to set up for n step ahead forecasting 
-    public static double[] calculateEstimation(double[] inputseries, double[] arCoefficients, boolean removeMean){
+    public static double[] calculateEstimation(double[] inputseries, double[] arCoefficients, boolean removeMean, int fcast){
         int length = inputseries.length;
-
+        System.out.println("lenght = " + length);
         double[] w = null;
         if(removeMean){
             w = removeMean(inputseries);
@@ -81,11 +79,17 @@ public class AutoRegression {
 
         int order = arCoefficients.length;
 
-        double[] estimation = new double[length];
-        for(int i=0; i<length; i++){
+        double[] estimation = new double[fcast];
+
+        for(int i=0; i<estimation.length; i++){
             double est = 0.0;
             for(int j=0;j<order;j++){
-                est += arCoefficients[j]*w[i];
+                if(i==0){
+                    est += arCoefficients[j]*w[length-1];
+                }
+                else{
+                    est += arCoefficients[j]*estimation[i-1];
+                }
                 //Printing for investigation purposes. Will be removed later.
                 System.out.println("Estimation at order " + j + " and length " + i + ": " + est);
             }
