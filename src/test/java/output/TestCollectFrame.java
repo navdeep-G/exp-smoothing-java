@@ -280,6 +280,9 @@ public class TestCollectFrame extends TestUtil {
             System.out.println("AR estimation for index " + i + " is " + est[i]);
         }
 
+        double rmse = AutoRegression.calculateRMSE(x,armodel,false);
+        System.out.println("RMSE: " + rmse);
+
          /*
          System.out.println("\n");
          System.out.println("Cumulative Moving Average:");

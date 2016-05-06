@@ -66,7 +66,8 @@ public class AutoRegression {
         return rmse;
     }
 
-
+    //Currently runs estimation on full dataset and predicts for all observations.
+    //TODO Need to set up for n step ahead forecasting 
     public static double[] calculateEstimation(double[] inputseries, double[] arCoefficients, boolean removeMean){
         int length = inputseries.length;
 
