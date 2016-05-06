@@ -53,11 +53,11 @@ public class AutoRegression {
 
         int order = arCoefficients.length;
         double rmse = 0.0;
-        for(int i=order; i<length; i++){
+        for(int i=0; i<length; i++){
             double est = 0.0;
             double value = w[i];
             for(int j=0;j<order;j++){
-                est += arCoefficients[j]*w[i-(j+1)];
+                est += arCoefficients[j]*w[i];
             }
             rmse += Math.pow((value-est), 2.0);
         }
@@ -81,10 +81,10 @@ public class AutoRegression {
         int order = arCoefficients.length;
 
         double[] estimation = new double[length];
-        for(int i=order; i<length; i++){
+        for(int i=0; i<length; i++){
             double est = 0.0;
             for(int j=0;j<order;j++){
-                est += arCoefficients[j]*w[i-(j+1)];
+                est += arCoefficients[j]*w[i];
                 //Printing for investigation purposes. Will be removed later.
                 System.out.println("Estimation at order " + j + " and length " + i + ": " + est);
             }

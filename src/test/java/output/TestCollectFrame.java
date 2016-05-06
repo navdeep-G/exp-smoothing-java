@@ -277,7 +277,7 @@ public class TestCollectFrame extends TestUtil {
 
         double[] est = AutoRegression.calculateEstimation(x,armodel,false);
         for(int i =0; i < est.length; ++i){
-            System.out.println("AR estimation is " + est[i]);
+            System.out.println("AR estimation for index " + i + " is " + est[i]);
         }
 
          /*
