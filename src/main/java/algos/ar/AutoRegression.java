@@ -20,7 +20,7 @@ public class AutoRegression {
      * @return AR coefficients
      * @throws Exception
      */
-    public static double[] calculateARCoefficients(double[] inputseries, int order, boolean removeMean) throws Exception{
+    public static double[] calculateARCoefficients(double[] inputseries, int order, boolean removeMean, String method) throws Exception{
         double[] w = null;
         if(removeMean){
             w = removeMean(inputseries);
@@ -29,12 +29,18 @@ public class AutoRegression {
             w = inputseries;
         }
 
+        if(method == "LS"){
+            //use the least squares method
+            return calcLeastSquare(w,order);
+        }
+        else if(method == "MaxEntropy"){
+            //use max entropy method of burg
+            return calcMaxEntropy(w,order);
+        }
+        else{
+            throw new Exception("Method selected to solve AR Coefficients is invalid!");
+        }
 
-        //use the least squares method
-        return calcLeastSquare(w,order);
-
-        //use max entropy method of burg
-        //return calcMaxEntropy(w,order);
     }
 
     /**
