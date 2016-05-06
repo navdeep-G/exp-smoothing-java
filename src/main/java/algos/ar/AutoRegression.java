@@ -85,6 +85,7 @@ public class AutoRegression {
             double est = 0.0;
             for(int j=0;j<order;j++){
                 est += arCoefficients[j]*w[i-(j+1)];
+                System.out.println("Estimation at order " + j + " and length " + i + ": " + est);
             }
             estimation[i] = est;
         }
