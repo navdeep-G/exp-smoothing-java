@@ -88,6 +88,7 @@ public class AutoRegression {
                 //Printing for investigation purposes. Will be removed later.
                 System.out.println("Estimation at order " + j + " and length " + i + ": " + est);
             }
+            System.out.println("Estimation after implementing calculations at all orders: " + est);
             estimation[i] = est;
         }
         return estimation;
