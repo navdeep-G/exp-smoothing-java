@@ -268,8 +268,8 @@ public class TestCollectFrame extends TestUtil {
 
          //Checking out autoregression
         double[] x = { 13.5, 18.4, 19.6, 21.4, 25, 26};
-        double[] ar = {2};
         int ar_order = 2;
+        double[] ar = {ar_order};
         double[] armodel = AutoRegression.calculateARCoefficients(x, ar_order, false, "LS");
         for(int i =0; i < armodel.length; ++i){
             System.out.println("AR coefficient " + i + " is " + armodel[i]);
