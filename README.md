@@ -19,7 +19,6 @@ An implementation of time series algorithms in Java and [H2O](https://github.com
 - [AugmentedDickeyFuller.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java) 
 
 ### Forecasting Algorithms:
-- [Autoregression.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/ar/AutoRegression.java)
 - [TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)
 - [DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
 - [SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
