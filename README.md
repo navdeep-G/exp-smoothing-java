@@ -1,4 +1,4 @@
-# Time Series
+# Exponential Smoothing/Moving Averages
 
 An implementation of Exponential Smoothing/Moving Average algorithms in Java and [H2O](https://github.com/h2oai/h2o-3), an open source software that scales statistics, machine learning, and math over Big Data.
 
