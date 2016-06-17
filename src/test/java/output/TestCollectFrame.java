@@ -9,6 +9,7 @@ import util.*;
 import water.H2O;
 import water.fvec.Frame;
 import util.TestUtil;
+import algos.expsmoothing.SingleExpSmoothing;
 
 /**Output relevant calculations from a time series dataset.
  * Used as verification of calculations for now.
@@ -267,21 +268,21 @@ public class TestCollectFrame extends TestUtil {
 //         System.out.println(prediction_fr.size());
 
          //Checking out autoregression
-        double[] x = { 13.5, 18.4, 19.6, 21.4, 25, 26};
-        int ar_order = 2;
-        double[] ar = {ar_order};
-        double[] armodel = AutoRegression.calculateARCoefficients(x, ar_order, false, "LS");
-        for(int i =0; i < armodel.length; ++i){
-            System.out.println("AR coefficient " + i + " is " + armodel[i]);
-        }
-
-        double[] est = AutoRegression.calculateEstimation(x,armodel,false,5);
-        for(int i =0; i < est.length; ++i){
-            System.out.println("AR estimation for index " + i + " is " + est[i]);
-        }
-
-        double rmse = AutoRegression.calculateRMSE(x,armodel,false);
-        System.out.println("RMSE: " + rmse);
+//        double[] x = { 13.5, 18.4, 19.6, 21.4, 25, 26};
+//        int ar_order = 2;
+//        double[] ar = {ar_order};
+//        double[] armodel = AutoRegression.calculateARCoefficients(x, ar_order, false, "LS");
+//        for(int i =0; i < armodel.length; ++i){
+//            System.out.println("AR coefficient " + i + " is " + armodel[i]);
+//        }
+//
+//        double[] est = AutoRegression.calculateEstimation(x,armodel,false,5);
+//        for(int i =0; i < est.length; ++i){
+//            System.out.println("AR estimation for index " + i + " is " + est[i]);
+//        }
+//
+//        double rmse = AutoRegression.calculateRMSE(x,armodel,false);
+//        System.out.println("RMSE: " + rmse);
 
          /*
          System.out.println("\n");
@@ -301,14 +302,14 @@ public class TestCollectFrame extends TestUtil {
          System.out.println("\n");
          System.out.println("Single EWMA:");
          */
-//
-//         SingleExpSmoothing singleExpSmoothing = new SingleExpSmoothing();
-//
-//         double[] fcast = singleExpSmoothing.singleExponentialForecast(file_ses,.5,2);
-//         for(int i = 0; i < fcast.length; i++){
-//         System.out.println(fcast[i]);
-//         }
-//
+
+         SingleExpSmoothing singleExpSmoothing = new SingleExpSmoothing();
+
+         double[] fcast = singleExpSmoothing.singleExponentialForecast(file_ses,.5,2);
+         for(int i = 0; i < fcast.length; i++){
+            System.out.println(fcast[i]);
+         }
+
 //        SingleExpSmoothingFrame singleExpSmoothingFrame = new SingleExpSmoothingFrame();
 //
 //        double[] fcastFrame = singleExpSmoothingFrame.singleExponentialForecastFrame(fr_ses, .5, 2);
