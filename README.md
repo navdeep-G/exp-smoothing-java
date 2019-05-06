@@ -1,6 +1,6 @@
-# Time Series (Exponential Smoothing/Moving Averages)
+# Exponential Smoothing & Moving Averages in pure Java and H2O-3
 
-An implementation of exponential smoothing and moving averages in Java and [H2O](https://github.com/h2oai/h2o-3)
+An implementation of exponential smoothing and moving averages in pure Java and [H2O-3](https://github.com/h2oai/h2o-3)
 
 ## In Java:
 ### Statistical Calculations:
@@ -23,7 +23,7 @@ An implementation of exponential smoothing and moving averages in Java and [H2O]
 - [DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
 - [SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
 
-## In H2O:
+## In H2O-3:
 ### Statistical Calculations:
 - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/frame/StatsFrame.java)
 
