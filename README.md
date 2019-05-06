@@ -37,7 +37,7 @@ An implementation of exponential smoothing and moving averages in Java and [H2O]
 - [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/frame/ExponentialMovingAverageFrame.java)
 
 ### Stationarity Tests:
-- TBD
+- WIP
 
 ### Forecasting Algorithms:
 - [SingleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/frame/SingleExpSmoothingFrame.java)
