@@ -1,4 +1,4 @@
-## Exponential Smoothing & Moving Averages in pure Java and H2O-3
+## Exponential Smoothing & Moving Average Models Implemented in Java & H2O-3
 
 An implementation of exponential smoothing and moving averages in pure Java and [H2O-3](https://github.com/h2oai/h2o-3)
 
