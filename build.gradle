@@ -59,6 +59,8 @@ dependencies {
     // Contains H2O entry points
     compile "ai.h2o:h2o-app:${h2oProjectVersion}"
 
+    compile "gov.nist.math:jama:1.0.3"
+    
     // H2O uses jUnit for testing
     testCompile 'junit:junit:4.11'
     testCompile 'pl.pragmatists:JUnitParams:1.0.5'
@@ -83,6 +85,6 @@ compileJava {
 //
 // Setup Gradle wrapper task to obtain latest gradle version
 //
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.9'
-}
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '2.9'
+//}
