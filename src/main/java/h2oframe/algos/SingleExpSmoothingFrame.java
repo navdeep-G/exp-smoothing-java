@@ -1,6 +1,5 @@
-package algos.frame;
+package h2oframe.algos;
 
-import java.util.List;
 import water.fvec.Frame;
 import water.fvec.Vec;
 

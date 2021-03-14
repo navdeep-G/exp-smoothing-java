@@ -1,6 +1,6 @@
 package movingaverage.frame;
 
-import transform.frame.TransformFrame;
+import h2oframe.transform.TransformFrame;
 import water.fvec.Frame;
 import water.fvec.Vec;
 

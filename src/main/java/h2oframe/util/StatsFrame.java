@@ -1,4 +1,4 @@
-package util.frame;
+package h2oframe.util;
 
 import water.fvec.Frame;
 import water.fvec.Vec;
@@ -70,10 +70,10 @@ public class StatsFrame {
 
         for(int v = 0; v < data.numCols(); ++v){
             Vec vec = data.vec(v);
-                for (long i = k; i < nrow; ++i) {
-                    auto_cov[v] += (vec.at(i - k) - avg[v]) * (vec.at(i) - avg[v]);
-                }
-                auto_cov[v]/=nrow;
+            for (long i = k; i < nrow; ++i) {
+                auto_cov[v] += (vec.at(i - k) - avg[v]) * (vec.at(i) - avg[v]);
+            }
+            auto_cov[v]/=nrow;
         }
 
         return auto_cov;
@@ -99,9 +99,9 @@ public class StatsFrame {
 
         for (int i = 0; i <= n; i++) {
             double[] acf = getAutoCorrelation(data,i);
-                for(int j = 0; j < data.numCols(); ++j){
-                    acfValues[j][i] = acf[j];
-                }
+            for(int j = 0; j < data.numCols(); ++j){
+                acfValues[j][i] = acf[j];
+            }
         }
 
         return acfValues;
@@ -116,20 +116,20 @@ public class StatsFrame {
         for(int c = 0; c < data.numCols(); ++c){
             pacfValues[c][0] = phi[c][0][0] = 1D;
             pacfValues[c][1] = phi[c][1][1] = autocov[c];
-                for (int i = 2; i <= n; i++) {
-                    for (int j = 1; j < i - 1; j++) {
-                        phi[c][i - 1][j] = phi[c][i - 2][j] - phi[c][i - 1][i - 1]
+            for (int i = 2; i <= n; i++) {
+                for (int j = 1; j < i - 1; j++) {
+                    phi[c][i - 1][j] = phi[c][i - 2][j] - phi[c][i - 1][i - 1]
                             * phi[c][i - 2][i - 1 - j];
-                    }
-
-                        double a = 0D, b = 0D;
-                        for (int j = 1; j < i; j++) {
-                            a += phi[c][i - 1][j] * getAutoCorrelation(data, i - j)[c];
-                            b += phi[c][i - 1][j] * getAutoCorrelation(data, j)[c];
-                        }
-
-                    pacfValues[c][i] = phi[c][i][i] = (getAutoCorrelation(data, i)[c] - a) / (1 - b);
                 }
+
+                double a = 0D, b = 0D;
+                for (int j = 1; j < i; j++) {
+                    a += phi[c][i - 1][j] * getAutoCorrelation(data, i - j)[c];
+                    b += phi[c][i - 1][j] * getAutoCorrelation(data, j)[c];
+                }
+
+                pacfValues[c][i] = phi[c][i][i] = (getAutoCorrelation(data, i)[c] - a) / (1 - b);
+            }
         }
 
         return pacfValues;

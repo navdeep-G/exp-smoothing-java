@@ -1,17 +1,13 @@
-package boxcox;
+package boxcox.h2oframe;
 
 import org.junit.Test;
-import transform.Transform;
-import transform.frame.BoxCoxFrame;
-import transform.frame.TransformFuncsFrame;
+import h2oframe.transform.BoxCoxFrame;
 import util.Util;
 import util.TestUtil;
-import util.frame.StatsFrame;
 import water.Key;
 import water.Lockable;
 import water.fvec.Frame;
 import org.junit.BeforeClass;
-import water.fvec.Vec;
 import water.parser.ParseDataset;
 
 import java.io.IOException;
@@ -24,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @author navdeepgill
  */
-public class TestBoxCox extends TestUtil {
+public class TestBoxCoxFrame extends TestUtil {
     @BeforeClass
     public static void stall() {
         stall_till_cloudsize(1);

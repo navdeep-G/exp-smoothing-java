@@ -1,4 +1,4 @@
-package transform.frame;
+package h2oframe.transform;
 
 import water.fvec.Frame;
 import water.fvec.Vec;

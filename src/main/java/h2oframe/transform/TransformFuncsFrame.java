@@ -1,4 +1,4 @@
-package transform.frame;
+package h2oframe.transform;
 
 import java.lang.Math;
 
@@ -9,7 +9,7 @@ import java.lang.Math;
 
 public class TransformFuncsFrame {
 
-    public static class Log extends SimpleTransformFrame{
+    public static class Log extends SimpleTransformFrame {
         @Override
         public double transform(double d) {
             return Math.log(d);

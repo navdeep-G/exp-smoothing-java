@@ -1,4 +1,4 @@
-package algos.frame;
+package h2oframe.algos;
 import java.util.List;
 import java.util.ArrayList;
 import water.fvec.Frame;

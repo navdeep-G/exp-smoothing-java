@@ -1,14 +1,11 @@
-package stats;
+package stats.h2oframe;
 
 import org.junit.Test;
-import transform.Transform;
-import transform.frame.TransformFuncsFrame;
 import util.Util;
 import util.TestUtil;
-import util.frame.StatsFrame;
+import h2oframe.util.StatsFrame;
 import water.fvec.Frame;
 import org.junit.BeforeClass;
-import water.fvec.Vec;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +16,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @author navdeepgill
  */
-public class TestStats extends TestUtil {
+public class TestStatsFrame extends TestUtil {
     @BeforeClass
     public static void stall() {
         stall_till_cloudsize(1);

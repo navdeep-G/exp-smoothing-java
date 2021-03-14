@@ -1,8 +1,7 @@
-package collect.frame;
+package h2oframe.collect;
 
-import transform.frame.TransformFrame;
-import util.frame.StatsFrame;
-
+import h2oframe.frame.StatsFrame;
+import h2oframe.transform.TransformFrame;
 import water.fvec.Frame;
 
 /**Capture relevant metrics from a time series dataset
@@ -106,7 +105,7 @@ public class CollectFrame {
     }
 
     /**
-     * Deletes the stored frame
+     * Deletes the stored h2oframe
      **/
     public void delete() {
         _data.delete();

@@ -1,4 +1,4 @@
-package transform.frame;
+package h2oframe.transform;
 
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.optimization.GoalType;
