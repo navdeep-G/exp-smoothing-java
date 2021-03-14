@@ -1,7 +1,6 @@
 package movingaverage;
 
 import collect.Collect;
-import movingaverage.SimpleMovingAverage;
 import java.io.IOException;
 import java.util.List;
 

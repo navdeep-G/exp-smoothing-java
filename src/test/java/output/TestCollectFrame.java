@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import algos.ar.AutoRegression;
+//import algos.ar.AutoRegression;
 import util.*;
 import water.H2O;
 import water.fvec.Frame;

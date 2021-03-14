@@ -14,9 +14,7 @@ import water.fvec.Vec;
 import water.util.ArrayUtils;
 
 import static org.junit.Assert.assertEquals;
-/**
- * Created by nkalonia1 on 3/21/16.
- */
+
 @RunWith(JUnitParamsRunner.class)
 public class TestTransformFuncs extends TestUtil {
     //TODO Add way to manually insert expected values for tests
