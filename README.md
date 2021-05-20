@@ -23,7 +23,7 @@ An implementation of exponential smoothing and moving averages in pure Java and 
 - [DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
 - [SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
 
-## H2O-3 Implementation::
+## H2O-3 Implementation:
 ### Statistical Calculations:
 - [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/util/StatsFrame.java)
 
