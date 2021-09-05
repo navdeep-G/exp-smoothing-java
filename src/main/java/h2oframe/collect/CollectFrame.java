@@ -1,6 +1,6 @@
 package h2oframe.collect;
 
-import h2oframe.frame.StatsFrame;
+import h2oframe.util.StatsFrame;
 import h2oframe.transform.TransformFrame;
 import water.fvec.Frame;
 
