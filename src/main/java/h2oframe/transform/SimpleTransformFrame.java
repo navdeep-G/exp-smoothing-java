@@ -5,7 +5,7 @@ import water.fvec.Vec;
 
 /**
  * A base class for all simple transformations on a Frame.
- * Created by nkalonia1 on 3/29/16.
+ * Created by navdeepgill on 3/29/16.
  */
 public abstract class SimpleTransformFrame implements TransformFrame {
 
