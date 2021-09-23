@@ -18,7 +18,7 @@ An implementation of exponential smoothing and moving averages in Java and [H2O-
 ### Stationarity Tests:
 - [AugmentedDickeyFuller.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java) 
 
-### Forecasting Algorithms:
+### Exponential Smoothing Algorithms:
 - [TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)
 - [DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
 - [SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
@@ -39,7 +39,7 @@ An implementation of exponential smoothing and moving averages in Java and [H2O-
 ### Stationarity Tests:
 - WIP
 
-### Forecasting Algorithms:
+### Exponential Smoothing Algorithms:
 - [TripleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/algos/TripleExpSmoothingFrame.java)
 - [DoubleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/algos/DoubleExpSmoothingFrame.java)
 - [SingleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/algos/SingleExpSmoothingFrame.java)
