@@ -1,6 +1,6 @@
-## Exponential Smoothing & Moving Average Models Implemented in Java & H2O-3
+## Exponential Smoothing & Moving Average Models Implemented in Java
 
-An implementation of exponential smoothing and moving averages in Java and [H2O-3](https://github.com/h2oai/h2o-3)
+An implementation of exponential smoothing and moving averages in Java
 
 ## Java Implementation:
 ### Statistical Calculations:
@@ -22,24 +22,3 @@ An implementation of exponential smoothing and moving averages in Java and [H2O-
 - [TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)
 - [DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)
 - [SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)
-
-## H2O-3 Implementation:
-### Statistical Calculations:
-- [StatsFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/util/StatsFrame.java)
-
-### Transformations: 
-- [BoxCoxFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/transform/BoxCoxFrame.java)
-- [TransformFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/transform/TransformFuncsFrame.java)
-
-### Moving Averages:
-- [SimpleMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/movingaverage/SimpleMovingAverageFrame.java)
-- [CumulativeMovingAverageFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/movingaverage/CumulativeMovingAverageFrame.java)
-- [ExponentialMovingAverageFrame .java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/movingaverage/ExponentialMovingAverageFrame.java)
-
-### Stationarity Tests:
-- WIP
-
-### Exponential Smoothing Algorithms:
-- [TripleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/algos/TripleExpSmoothingFrame.java)
-- [DoubleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/algos/DoubleExpSmoothingFrame.java)
-- [SingleExpSmoothingFrame.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/h2oframe/algos/SingleExpSmoothingFrame.java)
