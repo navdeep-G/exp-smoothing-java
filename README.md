@@ -34,4 +34,4 @@ Below is a summary of the core classes included in this implementation:
 
 ---
 
-For questions or contributions, feel free to submit an issue or pull request in the GitHub repository. Thank you for your interest in this Java implementation of time series models!
+For questions or contributions, feel free to submit an issue or pull request in the GitHub repository.
