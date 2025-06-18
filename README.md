@@ -1,37 +1,71 @@
-# Exponential Smoothing & Moving Average Models in Java
+# Forecast Models in Java: Exponential Smoothing & Moving Averages
 
 ## Overview
 
-This repository provides an implementation of time series forecasting methods, specifically Exponential Smoothing and Moving Average models, written in Java. These models are essential in statistical forecasting, widely used in fields such as finance, economics, and inventory management. By smoothing out short-term fluctuations, these models capture the underlying trend of a time series, aiding in effective forecasting and decision-making.
-
-## Key Features
-
-This repository includes a range of implementations for both exponential smoothing and moving average models, as well as supporting utilities for statistical calculations, data transformations, and stationarity testing.
-
-### Java Implementation
-
-Below is a summary of the core classes included in this implementation:
-
-#### Statistical Calculations
-- **[Stats.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)**: Contains utility functions for common statistical operations necessary for time series preprocessing and analysis.
-
-#### Transformation Algorithms
-- **[BoxCox.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)**: Applies the Box-Cox transformation, a power transformation technique for stabilizing variance and making data more normal distribution-like.
-- **[Transform.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)**: Provides a suite of transformation methods to preprocess time series data.
-
-#### Moving Average Algorithms
-- **[SimpleMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverage.java)**: Implements the Simple Moving Average (SMA), a straightforward technique that averages data points over a defined window, commonly used in trend analysis.
-- **[CumulativeMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverage.java)**: Calculates the Cumulative Moving Average (CMA), which updates averages progressively over the entire dataset.
-- **[ExponentialMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverage.java)**: Implements the Exponential Moving Average (EMA), a method that gives more weight to recent observations, making it responsive to recent changes.
-
-#### Stationarity Tests
-- **[AugmentedDickeyFuller.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java)**: Implements the Augmented Dickey-Fuller (ADF) test to check for stationarity in a time series, which is crucial for model selection and performance.
-
-#### Exponential Smoothing Algorithms
-- **[TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)**: Implements Triple Exponential Smoothing, also known as Holt-Winters seasonal method, which models level, trend, and seasonality in a time series.
-- **[DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)**: Implements Double Exponential Smoothing, which accounts for trends in the data by incorporating two smoothing parameters.
-- **[SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)**: Implements Single Exponential Smoothing, ideal for data without a trend or seasonal component, where only one smoothing parameter is applied.
+This repository provides robust Java implementations of key time series forecasting methods, including **Exponential Smoothing** and **Moving Average** models. These techniques are widely used across finance, economics, operations, and other domains to model trends and forecast future values by smoothing time series data.
 
 ---
 
-For questions or contributions, feel free to submit an issue or pull request in the GitHub repository.
+## 🚀 Features
+
+- Core time series forecasting algorithms  
+- Preprocessing utilities for transformation and statistical analysis  
+- Tools for stationarity testing and data smoothing
+
+---
+
+## 🧠 Core Components
+
+### 📊 Statistical Utilities
+
+- **[Stats.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)**  
+  Utility methods for statistical calculations essential to time series preprocessing and model evaluation.
+
+---
+
+### 🔄 Data Transformation
+
+- **[BoxCox.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)**
+  Implements the Box-Cox power transformation to stabilize variance and approximate normality.
+
+- **[Transform.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)** 
+  Collection of preprocessing transformations for time series data.
+
+---
+
+### 📈 Moving Average Models
+
+- **[SimpleMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverage.java)** 
+  Calculates the Simple Moving Average (SMA) across a fixed window.
+
+- **[CumulativeMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverage.java)**
+  Computes the Cumulative Moving Average (CMA), updating progressively as new data arrives.
+
+- **[ExponentialMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverage.java)**
+  Implements the Exponential Moving Average (EMA), weighting recent observations more heavily.
+
+---
+
+### 🧪 Stationarity Testing
+
+- **[AugmentedDickeyFuller.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java)**
+  Implements the Augmented Dickey-Fuller (ADF) test to assess stationarity—key for validating forecasting assumptions.
+
+---
+
+### 🔁 Exponential Smoothing Models
+
+- **[SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)**  
+  Suitable for series without trend or seasonality.
+
+- **[DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)**  
+  Captures level and trend with two smoothing parameters.
+
+- **[TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)** 
+  Implements the Holt-Winters method to model level, trend, and seasonality.
+
+---
+
+## 🤝 Contributing
+
+Found a bug or want to contribute improvements? Submit an issue or open a pull request!
