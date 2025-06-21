@@ -24,8 +24,6 @@ This repository provides robust Java implementations of key time series forecast
 
 ### 🔄 Data Transformation
 
-- **[BoxCox.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/BoxCox.java)**: Implements the Box-Cox power transformation to stabilize variance and approximate normality.
-
 - **[Transform.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)**: Collection of preprocessing transformations for time series data.
 
 ---
