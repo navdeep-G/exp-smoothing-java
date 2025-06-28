@@ -50,7 +50,7 @@ public class SimpleMovingAverage {
     /**
      * Adds a new number to the window and updates the rolling sum.
      */
-    private void add(double value) {
+    public void add(double value) {
         sum += value;
         window.addLast(value);
 
@@ -62,7 +62,7 @@ public class SimpleMovingAverage {
     /**
      * Returns the current average of the window.
      */
-    private double getAverage() {
+    public double getAverage() {
         return window.isEmpty() ? 0.0 : sum / window.size();
     }
 }

@@ -20,8 +20,8 @@ public class TestSimpleMovingAverage {
         for (int windSize : windowSizes) {
             SimpleMovingAverage ma = new SimpleMovingAverage(windSize);
             for (double x : testData) {
-                ma.newNum(x);
-                System.out.println("Next number = " + x + ", SMA = " + ma.getAvg());
+                ma.add(x);
+                System.out.println("Next number = " + x + ", SMA = " + ma.getAverage());
             }
         }
     }
