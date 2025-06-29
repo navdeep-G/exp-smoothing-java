@@ -1,109 +1,121 @@
 package transform;
 
-import util.Stats;
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.optimization.GoalType;
 import org.apache.commons.math3.optimization.univariate.BrentOptimizer;
 import org.apache.commons.math3.optimization.univariate.UnivariateOptimizer;
+
 import java.util.ArrayList;
-import java.lang.Math;
-import java.util.Iterator;
 import java.util.List;
 
-/**Box Cox Transformation
- *
- * @author navdeepgill
+/**
+ * Box-Cox Transformation Utility
+ * Applies the Box-Cox transformation to time series data and finds optimal lambda using maximum likelihood.
  */
 public class BoxCox {
 
-
     /**
-     *Find the optimal lambda for a given time series data set and conduct transformation
+     * Apply Box-Cox transformation with automatically selected optimal lambda.
      *
-     *@param  data a List<Double> of time series data
-     *
-     *@return  Time series List<Double> with optimal Box Cox lambda transformation
+     * @param data A List<Double> of strictly positive time series values
+     * @return Transformed time series data
      */
     public static List<Double> transform(List<Double> data) {
         return transform(data, lambdaSearch(data));
     }
 
     /**
-     *Calculate a Box Cox Transformation for a given lambda
+     * Apply Box-Cox transformation with a specified lambda.
      *
-     *@param  data a List<Double> of time series data
-     *@param lam desired lambda for transformation
-     *
-     *@return  Time series List<Double> with desired Box Cox transformation
+     * @param data A List<Double> of strictly positive time series values
+     * @param lam  Desired lambda value
+     * @return Transformed time series data
      */
-     public static List<Double> transform(List<Double> data, double lam) {
-        List<Double> transform = new ArrayList<Double>();
+    public static List<Double> transform(List<Double> data, double lam) {
+        validateInput(data);
 
-        if(lam == 0){
-            for (int i = 0; i < data.size(); i++) {
-                transform.add(Math.log(data.get(i)));
+        List<Double> transformed = new ArrayList<>();
+        for (double x : data) {
+            if (lam == 0) {
+                transformed.add(Math.log(x));
+            } else {
+                transformed.add((Math.pow(x, lam) - 1.0) / lam);
             }
         }
-        else{
-            for (int i = 0; i < data.size(); i++) {
-                transform.add((Math.pow(data.get(i), lam) - 1.0) / lam);
-            }
-        }
-        return transform;
+        return transformed;
     }
 
     /**
-     *Find the optimal lambda for a given time series data set with default lower/upper bounds for lambda search
+     * Automatically find the optimal lambda in the default range [-1, 2].
      *
-     *@param  data a List<Double> of time series data
-     *
-     *@return  Time series List<Double> with optimal Box Cox lambda transformation
+     * @param data A List<Double> of strictly positive time series values
+     * @return Optimal lambda value
      */
     public static double lambdaSearch(final List<Double> data) {
         return lambdaSearch(data, -1, 2);
     }
 
     /**
-     *Find the optimal lambda for a given time series data set given lower/upper bounds for lambda search
+     * Find the optimal lambda within a custom range by minimizing the log-likelihood-based objective.
      *
-     *@param  data a List<Double> of time series data
-     *@param lower lower bound for lambda search
-     *@param upper upper bound for lambda search
-     *
-     * @return  Time series List<Double> with optimal Box Cox lambda transformation
+     * @param data  A List<Double> of strictly positive time series values
+     * @param lower Lower bound of lambda search
+     * @param upper Upper bound of lambda search
+     * @return Optimal lambda value
      */
-    public static double lambdaSearch(final List<Double> data, double lower, double upper){
+    public static double lambdaSearch(final List<Double> data, double lower, double upper) {
+        validateInput(data);
+
         UnivariateOptimizer solver = new BrentOptimizer(1e-10, 1e-14);
-        double lambda = solver.optimize(100,new UnivariateFunction(){
-            public double value(double x){
-                return lambdaCV(data, x);
+        double lambda = solver.optimize(100, new UnivariateFunction() {
+            @Override
+            public double value(double x) {
+                return boxCoxNegLogLikelihood(data, x);
             }
-        }, GoalType.MINIMIZE,lower,upper).getPoint();
+        }, GoalType.MINIMIZE, lower, upper).getPoint();
+
         return lambda;
     }
 
     /**
-     * Compute the coefficient of variation
+     * Box-Cox objective function: negative log-likelihood approximation.
      *
-     * @param data a List<Double> of time series data
-     * @param lam lambda
-     *
-     * @return Coefficient of Variation
+     * @param data A List<Double> of strictly positive time series values
+     * @param lam  Lambda value
+     * @return Log variance of transformed values (proxy for likelihood)
      */
-    private static double lambdaCV(List<Double> data, double lam){
-        Iterator<Double> iter = data.iterator();
-        List<Double> avg = new ArrayList<Double>();
-        List<Double> result = new ArrayList<Double>();
-        while(iter.hasNext()) {
-            List<Double> l = new ArrayList<Double>();
-            l.add(iter.next());
-            if(iter.hasNext()) l.add(iter.next());
-            avg.add(Stats.average(l));
-            result.add(Stats.standardDeviation(l));
+    private static double boxCoxNegLogLikelihood(List<Double> data, double lam) {
+        int n = data.size();
+        double[] transformed = new double[n];
+        double sum = 0.0;
+
+        for (int i = 0; i < n; i++) {
+            double x = data.get(i);
+            if (x <= 0) return Double.POSITIVE_INFINITY;
+            transformed[i] = (lam == 0) ? Math.log(x) : (Math.pow(x, lam) - 1.0) / lam;
+            sum += transformed[i];
         }
-        for (int i = 0; i < result.size(); i+=1) {
-            result.set(i, result.get(i) / Math.pow(avg.get(i), 1 - lam));
+
+        double mean = sum / n;
+        double variance = 0.0;
+        for (double v : transformed) {
+            variance += Math.pow(v - mean, 2);
         }
-        return Stats.standardDeviation(result)/Stats.average(result);
+        variance /= n;
+
+        return Math.log(variance);  // Lower is better
+    }
+
+    /**
+     * Ensures all input data values are strictly positive (required for Box-Cox).
+     *
+     * @param data A List<Double> of time series data
+     */
+    private static void validateInput(List<Double> data) {
+        for (double x : data) {
+            if (x <= 0) {
+                throw new IllegalArgumentException("Box-Cox transformation requires all input values to be > 0.");
+            }
+        }
     }
 }
