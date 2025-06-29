@@ -13,113 +13,88 @@ public class AugmentedDickeyFuller {
     private double adfStat;
     private double[] zeroPaddedDiff;
 
-    private double ADF_THRESHOLD = -3.45;
+    private final double ADF_THRESHOLD = -3.45;
 
-    /**
-     * Uses the Augmented Dickey Fuller test to determine
-     * if ts is a stationary time series
-     * @param ts
-     * @param lag
-     */
     public AugmentedDickeyFuller(List<Double> ts, int lag) {
+        if (lag < 1) {
+            throw new IllegalArgumentException("Lag must be >= 1");
+        }
+        if (ts.size() <= lag + 2) {
+            throw new IllegalArgumentException("Time series too short for specified lag.");
+        }
         this.ts = ts;
         this.lag = lag;
         computeADFStatistics();
     }
 
-    /**
-     * Uses the Augmented Dickey Fuller test to determine
-     * if ts is a stationary time series
-     * @param ts
-     */
     public AugmentedDickeyFuller(List<Double> ts) {
         this.ts = ts;
         this.lag = (int) Math.floor(Math.cbrt((ts.size() - 1)));
+        if (lag < 1) lag = 1;
+        if (ts.size() <= lag + 2) {
+            throw new IllegalArgumentException("Time series too short for calculated lag.");
+        }
         computeADFStatistics();
     }
 
     private void computeADFStatistics() {
         double[] y = diff(ts);
-        RealMatrix designMatrix = null;
-        int k = lag+1;
+        int k = lag + 1;
         int n = ts.size() - 1;
 
-        RealMatrix z = MatrixUtils.createRealMatrix(laggedMatrix(y, k)); //has rows length(ts) - 1 - k + 1
-        RealVector zcol1 = z.getColumnVector(0); //has length length(ts) - 1 - k + 1
-        double[] xt1 = subsetArray(ts, k-1, n-1);  //ts[k:(length(ts) - 1)], has length length(ts) - 1 - k + 1
-        double[] trend = sequence(k,n); //trend k:n, has length length(ts) - 1 - k + 1
+        RealMatrix z = MatrixUtils.createRealMatrix(laggedMatrix(y, k));
+        RealVector zcol1 = z.getColumnVector(0);
+        double[] xt1 = subsetArray(ts, k - 1, n - 1);
+        double[] trend = sequence(k, n);
+
+        RealMatrix designMatrix;
         if (k > 1) {
-            RealMatrix yt1 = z.getSubMatrix(0, ts.size() - 1 - k, 1, k-1); //same as z but skips first column
-            //build design matrix as cbind(xt1, 1, trend, yt1)
+            RealMatrix yt1 = z.getSubMatrix(0, ts.size() - 1 - k, 1, k - 1);
             designMatrix = MatrixUtils.createRealMatrix(ts.size() - 1 - k + 1, 3 + k - 1);
             designMatrix.setColumn(0, xt1);
             designMatrix.setColumn(1, ones(ts.size() - 1 - k + 1));
             designMatrix.setColumn(2, trend);
             designMatrix.setSubMatrix(yt1.getData(), 0, 3);
-
         } else {
-            //build design matrix as cbind(xt1, 1, tt)
             designMatrix = MatrixUtils.createRealMatrix(ts.size() - 1 - k + 1, 3);
             designMatrix.setColumn(0, xt1);
             designMatrix.setColumn(1, ones(ts.size() - 1 - k + 1));
             designMatrix.setColumn(2, trend);
         }
+
         RidgeRegression regression = new RidgeRegression(designMatrix.getData(), zcol1.toArray());
-        regression.updateCoefficients(.0001);
+        regression.updateCoefficients(0.0001);
         double[] beta = regression.getCoefficients();
         double[] sd = regression.getStandarderrors();
 
         double t = beta[0] / sd[0];
-        adfStat = t;
-        if (t <= ADF_THRESHOLD) {
-            this.needsDiff = true;
-        } else {
-            this.needsDiff = false;
-        }
+        this.adfStat = t;
+        this.needsDiff = t > ADF_THRESHOLD;  // Fixed logic
     }
 
-    /**
-     * Takes finite differences of x
-     * @param x
-     * @return Returns an array of length x.length-1 of
-     * the first differences of x
-     */
     private double[] diff(List<Double> x) {
         double[] diff = new double[x.size() - 1];
-        double[] zeroPaddedDiff = new double[x.size()];
+        this.zeroPaddedDiff = new double[x.size()];
         zeroPaddedDiff[0] = 0;
         for (int i = 0; i < diff.length; i++) {
             double diff_i = x.get(i + 1) - x.get(i);
             diff[i] = diff_i;
-            zeroPaddedDiff[i+1] = diff_i;
+            zeroPaddedDiff[i + 1] = diff_i;
         }
-        this.zeroPaddedDiff = zeroPaddedDiff;
         return diff;
     }
 
-    /**
-     * Equivalent to matlab and python ones
-     * @param n
-     * @return an array of doubles of length n that are
-     * initialized to 1
-     */
     private double[] ones(int n) {
         double[] ones = new double[n];
         for (int i = 0; i < n; i++) {
-            ones[i] = 1;
+            ones[i] = 1.0;
         }
         return ones;
     }
 
-    /**
-     * Equivalent to R's embed function
-     * @param x time series vector
-     * @param lag number of lags, where lag=1 is the same as no lags
-     * @return a matrix that has x.length - lag + 1 rows by lag columns.
-     */
-    private double[][] laggedMatrix(double[]x, int lag) {
+    private double[][] laggedMatrix(double[] x, int lag) {
         double[][] laggedMatrix = new double[x.length - lag + 1][lag];
-        for (int j = 0; j < lag; j++) { //loop through columns
+        for (int j = 0; j < lag; j++) {
             for (int i = 0; i < laggedMatrix.length; i++) {
                 laggedMatrix[i][j] = x[lag - j - 1 + i];
             }
@@ -127,27 +102,14 @@ public class AugmentedDickeyFuller {
         return laggedMatrix;
     }
 
-    /**
-     * Takes x[start] through x[end - 1]
-     * @param x
-     * @param start
-     * @param end
-     * @return
-     */
     private double[] subsetArray(List<Double> x, int start, int end) {
         double[] subset = new double[end - start + 1];
-        for (int i = 0; i < subset.length && i + start < x.size(); i += 1) {
+        for (int i = 0; i < subset.length && i + start < x.size(); i++) {
             subset[i] = x.get(i + start);
         }
         return subset;
     }
 
-    /**
-     * Generates a sequence of ints [start, end]
-     * @param start
-     * @param end
-     * @return
-     */
     private double[] sequence(int start, int end) {
         double[] sequence = new double[end - start + 1];
         for (int i = start; i <= end; i++) {
@@ -168,7 +130,11 @@ public class AugmentedDickeyFuller {
         return zeroPaddedDiff;
     }
 
-    public int getLag(){
+    public int getLag() {
         return lag;
+    }
+
+    public boolean isStationary() {
+        return !needsDiff;
     }
 }

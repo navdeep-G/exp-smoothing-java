@@ -8,7 +8,7 @@ import org.apache.commons.math3.linear.SingularValueDecomposition;
 public class RidgeRegression {
 
     private RealMatrix X;
-    private SingularValueDecomposition X_svd = null;
+    private SingularValueDecomposition X_svd;
     private double[] Y;
     private double l2penalty;
     private double[] coefficients;
@@ -29,6 +29,7 @@ public class RidgeRegression {
     }
 
     public void updateCoefficients(double l2penalty) {
+        this.l2penalty = l2penalty;
         if (this.X_svd == null) {
             this.X_svd = new SingularValueDecomposition(X);
         }
@@ -37,15 +38,14 @@ public class RidgeRegression {
         RealMatrix U = this.X_svd.getU();
 
         for (int i = 0; i < s.length; i++) {
-            s[i] = s[i] / (s[i]*s[i] + l2penalty);
+            s[i] = s[i] / (s[i] * s[i] + l2penalty);
         }
         RealMatrix S = MatrixUtils.createRealDiagonalMatrix(s);
-
         RealMatrix Z = V.multiply(S).multiply(U.transpose());
 
         this.coefficients = Z.operate(this.Y);
-
         this.fitted = this.X.operate(this.coefficients);
+
         double errorVariance = 0;
         for (int i = 0; i < residuals.length; i++) {
             this.residuals[i] = this.Y[i] - this.fitted[i];
@@ -55,15 +55,16 @@ public class RidgeRegression {
 
         RealMatrix errorVarianceMatrix = MatrixUtils.createRealIdentityMatrix(this.Y.length).scalarMultiply(errorVariance);
         RealMatrix coefficientsCovarianceMatrix = Z.multiply(errorVarianceMatrix).multiply(Z.transpose());
-        this.standarderrors = getDiagonal(coefficientsCovarianceMatrix);
+
+        this.standarderrors = getStandardErrors(coefficientsCovarianceMatrix);
     }
 
-    private double[] getDiagonal(RealMatrix X) {
-        double[] diag = new double[X.getColumnDimension()];
-        for (int i = 0; i < diag.length; i++) {
-            diag[i] = X.getEntry(i, i);
+    private double[] getStandardErrors(RealMatrix covMatrix) {
+        double[] se = new double[covMatrix.getColumnDimension()];
+        for (int i = 0; i < se.length; i++) {
+            se[i] = Math.sqrt(covMatrix.getEntry(i, i)); // Fixed: return standard errors
         }
-        return diag;
+        return se;
     }
 
     public double getL2penalty() {
