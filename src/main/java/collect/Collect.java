@@ -95,7 +95,7 @@ public class Collect {
      * @return Maximum Value
      */
     public double getMax() {
-        return Stats.getMaximium(_data);
+        return Stats.getMaximum(_data);
     }
 
     /**
