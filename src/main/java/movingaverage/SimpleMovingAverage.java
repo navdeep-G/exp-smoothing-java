@@ -8,12 +8,14 @@ import java.util.List;
 /**
  * Simple Moving Average (SMA) calculator.
  * Computes the average of a sliding window over a numeric series.
- * 
+ *
  * Example usage:
  *   SimpleMovingAverage sma = new SimpleMovingAverage(5);
  *   List<Double> result = sma.getMA(data);
- * 
- * @author navdeep
+ *
+ * Returns `null` for the first (period - 1) elements, until the window is full.
+ *
+ * Author: navdeep
  */
 public class SimpleMovingAverage {
 
@@ -32,17 +34,25 @@ public class SimpleMovingAverage {
 
     /**
      * Computes the simple moving average (SMA) over the input data.
+     * Returns null for values where the moving average window is not yet full.
      *
      * @param data input time series
-     * @return list of SMA values
+     * @return list of SMA values (same length as input)
      */
     public List<Double> getMA(List<Double> data) {
         if (data == null || data.isEmpty()) return List.of();
 
         List<Double> maData = new ArrayList<>(data.size());
+        window.clear();
+        sum = 0.0;
+
         for (double value : data) {
             add(value);
-            maData.add(getAverage());
+            if (window.size() < period) {
+                maData.add(null); // Not enough data yet
+            } else {
+                maData.add(getAverage());
+            }
         }
         return maData;
     }
@@ -62,7 +72,15 @@ public class SimpleMovingAverage {
     /**
      * Returns the current average of the window.
      */
-    public double getAverage() {
-        return window.isEmpty() ? 0.0 : sum / window.size();
+    double getAverage() {
+        return sum / period;
+    }
+
+    /**
+     * Resets the moving average state.
+     */
+    public void reset() {
+        window.clear();
+        sum = 0.0;
     }
 }

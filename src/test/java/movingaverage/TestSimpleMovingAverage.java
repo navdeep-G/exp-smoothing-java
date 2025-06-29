@@ -15,7 +15,7 @@ public class TestSimpleMovingAverage {
 
     public static void main(String[] args) throws IOException {
         Collect _tm = new Collect(pathToData,lag,lag);
-        List<Double> testData = _tm.ReadFile();
+        List<Double> testData = _tm.readFile();
         int[] windowSizes = {2};
         for (int windSize : windowSizes) {
             SimpleMovingAverage ma = new SimpleMovingAverage(windSize);

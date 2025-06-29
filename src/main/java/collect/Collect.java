@@ -29,7 +29,7 @@ public class Collect {
     /**
      * Private file reader method
      */
-    private List<Double> readFile() throws IOException {
+    public List<Double> readFile() throws IOException {
         return Util.ReadFile(_filepath);
     }
 
