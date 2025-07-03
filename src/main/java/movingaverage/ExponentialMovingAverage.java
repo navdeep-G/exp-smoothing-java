@@ -3,35 +3,63 @@ package movingaverage;
 import java.util.ArrayList;
 import java.util.List;
 
-/**Exponential Moving Average (MA)
+/**
+ * Exponential Moving Average (EMA)
+ * Applies smoothing with decay factor alpha in (0, 1].
  *
- * @author navdeepgill
+ * Example:
+ *   ExponentialMovingAverage ema = new ExponentialMovingAverage(0.3);
+ *   List<Double> result = ema.getEMA(data);
+ *
+ * Author: navdeepgill
  */
-
 public class ExponentialMovingAverage {
-    private double alpha;
+    private final double alpha;
     private Double oldValue;
 
     public ExponentialMovingAverage(double alpha) {
+        if (alpha <= 0 || alpha > 1) {
+            throw new IllegalArgumentException("Alpha must be in (0, 1]");
+        }
         this.alpha = alpha;
     }
 
-    public List<Double> getEMA(List<Double> data){
-        //List<Double> ema_data = new ArrayList<>(data.size());
+    /**
+     * Computes the EMA for a list of values.
+     * Does not modify the original list.
+     *
+     * @param data the input data
+     * @return EMA-smoothed data
+     */
+    public List<Double> getEMA(List<Double> data) {
+        List<Double> emaList = new ArrayList<>(data.size());
+        reset();  // Optional: reset state between calls
 
-        for(int i=0;i<data.size();++i) {
-            data.set(i,average(data.get(i)));
+        for (double val : data) {
+            emaList.add(compute(val));
         }
-        return data;
+        return emaList;
     }
 
-    public double average(double value) {
+    /**
+     * Compute next EMA value given the current input.
+     *
+     * @param value new data point
+     * @return updated EMA
+     */
+    public double compute(double value) {
         if (oldValue == null) {
             oldValue = value;
-            return value;
+        } else {
+            oldValue = oldValue + alpha * (value - oldValue);
         }
-        double newValue = oldValue + alpha * (value - oldValue);
-        oldValue = newValue;
-        return newValue;
+        return oldValue;
+    }
+
+    /**
+     * Resets internal state (for reuse).
+     */
+    public void reset() {
+        oldValue = null;
     }
 }
