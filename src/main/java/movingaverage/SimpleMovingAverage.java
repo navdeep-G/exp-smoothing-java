@@ -11,13 +11,13 @@ import java.util.List;
  *
  * Example usage:
  *   SimpleMovingAverage sma = new SimpleMovingAverage(5);
- *   List<Double> result = sma.getMA(data);
+ *   List<Double> result = sma.compute(data);
  *
  * Returns `null` for the first (period - 1) elements, until the window is full.
  *
  * Author: navdeep
  */
-public class SimpleMovingAverage {
+public class SimpleMovingAverage implements MovingAverage {
 
     private final Deque<Double> window;
     private final int period;
@@ -39,12 +39,12 @@ public class SimpleMovingAverage {
      * @param data input time series
      * @return list of SMA values (same length as input)
      */
-    public List<Double> getMA(List<Double> data) {
+    @Override
+    public List<Double> compute(List<Double> data) {
         if (data == null || data.isEmpty()) return List.of();
 
         List<Double> maData = new ArrayList<>(data.size());
-        window.clear();
-        sum = 0.0;
+        reset();
 
         for (double value : data) {
             add(value);
@@ -63,7 +63,6 @@ public class SimpleMovingAverage {
     public void add(double value) {
         sum += value;
         window.addLast(value);
-
         if (window.size() > period) {
             sum -= window.removeFirst();
         }
@@ -72,13 +71,14 @@ public class SimpleMovingAverage {
     /**
      * Returns the current average of the window.
      */
-    double getAverage() {
+    private double getAverage() {
         return sum / period;
     }
 
     /**
      * Resets the moving average state.
      */
+    @Override
     public void reset() {
         window.clear();
         sum = 0.0;

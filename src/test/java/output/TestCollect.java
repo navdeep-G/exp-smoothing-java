@@ -65,7 +65,7 @@ public class TestCollect {
 
         System.out.println("\nSimple Moving Average:");
         SimpleMovingAverage sma = new SimpleMovingAverage(2);
-        System.out.println(sma.getMA(file));
+        System.out.println(sma.compute(file));
 
         System.out.println("\nCumulative Moving Average:");
         CumulativeMovingAverage cma = new CumulativeMovingAverage();
