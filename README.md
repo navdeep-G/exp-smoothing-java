@@ -1,16 +1,19 @@
-# Forecast Models in Java: Exponential Smoothing & Moving Averages
+# 📦 Time Series Library in Java (`tslib`)
 
 ## Overview
 
-This repository provides robust Java implementations of key time series forecasting methods, including **Exponential Smoothing** and **Moving Average** models. These techniques are widely used across finance, economics, operations, and other domains to model trends and forecast future values by smoothing time series data.
+This repository provides a modular Java library for time series analysis and forecasting. It includes implementations of key smoothing algorithms, moving averages, data transformation tools, and stationarity testing — all essential for modeling and analyzing sequential data in domains like finance, economics, and engineering.
 
 ---
 
 ## 🚀 Features
 
-- Core time series forecasting algorithms  
-- Preprocessing utilities for transformation and statistical analysis  
-- Tools for stationarity testing and data smoothing
+- 📈 Core time series models: **Exponential Smoothing**, **Moving Averages**
+- 🔁 Support for trend and seasonality: Single, Double, and Triple Exponential Smoothing
+- 🧪 Stationarity testing with Augmented Dickey-Fuller (ADF)
+- 🔄 Built-in utilities for transformation (log, sqrt, Box-Cox)
+- 📊 Statistical summary utilities: autocovariance, ACF, PACF, mean, std, and more
+- 🧹 Clean architecture with extensible interfaces
 
 ---
 
@@ -18,42 +21,53 @@ This repository provides robust Java implementations of key time series forecast
 
 ### 📊 Statistical Utilities
 
-- **[Stats.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/util/Stats.java)**: Utility methods for statistical calculations essential to time series preprocessing and model evaluation.
+- `tslib.stats.Stats`: Utility methods for calculating mean, variance, autocovariance, ACF, PACF, and more.
 
 ---
 
 ### 🔄 Data Transformation
 
-- **[Transform.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/transform/Transform.java)**: Collection of preprocessing transformations for time series data.
+- `tslib.transform.Transform`: Preprocessing methods for log, square root, cube root, and Box-Cox transformations.
+- `tslib.transform.BoxCox`: Optimizes Box-Cox lambda and applies transformation using max-likelihood estimation.
 
 ---
 
 ### 📈 Moving Average Models
 
-- **[SimpleMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/SimpleMovingAverage.java)**: Calculates the Simple Moving Average (SMA) across a fixed window.
+- `tslib.movingaverage.SimpleMovingAverage`: Fixed-window **SMA** for smoothing time series.
+- `tslib.movingaverage.CumulativeMovingAverage`: Real-time **CMA** update of the running mean.
+- `tslib.movingaverage.ExponentialMovingAverage`: **EMA** implementation with decay factor.
 
-- **[CumulativeMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/CumulativeMovingAverage.java)**: Computes the Cumulative Moving Average (CMA), updating progressively as new data arrives.
-
-- **[ExponentialMovingAverage.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/movingaverage/ExponentialMovingAverage.java)**: Implements the Exponential Moving Average (EMA), weighting recent observations more heavily.
-
----
-
-### 🧪 Stationarity Testing
-
-- **[AugmentedDickeyFuller.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/tests/AugmentedDickeyFuller.java)**: Implements the Augmented Dickey-Fuller (ADF) test to assess stationarity—key for validating forecasting assumptions.
+Each model implements the shared `MovingAverage` interface for consistency.
 
 ---
 
 ### 🔁 Exponential Smoothing Models
 
-- **[SingleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/SingleExpSmoothing.java)**: Suitable for series without trend or seasonality.
+- `tslib.model.SingleExpSmoothing`: Single Exponential Smoothing (level only).
+- `tslib.model.DoubleExpSmoothing`: Double Exponential Smoothing (Holt's method – level + trend).
+- `tslib.model.TripleExpSmoothing`: Triple Exponential Smoothing (Holt-Winters – level, trend, seasonality).
 
-- **[DoubleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/blob/master/src/main/java/algos/expsmoothing/DoubleExpSmoothing.java)**: Captures level and trend with two smoothing parameters.
-
-- **[TripleExponentialSmoothing.java](https://github.com/navdeep-G/timeseries-java/tree/master/src/main/java/algos/expsmoothing/TripleExpSmoothing.java)**: Implements the Holt-Winters method to model level, trend, and seasonality.
+All models implement the `ExponentialSmoothing` interface.
 
 ---
 
-## 🤝 Contributing
+### 🧪 Stationarity Testing
 
-Found a bug or want to contribute improvements? Submit an issue or open a pull request!
+- `tslib.tests.AugmentedDickeyFuller`: Java implementation of the ADF test, used to check for unit roots in time series data.
+
+---
+
+## 📂 Example Usage
+
+```java
+List<Double> data = Util.ReadFile("data/hotel.txt");
+
+ExponentialSmoothing model = new TripleExpSmoothing(0.5, 0.3, 0.2, 12, false);
+List<Double> forecast = model.forecast(data, 5);
+
+MovingAverage sma = new SimpleMovingAverage(3);
+List<Double> smoothed = sma.compute(data);
+
+double lambda = BoxCox.lambdaSearch(data);
+List<Double> transformed = BoxCox.transform(data, lambda);
