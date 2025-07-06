@@ -73,7 +73,7 @@ public class TestCollect {
 
         System.out.println("\nExponential Moving Average:");
         ExponentialMovingAverage ema = new ExponentialMovingAverage(0.3);
-        System.out.println(ema.getEMA(file));
+        System.out.println(ema.compute(file));
 
         System.out.println("\nSingle Exponential Smoothing:");
         SingleExpSmoothing ses = new SingleExpSmoothing(0.5);

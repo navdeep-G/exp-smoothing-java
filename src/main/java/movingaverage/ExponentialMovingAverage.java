@@ -9,11 +9,12 @@ import java.util.List;
  *
  * Example:
  *   ExponentialMovingAverage ema = new ExponentialMovingAverage(0.3);
- *   List<Double> result = ema.getEMA(data);
+ *   List<Double> result = ema.compute(data);
  *
  * Author: navdeepgill
  */
-public class ExponentialMovingAverage {
+public class ExponentialMovingAverage implements MovingAverage {
+
     private final double alpha;
     private Double oldValue;
 
@@ -31,9 +32,10 @@ public class ExponentialMovingAverage {
      * @param data the input data
      * @return EMA-smoothed data
      */
-    public List<Double> getEMA(List<Double> data) {
+    @Override
+    public List<Double> compute(List<Double> data) {
         List<Double> emaList = new ArrayList<>(data.size());
-        reset();  // Optional: reset state between calls
+        reset();  // Reset internal state for fresh computation
 
         for (double val : data) {
             emaList.add(compute(val));
@@ -59,6 +61,7 @@ public class ExponentialMovingAverage {
     /**
      * Resets internal state (for reuse).
      */
+    @Override
     public void reset() {
         oldValue = null;
     }
