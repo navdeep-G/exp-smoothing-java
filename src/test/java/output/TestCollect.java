@@ -7,9 +7,9 @@ import algos.expsmoothing.SingleExpSmoothing;
 import algos.expsmoothing.TripleExpSmoothing;
 import collect.Collect;
 import movingaverage.*;
-import transform.*;
-import util.*;
-import tests.*;
+import transform.Transform;
+import util.Util;
+import tests.AugmentedDickeyFuller;
 
 /**
  * Output relevant calculations from a time series dataset.
@@ -25,20 +25,21 @@ public class TestCollect {
         List<Double> file = Util.ReadFile(pathToData);
         Collect _tm = new Collect(pathToData, lag, lag);
 
-        List<Double> fileLog = Transform.sqrt(file);
-        double optimalLam = BoxCox.lambdaSearch(file);
-        List<Double> fileBoxCox = BoxCox.transform(file, lambda);
+        List<Double> fileSqrt = Transform.sqrt(file);
+        double optimalLam = Transform.boxCoxLambdaSearch(file);
+        List<Double> fileBoxCox = Transform.boxCox(file, lambda);
 
         System.out.println("Optimal Lambda: " + optimalLam + "\n");
-        System.out.println("Box Cox transformation (λ = " + lambda + "):");
+
+        System.out.println("Box-Cox transformation (λ = " + lambda + "):");
         fileBoxCox.forEach(System.out::println);
         System.out.println();
 
-        System.out.println("Log (sqrt) transformation:");
-        fileLog.forEach(System.out::println);
+        System.out.println("Sqrt Transformation:");
+        fileSqrt.forEach(System.out::println);
         System.out.println();
 
-        System.out.println("First 10 values of file:");
+        System.out.println("First 10 values of original series:");
         file.stream().limit(10).forEach(System.out::println);
         System.out.println("Total rows: " + file.size() + "\n");
 
@@ -52,9 +53,10 @@ public class TestCollect {
         System.out.println("Autocovariance: " + _tm.getAutocovariance());
         System.out.println("Autocorrelation (lag " + lag + "): " + _tm.getAutocorrelation());
 
-        System.out.println("ACF:");
+        System.out.println("\nACF:");
         for (double v : _tm.acf(2)) System.out.println(v);
-        System.out.println("PACF:");
+
+        System.out.println("\nPACF:");
         for (double v : _tm.pacf()) System.out.println(v);
 
         System.out.println("\nAugmented Dickey-Fuller Test:");
