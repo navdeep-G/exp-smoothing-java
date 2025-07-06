@@ -22,7 +22,7 @@ public class TestCollect {
     public static double lambda = 1.6;
 
     public static void main(String[] args) throws IOException {
-        List<Double> file = Util.ReadFile(pathToData);
+        List<Double> file = Util.readFile(pathToData);
         Collect _tm = new Collect(pathToData, lag, lag);
 
         List<Double> fileSqrt = Transform.sqrt(file);

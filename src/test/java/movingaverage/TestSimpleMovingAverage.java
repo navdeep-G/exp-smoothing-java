@@ -1,28 +1,58 @@
 package movingaverage;
 
-import collect.Collect;
-import java.io.IOException;
+import org.junit.Test;
+
+import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.*;
 
-/**Simple way to check output of SimpleMovingAverage.
- *
- * @author navdeepgill
- */
 public class TestSimpleMovingAverage {
-    public static int lag = 2;
-    public static  String pathToData = "data/hotel.txt";
 
-    public static void main(String[] args) throws IOException {
-        Collect _tm = new Collect(pathToData,lag,lag);
-        List<Double> testData = _tm.readFile();
-        int[] windowSizes = {2};
-        for (int windSize : windowSizes) {
-            SimpleMovingAverage ma = new SimpleMovingAverage(windSize);
-            for (double x : testData) {
-                ma.add(x);
-                System.out.println("Next number = " + x + ", SMA = " + ma.getAverage());
-            }
-        }
+    @Test
+    public void testSMAWithWindow2() {
+        List<Double> input = Arrays.asList(2.0, 4.0, 6.0, 8.0);
+        int window = 2;
+
+        SimpleMovingAverage sma = new SimpleMovingAverage(window);
+        List<Double> result = sma.compute(input);
+
+        // Expect: [null, 3.0, 5.0, 7.0]
+        assertEquals(input.size(), result.size());
+
+        assertNull(result.get(0));
+        assertEquals(3.0, result.get(1), 1e-6);
+        assertEquals(5.0, result.get(2), 1e-6);
+        assertEquals(7.0, result.get(3), 1e-6);
+    }
+
+    @Test
+    public void testSMAWithWindow3() {
+        List<Double> input = Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0);
+        int window = 3;
+
+        SimpleMovingAverage sma = new SimpleMovingAverage(window);
+        List<Double> result = sma.compute(input);
+
+        // Expect: [null, null, 2.0, 3.0, 4.0]
+        assertEquals(5, result.size());
+
+        assertNull(result.get(0));
+        assertNull(result.get(1));
+        assertEquals(2.0, result.get(2), 1e-6);
+        assertEquals(3.0, result.get(3), 1e-6);
+        assertEquals(4.0, result.get(4), 1e-6);
+    }
+
+    @Test
+    public void testEmptyInput() {
+        SimpleMovingAverage sma = new SimpleMovingAverage(2);
+        List<Double> result = sma.compute(List.of());
+        assertTrue(result.isEmpty());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidPeriod() {
+        new SimpleMovingAverage(0); // Should throw exception
     }
 }

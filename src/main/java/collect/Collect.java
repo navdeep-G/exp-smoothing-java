@@ -30,7 +30,7 @@ public class Collect {
      * Private file reader method
      */
     public List<Double> readFile() throws IOException {
-        return Util.ReadFile(_filepath);
+        return Util.readFile(_filepath);
     }
 
     // === Summary Stats ===

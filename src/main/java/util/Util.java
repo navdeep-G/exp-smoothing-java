@@ -5,63 +5,69 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-/**Utility functions for time series analysis
- *
- * @author navdeepgill
+/**
+ * Utility functions for time series analysis.
  */
 public class Util {
 
     /**
-     * Read in time series dataset
+     * Reads a plain text file with one numeric value per line.
      *
-     * @return A list of data that is read from the file path
+     * @param filepath Path to file
+     * @return List of Doubles
+     * @throws IOException if file cannot be read
      */
-    public static List<Double> ReadFile(String filepath) throws IOException {
-        FileReader fileReader = new FileReader(filepath);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        List<Double> data = new ArrayList<Double>();
-        String line;
-
-        while ((line = bufferedReader.readLine()) != null)
-        {
-            data.add(Double.parseDouble(line));
+    public static List<Double> readFile(String filepath) throws IOException {
+        List<Double> data = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                try {
+                    if (!line.isBlank()) {
+                        data.add(Double.parseDouble(line.trim()));
+                    }
+                } catch (NumberFormatException ignored) {
+                    // Skip malformed lines
+                }
+            }
         }
-
-        bufferedReader.close();
         return data;
     }
 
     /**
-     * Read in a time series dataset with multiple columns
+     * Reads a CSV file with numeric columns.
      *
-     * @return A 2d list of data that is read from the file path
+     * @param filepath Path to CSV file
+     * @return 2D List of Doubles (each sublist = a column)
+     * @throws IOException if file cannot be read
      */
-    public static List<List<Double>> ReadCSV(String filepath) throws IOException {
-        FileReader fileReader = new FileReader(filepath);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        List<List<Double>> data = new ArrayList<List<Double>>();
-        String line;
-        Scanner sc;
-        if ((line = bufferedReader.readLine()) != null) {
-            sc = new Scanner(line);
-            sc.useDelimiter(",");
-            while (sc.hasNextDouble()) {
-                List<Double> newList = new ArrayList<Double>();
-                data.add(newList);
-                newList.add(sc.nextDouble());
+    public static List<List<Double>> readCSV(String filepath) throws IOException {
+        List<List<Double>> columns = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
+            String line;
+            boolean isFirstLine = true;
+
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.trim().split(",");
+                if (isFirstLine) {
+                    for (int i = 0; i < tokens.length; i++) {
+                        columns.add(new ArrayList<>());
+                    }
+                    isFirstLine = false;
+                }
+
+                for (int i = 0; i < tokens.length; i++) {
+                    try {
+                        columns.get(i).add(Double.parseDouble(tokens[i]));
+                    } catch (NumberFormatException | IndexOutOfBoundsException ignored) {
+                        // Skip non-numeric or malformed values
+                    }
+                }
             }
-            sc.close();
         }
-        while ((line = bufferedReader.readLine()) != null) {
-            sc = new Scanner(line);
-            sc.useDelimiter(",");
-            for (int i = 0; sc.hasNextDouble(); i += 1) {
-                data.get(i).add(sc.nextDouble());
-            }
-            sc.close();
-        }
-        return data;
+
+        return columns;
     }
 }
