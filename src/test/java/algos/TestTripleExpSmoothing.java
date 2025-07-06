@@ -27,9 +27,15 @@ public class TestTripleExpSmoothing {
         TripleExpSmoothing model = new TripleExpSmoothing(alpha, beta, gamma, period, debug);
         List<Double> forecast = model.forecast(y, forecastSteps);
 
+        // Verify length
         assertEquals(y.size() + forecastSteps, forecast.size());
+
+        // Verify forecast values are positive and not just zero padding
         for (int i = y.size(); i < forecast.size(); i++) {
-            assertTrue("Forecast value should be non-zero", forecast.get(i) != 0.0);
+            assertTrue("Forecasted value should be greater than zero", forecast.get(i) > 0.0);
         }
+
+        // Optionally print for manual inspection
+        System.out.println("Triple Exp Forecast: " + forecast.subList(y.size(), forecast.size()));
     }
 }

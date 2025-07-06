@@ -24,11 +24,16 @@ public class TestSingleExpSmoothing {
         SingleExpSmoothing ses = new SingleExpSmoothing(alpha);
         List<Double> prediction = ses.forecast(y, forecastSteps);
 
-        // Simple sanity checks
+        // Basic assertions
         assertEquals(y.size() + forecastSteps, prediction.size());
-        assertEquals(prediction.get(y.size() - 1), prediction.get(y.size()), 1e-6); // First forecast equals last smoothed
 
-        // Optionally, print result for manual inspection
+        // Ensure that forecasted values equal the last smoothed value
+        double lastSmoothed = prediction.get(y.size() - 1);
+        for (int i = y.size(); i < prediction.size(); i++) {
+            assertEquals(lastSmoothed, prediction.get(i), 1e-6);
+        }
+
+        // Print forecast portion for manual inspection (optional)
         System.out.println("Forecast: " + prediction.subList(y.size(), y.size() + forecastSteps));
     }
 }

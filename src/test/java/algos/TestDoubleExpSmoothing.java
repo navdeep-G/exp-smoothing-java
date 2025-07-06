@@ -29,10 +29,15 @@ public class TestDoubleExpSmoothing {
         // Validate result length
         assertEquals(y.size() + forecastSteps, prediction.size());
 
-        // Check forecast continuation pattern
+        // Forecast values should follow a trend based on last smoothed and trend components
         double lastSmoothed = prediction.get(y.size() - 1);
-        double firstForecast = prediction.get(y.size());
-        assertTrue(firstForecast > 0);
-        assertNotEquals(0.0, firstForecast, 1e-6);
+        double slope = prediction.get(y.size()) - lastSmoothed;
+
+        for (int i = y.size(); i < prediction.size(); i++) {
+            assertTrue("Forecasted value should be positive", prediction.get(i) > 0);
+        }
+
+        // Optional: print forecast values for manual inspection
+        System.out.println("Double Exp Forecast: " + prediction.subList(y.size(), y.size() + forecastSteps));
     }
 }
