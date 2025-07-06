@@ -9,7 +9,26 @@ import java.util.ArrayList;
  *
  * @author navdeep
  */
-public class TripleExpSmoothing {
+public class TripleExpSmoothing implements ExponentialSmoothing {
+
+    private final double alpha;
+    private final double beta;
+    private final double gamma;
+    private final int period;
+    private final boolean debug;
+
+    public TripleExpSmoothing(double alpha, double beta, double gamma, int period, boolean debug) {
+        this.alpha = alpha;
+        this.beta = beta;
+        this.gamma = gamma;
+        this.period = period;
+        this.debug = debug;
+    }
+
+    @Override
+    public List<Double> forecast(List<Double> y, int m) {
+        return forecast(y, alpha, beta, gamma, period, m, debug);
+    }
 
     public static List<Double> forecast(List<Double> y, double alpha, double beta,
                                         double gamma, int period, int m, boolean debug) {
