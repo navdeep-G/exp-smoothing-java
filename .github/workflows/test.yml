@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Run Java Tests
 
 on:
   push:
@@ -7,22 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '16'  # matches your toolchain version
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    - name: Grant execute permissions to Gradle wrapper
-      run: chmod +x ./gradlew
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
-    - name: Run tests
-      run: ./gradlew test --no-daemon
+      - name: Run tests
+        run: ./gradlew test
 
