@@ -69,7 +69,7 @@ public class TestCollect {
 
         System.out.println("\nCumulative Moving Average:");
         CumulativeMovingAverage cma = new CumulativeMovingAverage();
-        System.out.println(cma.getCMA(file));
+        System.out.println(cma.compute(file));
 
         System.out.println("\nExponential Moving Average:");
         ExponentialMovingAverage ema = new ExponentialMovingAverage(0.3);

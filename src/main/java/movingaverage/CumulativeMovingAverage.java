@@ -9,11 +9,12 @@ import java.util.List;
  *
  * Example:
  *   CumulativeMovingAverage cma = new CumulativeMovingAverage();
- *   List<Double> result = cma.getCMA(data);
+ *   List<Double> result = cma.compute(data);
  *
  * Author: navdeepgill
  */
-public class CumulativeMovingAverage {
+public class CumulativeMovingAverage implements MovingAverage {
+
     private int n = 0;
     private double average = 0.0;
 
@@ -24,7 +25,8 @@ public class CumulativeMovingAverage {
      * @param data the input time series
      * @return a new list of CMA values
      */
-    public List<Double> getCMA(List<Double> data) {
+    @Override
+    public List<Double> compute(List<Double> data) {
         List<Double> result = new ArrayList<>(data.size());
         reset();  // reset state before each run
 
@@ -45,6 +47,7 @@ public class CumulativeMovingAverage {
     /**
      * Resets the internal state for reuse.
      */
+    @Override
     public void reset() {
         n = 0;
         average = 0.0;
