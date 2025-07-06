@@ -1,14 +1,13 @@
 package tslib.movingaverage;
 
 import org.junit.Test;
-import tslib.movingaverage.SimpleMovingAverage;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class TestSimpleMovingAverage {
+public class SimpleMovingAverageTest {
 
     @Test
     public void testSMAWithWindow2() {

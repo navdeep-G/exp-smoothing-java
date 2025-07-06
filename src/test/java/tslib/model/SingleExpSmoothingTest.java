@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class TestSingleExpSmoothing {
+public class SingleExpSmoothingTest {
 
     @Test
     public void forecastNISTData() {
