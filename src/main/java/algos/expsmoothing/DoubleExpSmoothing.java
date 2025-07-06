@@ -3,6 +3,9 @@ package algos.expsmoothing;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Double Exponential Smoothing (Holt's Linear Trend Method).
+ */
 public class DoubleExpSmoothing implements ExponentialSmoothing {
 
     private final double alpha;
@@ -32,27 +35,25 @@ public class DoubleExpSmoothing implements ExponentialSmoothing {
         double[] s = new double[n];
         double[] b = new double[n];
 
-        // Initialization
-        s[0] = y[0] = data.get(0);
+        s[0] = data.get(0);
         switch (initializationMethod) {
             case 0 -> b[0] = data.get(1) - data.get(0);
             case 1 -> b[0] = (n > 4) ? (data.get(3) - data.get(0)) / 3 : data.get(1) - data.get(0);
             case 2 -> b[0] = (data.get(n - 1) - data.get(0)) / (n - 1);
         }
 
-        // Smoothing
+        y[0] = s[0] + b[0];
+
         for (int i = 1; i < n; i++) {
             s[i] = alpha * data.get(i) + (1 - alpha) * (s[i - 1] + b[i - 1]);
             b[i] = gamma * (s[i] - s[i - 1]) + (1 - gamma) * b[i - 1];
-            y[i] = s[i - 1] + b[i - 1]; // forecast at time i based on previous state
+            y[i] = s[i] + b[i];
         }
 
-        // Forecast
         for (int j = 0; j < steps; j++) {
             y[n + j] = s[n - 1] + (j + 1) * b[n - 1];
         }
 
-        // Convert array to list
         List<Double> forecast = new ArrayList<>(y.length);
         for (double v : y) {
             forecast.add(v);

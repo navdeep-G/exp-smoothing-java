@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Single Exponential Smoothing with forecast extension.
+ * Single Exponential Smoothing implementation.
  */
 public class SingleExpSmoothing implements ExponentialSmoothing {
 
@@ -26,19 +26,19 @@ public class SingleExpSmoothing implements ExponentialSmoothing {
         int n = data.size();
         List<Double> result = new ArrayList<>(n + steps);
 
-        // Initialization
-        double y = data.get(0);
-        result.add(y);
+        // Initialize first smoothed value
+        double smoothed = data.get(0);
+        result.add(smoothed);
 
-        // Apply exponential smoothing to existing data
+        // Apply smoothing to historical data
         for (int i = 1; i < n; i++) {
-            y = alpha * data.get(i - 1) + (1 - alpha) * y;
-            result.add(y);
+            smoothed = alpha * data.get(i) + (1 - alpha) * smoothed;
+            result.add(smoothed);
         }
 
-        // Forecast steps using last smoothed value
+        // Forecast future values using last smoothed value
         for (int i = 0; i < steps; i++) {
-            result.add(y);
+            result.add(smoothed);
         }
 
         return result;
