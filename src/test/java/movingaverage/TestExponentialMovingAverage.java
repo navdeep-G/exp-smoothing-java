@@ -1,6 +1,7 @@
 package movingaverage;
 
 import org.junit.Test;
+import tslib.movingaverage.ExponentialMovingAverage;
 
 import java.util.Arrays;
 import java.util.List;

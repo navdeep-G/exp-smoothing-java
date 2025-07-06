@@ -1,4 +1,4 @@
-package algos.expsmoothing;
+package tslib.model.expsmoothing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class TripleExpSmoothing implements ExponentialSmoothing {
                 It.set(i, beta * y.get(i) / St.get(i) + (1 - beta) * It.get(i - period));
             }
 
-            if (i + m < Ft.size() && (i - period + m) < It.size()) {
+            if (i + m < Ft.size() && (i - period + m) >= 0 && (i - period + m) < It.size()) {
                 Ft.set(i + m, (St.get(i) + m * Bt.get(i)) * It.get(i - period + m));
             }
 

@@ -1,4 +1,4 @@
-package tests;
+package tslib.tests;
 
 import java.util.List;
 import org.apache.commons.math3.linear.MatrixUtils;

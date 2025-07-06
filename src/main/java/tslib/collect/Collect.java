@@ -1,12 +1,13 @@
-package collect;
+package tslib.collect;
 
-import util.*;
-import transform.Transform;
-import tests.AugmentedDickeyFuller;
+import tslib.transform.Transform;
+import tslib.tests.AugmentedDickeyFuller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import tslib.util.Util;
+import tslib.util.Stats;
 
 /**
  * Capture relevant metrics from a time series dataset.

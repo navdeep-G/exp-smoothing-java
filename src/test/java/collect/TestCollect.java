@@ -1,15 +1,15 @@
-package output;
+package collect;
 
 import java.io.IOException;
 import java.util.List;
 
-import algos.expsmoothing.SingleExpSmoothing;
-import algos.expsmoothing.TripleExpSmoothing;
-import collect.Collect;
-import movingaverage.*;
-import transform.Transform;
-import util.Util;
-import tests.AugmentedDickeyFuller;
+import tslib.model.expsmoothing.SingleExpSmoothing;
+import tslib.model.expsmoothing.TripleExpSmoothing;
+import tslib.collect.Collect;
+import tslib.movingaverage.*;
+import tslib.transform.Transform;
+import tslib.util.Util;
+import tslib.tests.AugmentedDickeyFuller;
 
 /**
  * Output relevant calculations from a time series dataset.

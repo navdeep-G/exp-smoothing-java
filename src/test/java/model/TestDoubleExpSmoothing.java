@@ -1,7 +1,7 @@
-package algos;
+package model;
 
 import org.junit.Test;
-import algos.expsmoothing.DoubleExpSmoothing;
+import tslib.model.expsmoothing.DoubleExpSmoothing;
 
 import java.util.List;
 import java.util.Arrays;

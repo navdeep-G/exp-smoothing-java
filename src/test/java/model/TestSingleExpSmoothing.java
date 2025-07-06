@@ -1,6 +1,6 @@
-package algos;
+package model;
 
-import algos.expsmoothing.SingleExpSmoothing;
+import tslib.model.expsmoothing.SingleExpSmoothing;
 import org.junit.Test;
 
 import java.util.List;

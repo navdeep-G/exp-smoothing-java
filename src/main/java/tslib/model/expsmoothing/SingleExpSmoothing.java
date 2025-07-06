@@ -1,4 +1,4 @@
-package algos.expsmoothing;
+package tslib.model.expsmoothing;
 
 import java.util.ArrayList;
 import java.util.List;

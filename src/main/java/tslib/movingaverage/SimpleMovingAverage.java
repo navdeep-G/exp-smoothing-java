@@ -1,4 +1,4 @@
-package movingaverage;
+package tslib.movingaverage;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
