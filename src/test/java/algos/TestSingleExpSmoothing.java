@@ -2,32 +2,33 @@ package algos;
 
 import algos.expsmoothing.SingleExpSmoothing;
 import org.junit.Test;
+
 import java.util.List;
 import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class TestSingleExpSmoothing {
 
     @Test
     public void forecastNISTData() {
+        List<Double> y = Arrays.asList(
+                362.0, 385.0, 432.0, 341.0, 382.0, 409.0, 498.0, 387.0, 473.0, 513.0, 582.0, 474.0,
+                544.0, 582.0, 681.0, 557.0, 628.0, 707.0, 773.0, 592.0, 627.0, 725.0, 854.0, 661.0
+        );
 
-        List<Double> y = Arrays.asList(362.0, 385.0, 432.0, 341.0, 382.0, 409.0, 498.0, 387.0, 473.0, 513.0, 582.0, 474.0,
-                544.0, 582.0, 681.0, 557.0, 628.0, 707.0, 773.0, 592.0, 627.0, 725.0, 854.0, 661.0);
-        int m = 4;
+        int forecastSteps = 4;
         double alpha = 0.5;
 
-        double[] prediction = SingleExpSmoothing.singleExponentialForecast(y, alpha, m);
+        // Instantiate the smoothing model
+        SingleExpSmoothing ses = new SingleExpSmoothing(alpha);
+        List<Double> prediction = ses.forecast(y, forecastSteps);
 
-        // These are the expected results
-//        List<Double> expected = Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-//                594.8043646513713, 357.12171044215734, 410.9203094983815,
-//                444.67743912921156, 550.9296957593741, 421.1681718160631,
-//                565.905732450577, 639.2910221068818, 688.8541669002238,
-//                532.7122406111591, 620.5492369959037, 668.5662327429854,
-//                773.5946568453546, 629.0602103529998, 717.0290609530134,
-//                836.4643466657625, 884.1797655866865, 617.6686414831381,
-//                599.1184450128665, 733.227872348479, 949.0708357438998,
-//                748.6618488792186);
-//        assertEquals(expected,prediction);
+        // Simple sanity checks
+        assertEquals(y.size() + forecastSteps, prediction.size());
+        assertEquals(prediction.get(y.size() - 1), prediction.get(y.size()), 1e-6); // First forecast equals last smoothed
+
+        // Optionally, print result for manual inspection
+        System.out.println("Forecast: " + prediction.subList(y.size(), y.size() + forecastSteps));
     }
 }

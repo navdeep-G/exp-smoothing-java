@@ -1,36 +1,46 @@
 package algos.expsmoothing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Single Exponential Smoothing with forecast extension.
  */
-public class SingleExpSmoothing {
+public class SingleExpSmoothing implements ExponentialSmoothing {
 
-    public static double[] singleExponentialForecast(List<Double> data, double alpha, int numForecasts) {
-        if (data == null || data.isEmpty()) {
-            throw new IllegalArgumentException("Input data must not be null or empty.");
-        }
+    private final double alpha;
+
+    public SingleExpSmoothing(double alpha) {
         if (alpha <= 0 || alpha > 1) {
             throw new IllegalArgumentException("Alpha must be in (0, 1]");
         }
+        this.alpha = alpha;
+    }
+
+    @Override
+    public List<Double> forecast(List<Double> data, int steps) {
+        if (data == null || data.isEmpty()) {
+            throw new IllegalArgumentException("Input data must not be null or empty.");
+        }
 
         int n = data.size();
-        double[] y = new double[n + numForecasts];
+        List<Double> result = new ArrayList<>(n + steps);
 
-        // Initialization: set first smoothed value to first actual value
-        y[0] = data.get(0);
+        // Initialization
+        double y = data.get(0);
+        result.add(y);
 
-        // Compute smoothed values for existing data
+        // Apply exponential smoothing to existing data
         for (int i = 1; i < n; i++) {
-            y[i] = alpha * data.get(i - 1) + (1 - alpha) * y[i - 1];
+            y = alpha * data.get(i - 1) + (1 - alpha) * y;
+            result.add(y);
         }
 
-        // Forecast beyond data (constant forecast using last smoothed value)
-        for (int i = n; i < n + numForecasts; i++) {
-            y[i] = y[i - 1];
+        // Forecast steps using last smoothed value
+        for (int i = 0; i < steps; i++) {
+            result.add(y);
         }
 
-        return y;
+        return result;
     }
 }
