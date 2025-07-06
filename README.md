@@ -28,7 +28,6 @@ This repository provides a modular Java library for time series analysis and for
 ### 🔄 Data Transformation
 
 - `tslib.transform.Transform`: Preprocessing methods for log, square root, cube root, and Box-Cox transformations.
-- `tslib.transform.BoxCox`: Optimizes Box-Cox lambda and applies transformation using max-likelihood estimation.
 
 ---
 
