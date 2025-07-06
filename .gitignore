@@ -1,5 +1,4 @@
 .gitattributes
-ut/
 
 .gradle/
 .idea/
@@ -17,7 +16,6 @@ ut/
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
