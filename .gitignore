@@ -1,6 +1,5 @@
 .gitattributes
-gradle/
-out/
+ut/
 
 .gradle/
 .idea/
