@@ -1,4 +1,4 @@
-package model;
+package tslib.model;
 
 import org.junit.Test;
 import tslib.model.expsmoothing.TripleExpSmoothing;

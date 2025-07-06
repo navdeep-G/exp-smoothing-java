@@ -1,4 +1,4 @@
-package tstest;
+package tslib.tstest;
 
 import java.util.ArrayList;
 import tslib.tests.*;

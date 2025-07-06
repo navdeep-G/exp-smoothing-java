@@ -1,11 +1,10 @@
-package collect;
+package tslib.collect;
 
 import java.io.IOException;
 import java.util.List;
 
 import tslib.model.expsmoothing.SingleExpSmoothing;
 import tslib.model.expsmoothing.TripleExpSmoothing;
-import tslib.collect.Collect;
 import tslib.movingaverage.*;
 import tslib.transform.Transform;
 import tslib.util.Util;

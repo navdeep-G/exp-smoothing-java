@@ -1,4 +1,4 @@
-package movingaverage;
+package tslib.movingaverage;
 
 import org.junit.Test;
 import tslib.movingaverage.SimpleMovingAverage;

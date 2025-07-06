@@ -1,4 +1,4 @@
-package model;
+package tslib.model;
 
 import tslib.model.expsmoothing.SingleExpSmoothing;
 import org.junit.Test;
