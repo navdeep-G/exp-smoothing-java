@@ -5,7 +5,6 @@ import java.util.List;
 
 import algos.expsmoothing.SingleExpSmoothing;
 import algos.expsmoothing.TripleExpSmoothing;
-import algos.expsmoothing.ExponentialSmoothing;
 import collect.Collect;
 import movingaverage.*;
 import transform.*;
