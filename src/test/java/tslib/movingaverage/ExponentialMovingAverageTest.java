@@ -1,14 +1,13 @@
-package movingaverage;
+package tslib.movingaverage;
 
 import org.junit.Test;
-import tslib.movingaverage.ExponentialMovingAverage;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class TestExponentialMovingAverage {
+public class ExponentialMovingAverageTest {
 
     @Test
     public void testValidEMAComputation() {

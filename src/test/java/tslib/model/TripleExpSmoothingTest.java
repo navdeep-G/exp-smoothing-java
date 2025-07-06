@@ -1,4 +1,4 @@
-package model;
+package tslib.model;
 
 import org.junit.Test;
 import tslib.model.expsmoothing.TripleExpSmoothing;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class TestTripleExpSmoothing {
+public class TripleExpSmoothingTest {
 
     @Test
     public void forecastNISTData() {

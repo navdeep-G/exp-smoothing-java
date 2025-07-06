@@ -1,14 +1,13 @@
-package movingaverage;
+package tslib.movingaverage;
 
 import org.junit.Test;
-import tslib.movingaverage.CumulativeMovingAverage;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class TestCumulativeMovingAverage {
+public class CumulativeMovingAverageTest {
 
     @Test
     public void testCMAComputation() {
