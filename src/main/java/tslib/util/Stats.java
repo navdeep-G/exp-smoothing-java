@@ -6,6 +6,7 @@ import org.apache.commons.math3.linear.*;
 
 /**
  * Collect relevant statistics about a time series.
+ * Optimized for performance with single-pass algorithms where possible.
  */
 public class Stats {
 
@@ -53,6 +54,48 @@ public class Stats {
         return data.get(getMaximumIndex(data));
     }
 
+    /**
+     * Optimized method to find both min and max in a single pass
+     */
+    public static double[] getMinMax(List<Double> data) {
+        validateNonEmpty(data);
+        double min = data.get(0);
+        double max = data.get(0);
+        
+        for (int i = 1; i < data.size(); i++) {
+            double value = data.get(i);
+            if (value < min) min = value;
+            if (value > max) max = value;
+        }
+        
+        return new double[]{min, max};
+    }
+
+    /**
+     * Optimized method to find min index and max index in a single pass
+     */
+    public static int[] getMinMaxIndices(List<Double> data) {
+        validateNonEmpty(data);
+        int minIndex = 0;
+        int maxIndex = 0;
+        double min = data.get(0);
+        double max = data.get(0);
+        
+        for (int i = 1; i < data.size(); i++) {
+            double value = data.get(i);
+            if (value < min) {
+                min = value;
+                minIndex = i;
+            }
+            if (value > max) {
+                max = value;
+                maxIndex = i;
+            }
+        }
+        
+        return new int[]{minIndex, maxIndex};
+    }
+
     public static double getAutoCovariance(List<Double> data, int k) {
         validateNonEmpty(data);
         if (k < 0) throw new IllegalArgumentException("Lag k must be >= 0");
@@ -76,6 +119,8 @@ public class Stats {
 
     public static double[] getAcf(List<Double> data, int n) {
         validateNonEmpty(data);
+        if (n < 0) throw new IllegalArgumentException("Number of lags must be >= 0");
+        
         double[] acfValues = new double[n + 1];
         for (int i = 0; i <= n; i++) {
             acfValues[i] = getAutoCorrelation(data, i);
@@ -92,6 +137,8 @@ public class Stats {
      */
     public static double[] getPacf(List<Double> data, int maxLag) {
         validateNonEmpty(data);
+        if (maxLag < 0) throw new IllegalArgumentException("Max lag must be >= 0");
+        
         double[] pacf = new double[maxLag + 1];
         pacf[0] = 1.0;
 
