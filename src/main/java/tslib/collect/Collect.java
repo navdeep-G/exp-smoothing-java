@@ -12,6 +12,7 @@ import tslib.util.Stats;
 /**
  * Capture relevant metrics from a time series dataset.
  * Includes statistics, transforms, stationarity checks, and more.
+ * Optimized with caching and lazy initialization for better performance.
  */
 public class Collect {
 
@@ -19,6 +20,18 @@ public class Collect {
     private final int _k;
     private final int _n;
     protected final List<Double> _data;
+    
+    // Cached values for performance
+    private Double _cachedAverage = null;
+    private Double _cachedVariance = null;
+    private Double _cachedStandardDeviation = null;
+    private Integer _cachedMinIndex = null;
+    private Integer _cachedMaxIndex = null;
+    private Double _cachedMin = null;
+    private Double _cachedMax = null;
+    private Double _cachedADFStat = null;
+    private Boolean _cachedIsStationary = null;
+    private AugmentedDickeyFuller _adfInstance = null;
 
     public Collect(String filepath, int k, int n) throws IOException {
         this._filepath = filepath;
@@ -37,31 +50,52 @@ public class Collect {
     // === Summary Stats ===
 
     public double getAverage() {
-        return Stats.average(_data);
+        if (_cachedAverage == null) {
+            _cachedAverage = Stats.average(_data);
+        }
+        return _cachedAverage;
     }
 
     public double getVariance() {
-        return Stats.variance(_data);
+        if (_cachedVariance == null) {
+            _cachedVariance = Stats.variance(_data);
+        }
+        return _cachedVariance;
     }
 
     public double getStandardDeviation() {
-        return Stats.standardDeviation(_data);
+        if (_cachedStandardDeviation == null) {
+            _cachedStandardDeviation = Stats.standardDeviation(_data);
+        }
+        return _cachedStandardDeviation;
     }
 
     public int getMinIndex() {
-        return Stats.getMinimumIndex(_data);
+        if (_cachedMinIndex == null) {
+            _cachedMinIndex = findMinIndexOptimized();
+        }
+        return _cachedMinIndex;
     }
 
     public int getMaxIndex() {
-        return Stats.getMaximumIndex(_data);
+        if (_cachedMaxIndex == null) {
+            _cachedMaxIndex = findMaxIndexOptimized();
+        }
+        return _cachedMaxIndex;
     }
 
     public double getMin() {
-        return Stats.getMinimum(_data);
+        if (_cachedMin == null) {
+            _cachedMin = _data.get(getMinIndex());
+        }
+        return _cachedMin;
     }
 
     public double getMax() {
-        return Stats.getMaximum(_data);
+        if (_cachedMax == null) {
+            _cachedMax = _data.get(getMaxIndex());
+        }
+        return _cachedMax;
     }
 
     // === Autocorrelation Metrics ===
@@ -75,7 +109,7 @@ public class Collect {
     }
 
     public double[] acf(int n) {
-        return Stats.getAcf(_data, n); // Fixed to use argument
+        return Stats.getAcf(_data, n);
     }
 
     public double[] pacf() {
@@ -93,7 +127,7 @@ public class Collect {
     }
 
     public List<Double> getFirstDifference() {
-        List<Double> diff = new ArrayList<>();
+        List<Double> diff = new ArrayList<>(_data.size() - 1);
         for (int i = 1; i < _data.size(); i++) {
             diff.add(_data.get(i) - _data.get(i - 1));
         }
@@ -101,22 +135,93 @@ public class Collect {
     }
 
     public List<Double> getRollingAverage(int windowSize) {
-        List<Double> rolling = new ArrayList<>();
-        for (int i = 0; i <= _data.size() - windowSize; i++) {
-            List<Double> window = _data.subList(i, i + windowSize);
-            rolling.add(Stats.average(window));
+        if (windowSize <= 0 || windowSize > _data.size()) {
+            throw new IllegalArgumentException("Window size must be positive and <= data size");
         }
+        
+        int resultSize = _data.size() - windowSize + 1;
+        List<Double> rolling = new ArrayList<>(resultSize);
+        
+        // Calculate first window sum
+        double windowSum = 0;
+        for (int i = 0; i < windowSize; i++) {
+            windowSum += _data.get(i);
+        }
+        rolling.add(windowSum / windowSize);
+        
+        // Use sliding window technique for O(n) performance
+        for (int i = 1; i <= _data.size() - windowSize; i++) {
+            windowSum = windowSum - _data.get(i - 1) + _data.get(i + windowSize - 1);
+            rolling.add(windowSum / windowSize);
+        }
+        
         return rolling;
     }
 
     // === Stationarity Checks ===
 
     public double getADFStat() {
-        return new AugmentedDickeyFuller(_data).getAdfStat();
+        if (_cachedADFStat == null) {
+            if (_adfInstance == null) {
+                _adfInstance = new AugmentedDickeyFuller(_data);
+            }
+            _cachedADFStat = _adfInstance.getAdfStat();
+        }
+        return _cachedADFStat;
     }
 
     public boolean isStationary() {
-        return new AugmentedDickeyFuller(_data).isStationary();
+        if (_cachedIsStationary == null) {
+            if (_adfInstance == null) {
+                _adfInstance = new AugmentedDickeyFuller(_data);
+            }
+            _cachedIsStationary = _adfInstance.isStationary();
+        }
+        return _cachedIsStationary;
+    }
+
+    // === Optimized Helper Methods ===
+
+    /**
+     * Optimized min index finder - single pass O(n)
+     */
+    private int findMinIndexOptimized() {
+        if (_data.isEmpty()) {
+            throw new IllegalArgumentException("Data cannot be empty");
+        }
+        
+        int minIndex = 0;
+        double minValue = _data.get(0);
+        
+        for (int i = 1; i < _data.size(); i++) {
+            double current = _data.get(i);
+            if (current < minValue) {
+                minValue = current;
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+
+    /**
+     * Optimized max index finder - single pass O(n)
+     */
+    private int findMaxIndexOptimized() {
+        if (_data.isEmpty()) {
+            throw new IllegalArgumentException("Data cannot be empty");
+        }
+        
+        int maxIndex = 0;
+        double maxValue = _data.get(0);
+        
+        for (int i = 1; i < _data.size(); i++) {
+            double current = _data.get(i);
+            if (current > maxValue) {
+                maxValue = current;
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
     }
 
     // === Summary ===
